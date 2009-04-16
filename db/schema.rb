@@ -40,18 +40,19 @@ ActiveRecord::Schema.define(:version => 4) do
     t.integer  "campaign_id"
     t.integer  "points"
     t.datetime "completed_at"
+    t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "tasks", ["campaign_id"], :name => "index_tasks_on_campaign_id"
+  add_index "tasks", ["key"], :name => "index_tasks_on_key"
   add_index "tasks", ["user_id", "campaign_id"], :name => "index_tasks_on_user_id_and_campaign_id"
 
   create_table "users", :force => true do |t|
     t.integer  "organization_id"
     t.boolean  "admin",             :default => false
     t.string   "email"
-    t.string   "api_key"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "login",                                :null => false
@@ -60,7 +61,6 @@ ActiveRecord::Schema.define(:version => 4) do
     t.string   "persistence_token",                    :null => false
   end
 
-  add_index "users", ["api_key"], :name => "index_users_on_api_key"
   add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["organization_id"], :name => "index_users_on_organization_id"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"

@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.integer :organization_id
       t.boolean :admin, :default => 0
-      t.string :email, :api_key
+      t.string :email
       t.timestamps
       
       # authlogic fields
@@ -15,7 +15,6 @@ class CreateUsers < ActiveRecord::Migration
     
     add_index :users, :login
     add_index :users, :persistence_token
-    add_index :users, :api_key
     add_index :users, :organization_id
   end
 
