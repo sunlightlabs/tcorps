@@ -2,8 +2,8 @@ class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
       t.integer :organization_id
-      t.boolean :admin
-      t.string :api_key
+      t.boolean :admin, :default => 0
+      t.string :email, :api_key
       t.timestamps
       
       # authlogic fields

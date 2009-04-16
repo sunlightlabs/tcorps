@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(:version => 4) do
     t.string   "keyword"
     t.text     "instructions"
     t.text     "description"
-    t.text     "public_description"
+    t.text     "private_description"
     t.text     "template"
     t.integer  "points"
     t.integer  "organization_id"
-    t.integer  "runs",               :default => 0
+    t.integer  "runs",                :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,14 +49,15 @@ ActiveRecord::Schema.define(:version => 4) do
 
   create_table "users", :force => true do |t|
     t.integer  "organization_id"
-    t.boolean  "admin"
+    t.boolean  "admin",             :default => false
+    t.string   "email"
     t.string   "api_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "login",             :null => false
-    t.string   "crypted_password",  :null => false
-    t.string   "password_salt",     :null => false
-    t.string   "persistence_token", :null => false
+    t.string   "login",                                :null => false
+    t.string   "crypted_password",                     :null => false
+    t.string   "password_salt",                        :null => false
+    t.string   "persistence_token",                    :null => false
   end
 
   add_index "users", ["api_key"], :name => "index_users_on_api_key"
