@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 3) do
+ActiveRecord::Schema.define(:version => 4) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -46,5 +46,22 @@ ActiveRecord::Schema.define(:version => 3) do
 
   add_index "tasks", ["campaign_id"], :name => "index_tasks_on_campaign_id"
   add_index "tasks", ["user_id", "campaign_id"], :name => "index_tasks_on_user_id_and_campaign_id"
+
+  create_table "users", :force => true do |t|
+    t.integer  "organization_id"
+    t.boolean  "admin"
+    t.string   "api_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "login",             :null => false
+    t.string   "crypted_password",  :null => false
+    t.string   "password_salt",     :null => false
+    t.string   "persistence_token", :null => false
+  end
+
+  add_index "users", ["api_key"], :name => "index_users_on_api_key"
+  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["organization_id"], :name => "index_users_on_organization_id"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end
