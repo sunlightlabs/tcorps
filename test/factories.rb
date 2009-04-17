@@ -2,9 +2,7 @@ require 'factory_girl'
 
 Factory.define :organization do |o|
   o.name 'Organization Name'
-  o.domain {Factory.next :organization_domain}
 end
-Factory.sequence(:organization_domain) {|i| "domain#{i}.com"}
 
 Factory.define :task do |t|
   t.association :user
@@ -21,6 +19,7 @@ Factory.define :campaign do |c|
   c.association :organization
   c.name 'Campaign Name'
   c.keyword {Factory.next :campaign_keyword}
+  c.url {|a| "http://example.com/#{a.keyword}"}
   c.instructions 'Instructions'
   c.description 'Public description'
   c.private_description 'Private description'
