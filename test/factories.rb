@@ -7,9 +7,7 @@ end
 Factory.define :task do |t|
   t.association :user
   t.association :campaign
-  t.key {Factory.next :task_key}
 end
-Factory.sequence(:task_key) {|i| "task_key_#{i}"}
 
 Factory.define :completed_task, :parent => :task do |t|
   t.completed_at {Time.now}

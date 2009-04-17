@@ -5,8 +5,9 @@ class Task < ActiveRecord::Base
   validates_presence_of :key
   validates_uniqueness_of :key
   
-  def before_save
+  def before_validation_on_create
     self.points = campaign.points
+    self.key = SecureRandom.hex 16
   end
   
   def complete?
