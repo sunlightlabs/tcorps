@@ -18,6 +18,7 @@ Factory.define :completed_task, :parent => :task do |t|
 end
 
 Factory.define :campaign do |c|
+  c.association :organization
   c.name 'Campaign Name'
   c.keyword {Factory.next :campaign_keyword}
   c.instructions 'Instructions'

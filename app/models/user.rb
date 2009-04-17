@@ -6,4 +6,13 @@ class User < ActiveRecord::Base
   
   validates_presence_of :login, :email
   validates_uniqueness_of :login, :email
+  
+  def total_points
+    tasks.sum :points, :conditions => 'completed_at is not null'
+  end
+  
+  def campaign_points(campaign)
+    tasks.sum :points, :conditions => ['completed_at is not null and campaign_id = ?', campaign.id]
+  end
+  
 end
