@@ -2,6 +2,30 @@ require 'test_helper'
 
 class TasksControllerTest < ActionController::TestCase
   
+  test '#create should create a new valid task' do
+    
+  end
+  
+  test '#create should redirect the user to #show' do
+  
+  end
+  
+  test '#create should fail with no campaign given' do
+  
+  end
+  
+  test '#create should require the user to be logged in' do
+  
+  end
+  
+  test '#show should render successfully' do
+    
+  end
+  
+  test '#show should require login' do
+    
+  end
+  
   test '#complete with a valid task key updates the task to mark it as complete' do
     task = Factory :task
     assert !task.complete?
