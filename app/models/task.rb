@@ -8,4 +8,8 @@ class Task < ActiveRecord::Base
   def before_save
     self.points = campaign.points
   end
+  
+  def complete?
+    !completed_at.nil?
+  end
 end

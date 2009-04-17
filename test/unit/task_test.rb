@@ -8,4 +8,13 @@ class TaskTest < ActiveSupport::TestCase
     task.save
     assert_equal task.campaign.points, task.points
   end
+  
+  test '#complete? hinges on completed_at' do
+    assert !Factory(:task).complete?
+    assert Factory(:completed_task).complete?
+    
+    task = Factory :task
+    task.update_attribute :completed_at, Time.now
+    assert task.complete?
+  end
 end
