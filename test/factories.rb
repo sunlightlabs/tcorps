@@ -2,6 +2,7 @@ require 'factory_girl'
 
 Factory.define :organization do |o|
   o.name 'Organization Name'
+  o.association :user
 end
 
 Factory.define :task do |t|
