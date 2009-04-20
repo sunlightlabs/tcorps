@@ -4,9 +4,6 @@ class User < ActiveRecord::Base
   belongs_to :organization
   has_many :tasks
   
-  validates_presence_of :login, :email
-  validates_uniqueness_of :login, :email
-  
   def total_points
     tasks.sum :points, :conditions => 'completed_at is not null'
   end

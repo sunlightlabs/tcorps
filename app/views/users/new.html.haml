@@ -12,6 +12,7 @@
   = f.text_field :email
   %br
   %br
+  %h3 Password
   = f.label :password
   %br
   = f.password_field :password
@@ -20,5 +21,11 @@
   = f.label :password_confirmation
   %br
   = f.password_field :password_confirmation
+  %br
+  %h3 OR OpenID
+  = f.label :openid_identifier
+  %br
+  = f.text_field :openid_identifier
+  %br
   %br
   = f.submit 'Login'

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 6) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(:version => 4) do
 
   add_index "campaigns", ["keyword"], :name => "index_campaigns_on_keyword"
   add_index "campaigns", ["organization_id"], :name => "index_campaigns_on_organization_id"
+
+  create_table "open_id_authentication_associations", :force => true do |t|
+    t.integer "issued"
+    t.integer "lifetime"
+    t.string  "handle"
+    t.string  "assoc_type"
+    t.binary  "server_url"
+    t.binary  "secret"
+  end
+
+  create_table "open_id_authentication_nonces", :force => true do |t|
+    t.integer "timestamp",  :null => false
+    t.string  "server_url"
+    t.string  "salt",       :null => false
+  end
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
@@ -55,13 +70,15 @@ ActiveRecord::Schema.define(:version => 4) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "login",                                :null => false
-    t.string   "crypted_password",                     :null => false
-    t.string   "password_salt",                        :null => false
+    t.string   "login"
+    t.string   "crypted_password"
+    t.string   "password_salt"
     t.string   "persistence_token",                    :null => false
+    t.string   "openid_identifier"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
   add_index "users", ["organization_id"], :name => "index_users_on_organization_id"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 

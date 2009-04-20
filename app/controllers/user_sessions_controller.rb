@@ -6,12 +6,14 @@ class UserSessionsController < ApplicationController
   
   def create
     @user_session = UserSession.new params[:user_session]
-    if @user_session.save
-      flash[:success] = 'You have been logged in.'
-      redirect_to root_path
-    else
-      flash[:failure] = 'Invalid credentials.'
-      render :action => :new
+    @user_session.save do |result|
+      if result
+        flash[:success] = 'You have been logged in.'
+        redirect_to root_path
+      else
+        flash[:failure] = 'Invalid credentials.'
+        render :action => :new
+      end
     end
   end
   

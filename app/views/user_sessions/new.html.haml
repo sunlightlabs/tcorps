@@ -1,11 +1,19 @@
+%h1 Login
+
 - form_for @user_session, :url => user_session_path do |f|
+  %h3 Username/Password
   = f.label :login
   %br
   = f.text_field :login
   %br
-  %br
   = f.label :password
   %br
   = f.password_field :password
+  %br
+  %h3 OR OpenID
+  = f.label :openid_identifier
+  %br
+  = f.text_field :openid_identifier
+  %br
   %br
   = f.submit 'Login'
