@@ -32,7 +32,7 @@ class TasksControllerTest < ActionController::TestCase
     count = Task.count
     
     campaign = Factory :campaign
-    logout
+    logout # TODO: find out how to disable SessionMaintenance module so this is unneeded
     post :create, :campaign_id => campaign.id
     assert_redirected_to root_path
     

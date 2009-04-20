@@ -1,0 +1,17 @@
+!!! XML
+!!! Strict
+%html{html_attrs}
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=UTF-8'}
+    %title TransparencyCorps
+  
+  %body
+    .user
+      - if logged_in?
+        == Username: #{current_user.login}
+        = link_to 'Logout', logout_path
+      - else
+        Anonymous
+        = link_to 'Login', login_path
+    = render :partial => 'layouts/flash', :locals => {:flash => flash}
+    = yield

@@ -13,13 +13,16 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !current_user.nil?
   end
+  helper_method :logged_in?
   
   def current_user
     @current_user ||= current_session.user if current_session
   end
+  helper_method :current_user
   
   def current_session
     @current_session ||= UserSession.find
   end
+  helper_method :current_session
   
 end
