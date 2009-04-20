@@ -4,6 +4,8 @@
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=UTF-8'}
     %title TransparencyCorps
+    
+    = stylesheet_link_tag 'style'
   
   %body
     .user
@@ -13,5 +15,6 @@
       - else
         Anonymous
         = link_to 'Login', login_path
+        = link_to 'Register', register_path
     = render :partial => 'layouts/flash', :locals => {:flash => flash}
     = yield

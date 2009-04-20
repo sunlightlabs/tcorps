@@ -43,6 +43,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   end
   
   test '#new renders a login page' do
+    logout
     get :new
     assert_response :success
     assert_template 'new'
