@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "login"
+    t.string   "login",             :default => "",    :null => false
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token",                    :null => false

@@ -13,6 +13,8 @@ ActionController::Routing::Routes.draw do |map|
   # clickpass
   map.begin_openid_login '/clickpass/begin_openid_login', :controller => 'user_sessions', :action => 'begin_openid_login'
   map.complete_openid_login '/clickpass/complete_openid_login', :controller => 'user_sessions', :action => 'complete_openid_login'
+  map.add_openid_to_user '/clickpass/add_openid_to_user', :controller => 'users', :action => 'add_openid_to_user'
+  map.process_openid_registration '/clickpass/process_openid_registration', :controller => 'users', :action => 'process_openid_registration'
 
   map.root :controller => 'campaigns', :action => 'index'
 end

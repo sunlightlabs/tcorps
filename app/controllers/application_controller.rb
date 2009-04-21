@@ -25,4 +25,33 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_session
   
+  # clickpass
+  def clickpass_register_url(user)
+    params = {
+      :requested_fields => 'nickname,email',
+      :required_fields => 'nickname,email',
+      :nickname_label => 'Login',
+      :site_key => CLICKPASS_SITE_KEY,
+      :site_name => 'TransparencyCorps',
+      :process_openid_registration_url => process_openid_registration_url
+    }
+    if user.errors.on(:login)
+      params[:nickname_error] = "Login #{[user.errors.on(:login)].flatten.join(', and ')}"
+    end
+    if user.errors.on(:email)
+      params[:email_error] = "Email #{[user.errors.on(:email)].flatten.join(', and ')}"
+    end
+    
+    "#{CLICKPASS_BASE_URL}?#{query_string_for params}"
+  end
+  
+  def query_string_for(options = {})
+    string = ""
+    options.keys.each do |key|
+      string << "&" unless key == options.keys.first
+      string << "#{key}=#{CGI::escape options[key].to_s}"
+    end
+    string
+  end
+  
 end

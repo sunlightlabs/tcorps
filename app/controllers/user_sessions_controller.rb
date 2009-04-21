@@ -52,9 +52,8 @@ class UserSessionsController < ApplicationController
         flash[:success] = 'You have been successfully logged in.'
         redirect_to root_path
       else
-        # TODO: redirect to Clickpass register/merge form
-        flash[:failure] = "OpenID not known to our system. Register the normal way."
-        redirect_to register_path
+        session[:working_openid] = response.identity_url
+        redirect_to clickpass_register_url(User.new)
       end
     else
       # Not known why this would happen.
