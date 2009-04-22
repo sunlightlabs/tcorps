@@ -68,6 +68,18 @@ class TasksControllerTest < ActionController::TestCase
     assert task.reload.complete?
   end
   
+  test '#complete with a valid task key increases the amount of points a user has' do
+    user = Factory :user
+    task = Factory :task, :user => user
+    total_points = user.total_points
+    campaign_points = user.campaign_points(task.campaign)
+    
+    post :complete, :task_key => task.key
+    
+    assert_equal total_points + task.points, user.total_points
+    assert_equal campaign_points + task.points, user.campaign_points(task.campaign)
+  end
+  
   test '#complete with an invalid task key returns a 404' do
     task = Factory :task
     assert !task.complete?
