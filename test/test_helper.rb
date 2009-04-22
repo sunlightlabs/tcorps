@@ -11,8 +11,4 @@ class ActiveSupport::TestCase
   def login(user)
     UserSession.create user
   end
-  
-  def logout
-    UserSession.find.destroy if UserSession.find
-  end
 end

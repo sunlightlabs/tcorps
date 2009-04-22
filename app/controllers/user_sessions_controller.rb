@@ -14,6 +14,7 @@ class UserSessionsController < ApplicationController
         flash[:failure] = 'Invalid credentials.'
         render :action => :new
       end
+      return # the code below is only needed when the user is logging in via openid
     end
     
     # Would reach here if the OpenID service can't be discovered

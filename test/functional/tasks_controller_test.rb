@@ -30,9 +30,8 @@ class TasksControllerTest < ActionController::TestCase
   
   test '#create should require the user to be logged in' do
     count = Task.count
-    
     campaign = Factory :campaign
-    logout # TODO: find out how to disable SessionMaintenance module so this is unneeded
+    
     post :create, :campaign_id => campaign.id
     assert_redirected_to root_path
     
@@ -57,7 +56,6 @@ class TasksControllerTest < ActionController::TestCase
   
   test '#show should require login' do
     task = Factory :task
-    logout
     get :show, :id => task
     assert_redirected_to root_path
   end
