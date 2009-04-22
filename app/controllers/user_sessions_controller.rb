@@ -14,12 +14,14 @@ class UserSessionsController < ApplicationController
         flash[:failure] = 'Invalid credentials.'
         render :action => :new
       end
-      return # the code below is only needed when the user is logging in via openid
+      return # needed on the return trip from the OpenID server, if the OpenID is valid but not attached to any current user
     end
     
-    # Would reach here if the OpenID service can't be discovered
-    flash[:failure] = "Couldn't find OpenID server."
-    redirect_to login_path
+    # This will be true if the OpenID service can't be discovered
+    if response.redirected_to.blank?
+      flash[:failure] = "Couldn't find OpenID server."
+      redirect_to login_path
+    end
   end
   
   def destroy
