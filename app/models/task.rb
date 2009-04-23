@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
   
   def before_validation_on_create
     self.points = campaign.points
-    self.key = SecureRandom.hex 16
+    self.key = ActiveSupport::SecureRandom.hex 16
   end
   
   def complete?
