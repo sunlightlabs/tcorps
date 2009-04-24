@@ -2,7 +2,6 @@ class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :campaign
   
-  
   validates_presence_of :key
   validates_uniqueness_of :key
   
