@@ -1,1 +1,138 @@
-div.fieldWithErrors {padding: 0; margin: 0; display: inline;}
+/*
+ * YUI Resect CSS version: 2.2.2 
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * Licensed under the BSD License: http://developer.yahoo.net/yui/license.txt
+ */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,optgroup,button,p,blockquote,th,td{margin:0;padding:0;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}table{border-collapse:collapse;border-spacing:0;}caption,th{text-align:left;}ol,ul{list-style:none;}fieldset,img{border:0;}input,textarea,select,optgroup,option,button{font-family:inherit;font-size:100%;}button,input {width: auto;overflow: visible;}optgroup,address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;}
+dl li{list-style: none;}
+
+a:link{outline: none; color: #00788a;}
+a:visited{outline: none; color: #00788a}
+a:hover{outline: none; color: #00788a}
+a:active{outline: none; color: #00788a}
+
+body{
+  color:#6c6d6e;
+  background: url(/images/mainBg.jpg) top left repeat;
+  font-size: 76%;
+    line-height: 20px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.clear{ clear: both;}
+.fieldWithErrors {padding: 0; margin: 0; display: inline;}
+
+div#headerWrapper{ background: url(/images/headerBg2_repeat.jpg) top center repeat-x;}
+div#pageMain{ background: url(/images/headerBg2.jpg) top center no-repeat; width: 960px; margin: 0 auto;}
+
+div#header{ height: 237px;}
+h1{ float: left; width: 260px; height: 176px; margin-left: 20px;}
+h1 a{ width: 260px; height: 176px; background: url(/images/logo.png) top left no-repeat; text-indent: -9999em; display: block;}
+
+div#accountInfo a{ color: #fff; font-weight: bold; padding-right: 3px; margin-right: 3px;}
+div#accountInfo{ margin-left: 820px; padding-top: 8px;}
+
+div#featureSection a { background: url(/images/btn_getStarted.png) bottom left no-repeat; display: block; width: 197px; height: 85px; text-indent: -9999em; margin-left: 720px; padding-top: 130px;}
+div#featureSection h2{ font-size: 250%; color: #e7e7e8; line-height: 35px; margin-bottom: 10px;}
+div#featureText{ width: 480px; float: left; margin-left: 220px; padding-top: 55px;}
+div#featureText p { width: 370px; font-size: 113%; color: #848383;}
+
+div#nav ul{ margin-bottom: 122px; margin-left:350px;}
+div#nav ul li {float: left; margin-left: 10px;}
+div#nav li a { width: 108px; height: 59px; text-indent: -9999em; display: block;}
+
+li#nav_tasks a{ background: url(/images/nav_tasks.png) left top no-repeat;}
+li#nav_tasks a.active{ background: url(/images/nav_tasks.png) left bottom no-repeat;}
+
+div#nav ul li#nav_leaders a{ background: url(/images/nav_leaders.png) left top no-repeat; width: 208px; }
+div#nav ul li#nav_leaders a.active{ background: url(/images/nav_leaders.png) left bottom no-repeat; width: 208px; }
+
+li#nav_about a{ background: url(/images/nav_about.png) left top no-repeat;}
+li#nav_about a.active{ background: url(/images/nav_about.png) left bottom no-repeat;}
+
+li#nav_contact a{ background: url(/images/nav_contact.png) left top no-repeat;}
+li#nav_contact a.active{ background: url(/images/nav_contact.png) left bottom no-repeat;}
+
+div#mainContent{ background: #fff; margin: 0 20px 20px; border-left: 1px solid #e2e2e2; border-right: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; padding-top: 20px; -moz-border-radius-bottomright: 3px; -webkit-border-radius-bottomleft: 3px;}
+div#featureSection { background: url(/images/featureBox2.jpg) top left no-repeat; width: 960px; height: 249px; margin: 0px; padding: 0px;}
+
+body.home div#ltColumn{ width: 492px;}
+div#ltColumn{ padding: 20px 30px 40px; width: 540px; float: left;}
+
+h2{ font-family: Baskerville, Georgia, Times New Roman, Times, serif; color: #231f20; font-size: 235%; float: left;}
+
+/*div#ltColumn h2{ background: url(/images/bar_ltColumn.png) bottom left no-repeat; width: 492px; height: 29px; display: block; font-size: 235%; padding-bottom: 10px; margin-bottom: 10px;}*/
+div.mainTaskHeader{ background: url(/images/bar_ltColumn.png) bottom left no-repeat; width: 572px; height: 29px; display: block; padding-bottom: 10px; margin-bottom: 20px;}
+body.home div.mainTaskHeader{ background: url(/images/bar_ltColumn_home.png) bottom left no-repeat; width: 492px;}
+
+div#rtColumn{ float: left; background: url(/images/rtBorder.jpg) 3px top repeat-y; margin-left: 43px;}
+div#rtContent{ width: 215px; padding: 10px 30px 30px 30px;}
+body.home div#rtContent{ width: 306px; }
+div#rtBorder{ background: url(/images/rtBorder_top.jpg) left top no-repeat; }
+
+body.home div#rtColumn{ margin-left: 0;}
+
+h3{ color: #4f4e4d; font-size: 140%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; margin-bottom: 5px;}
+div#rtColumn h3{ background: url(/images/bar_rtColumn.png) bottom left no-repeat; margin-bottom: 20px; font-size: 160%; line-height: 21px; padding-bottom: 5px;}
+div#rtColumn h4 { font-size: 130%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; float: left; height: auto !important; min-height: 27px; width: auto !important; max-width: 140px;}
+body.home div#rtColumn h4{ width: auto !important; max-width: 180px;}
+
+body.home div.taskTop{ padding: 20px 20px 0;}
+div.taskTop{ padding: 15px 15px 0;}
+div#rtColumn ul li{ background: #f9f9f9; border: 1px solid #e6e7e7; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
+
+div.taskMetadata span.taskValue, body.home div#rtColumn div.taskMetadata span.taskValue{ background: url(/images/task_pointCircle.png) top left no-repeat; color: #fff; width: 27px; height: 27px; text-align: center; padding-top: 3px; margin-right: 5px; margin-top: -4px;}
+
+div#rtColumn div.taskMetadata span.taskValue{ margin-right: 0;}
+
+div#ltColumn div.taskMetadata span.taskValue{ background: url(/images/mainTask_pointCircle.jpg) top left no-repeat; width: 30px; height: 30px; float: right; padding-top: 5px; margin-right: 5px}
+div.taskMetadata span {float: right;}
+div#ltColumn div.taskMetadata span{ margin-right: 55px;}
+
+div.taskMetadata { font-style: oblique;}
+div#ltColumn div.taskMetadata { font-style: oblique; font-size: 110%;}
+div.taskHeader{ margin-bottom: 10px;}
+
+p {margin-bottom: 20px;}
+div#rtColumn ul li { margin-bottom: 20px;}
+
+div.taskDetail{ background: #ececed; -moz-border-radius-bottomright: 3px; -webkit-border-radius-bottomleft: 3px; padding: 5px 15px;}
+body.home div.taskDetail{ padding: 5px 20px;}
+div#ltColumn div.taskDetail, form#contactForm{ background: #f9f9f9; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: solid 1px #ececed;  padding: 15px 20px; margin-bottom: 15px;}
+
+span.tagValue{
+    background: url(/images/highlightBar2.jpg) left top repeat-x;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-indent: -9999em;
+    float: left;
+    overflow: hidden;
+}
+div#rtColumn span.tagValue{ background: url(/images/highlightBar.jpg) left top repeat-x;}
+
+div.taskBar{ background-color: #fff; width: 403px; border: 1px solid #bfbfbe; position: relative; line-height: 1.3em; height: 10px; float: left; margin: 6px 13px 0 0;}
+div#rtColumn div.taskBar{ width: 180px; height: 5px;}
+body.home div#rtColumn div.taskBar{ width: 185px;}
+
+span.tagNumber { font-weight: bold; font-size: 90%; color: #da7c02;}
+div#ltColumn span.tagNumber { font-size: 110%; padding-top: 5px; }
+
+div#taskScoreboard{ float: right; background: url(/images/scoreboardBg.jpg) top right no-repeat; width: 312px; height: 158px; }
+div#taskScoreboard dt, div#taskScoreboard dd{ color: #fff; font-size: 150%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; line-height: 28px;}
+div#taskScoreboard dl { padding: 50px 0 0 60px;}
+div#taskScoreboard dt{ float: left; font-weight: bold; margin-right: 5px;}
+
+a#anotherTask{ background: url(/images/btn_anotherTask.png) top left no-repeat; width: 148px; height: 37px; display: block; text-indent: -9999em;}
+
+form#contactForm label{ font-weight: bold; width: 100px; display: block; float: left; padding-top:5px;}
+form#contactForm input, form#contactForm textarea{ border: dotted 1px #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 300px; padding: 5px;}
+form#contactForm input { height: 15px;}
+form li{ margin-bottom: 10px;}
+
+button.submitBtn span{ background: url(/images/btn_submit.png) top left no-repeat; display: block; width: 136px; height: 43px; text-indent: -9999em; }
+button.submitBtn{ border: 0; background: none; margin-left: 100px; margin-top: 20px;}
+
+div#footer{ width: 960; margin: 0 auto; font-size: 90%; padding: 0 20px;}
+div#footerBrand{ float: left; border-right: 1px solid #6c6b6b; margin-right: 15px; padding-right: 15px;}
+div#footerBrand a{ background: url(/images/foundationLogo.png) top left no-repeat; display: block; text-indent: -9999em; width: 132px; height: 61px;}

@@ -16,5 +16,5 @@ ActionController::Routing::Routes.draw do |map|
   map.add_openid_to_user '/clickpass/add_openid_to_user', :controller => 'users', :action => 'add_openid_to_user'
   map.process_openid_registration '/clickpass/process_openid_registration', :controller => 'users', :action => 'process_openid_registration'
 
-  map.root :controller => 'campaigns', :action => 'index'
+  map.root :controller => 'user_sessions', :action => 'new'
 end

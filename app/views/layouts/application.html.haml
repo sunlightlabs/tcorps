@@ -1,20 +1,76 @@
 !!! XML
-!!! Strict
+!!! Transitional
 %html{html_attrs}
   %head
+    %meta{:name => 'keywords', :content => ''}
+    %meta{:name => 'description', :content => ''}
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=UTF-8'}
-    %title TransparencyCorps
+    %title Transparency Corps
     
     = stylesheet_link_tag 'style'
   
-  %body
-    .user
-      - if logged_in?
-        == Username: #{current_user.login}
-        = link_to 'Logout', logout_path
-      - else
-        Anonymous
-        = link_to 'Login', login_path
-        = link_to 'Register', register_path
-    = render :partial => 'layouts/flash', :locals => {:flash => flash}
-    = yield
+  %body.home
+    #headerWrapper
+      #pageMain
+        #header
+          %h1
+            = link_to 'Transparency Corps', root_path
+
+          #accountInfo
+            - if logged_in?
+              == Username: #{current_user.login}
+              = link_to 'Sign Out', logout_path
+            - else
+              = link_to 'Sign Up', register_path
+              = link_to 'Sign In', login_path
+          #nav
+            %ul
+              %li#nav_tasks
+                = link_to 'Tasks', '#'
+              %li#nav_leaders
+                = link_to 'Transparency Leaders', '#'
+              %li#nav_about
+                = link_to 'About', '#'
+              %li#nav_contact
+                = link_to 'Contact', '#'
+        #featureSection
+          #featureText
+            %h2 
+              Help Us Make the Government
+              %br
+              More Transparent
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id urna ut nibh tincidunt sodales. Morbi ligula ipsum, dapibus non, vehicula et, suscipit at, mauris.
+          = link_to 'Get Started', '#'
+        
+        #mainContent
+          
+          = render :partial => 'layouts/flash', :locals => {:flash => flash}
+          
+          #ltColumn
+            = yield
+            
+          #rtColumn
+            #rtBorder
+              #rtContent
+                %h3 Get Started by Choosing <br/>A Task Below
+                %ul
+                  %li
+                    .taskTop
+                      .taskHeader
+                        %h4= link_to 'Title of Task (what if this title is much much much longer)', '#'
+                        .taskMetadata
+                          %span points
+                          %span.taskValue 2
+                        .clear
+                      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id urna ut nibh tincidunt sodales. Pellentesque vitae turpis sit amet odio imperdiet suscipit.
+                    .taskDetail
+                      .taskBar
+                        %span.tagValue{:style => "width: 60%"} 60%
+                      %span.tagNumber 40% To Go
+                    .clear
+          
+          .clear
+        
+        #footer
+          #footerBrand= link_to 'Sunlight Foundation', 'http://www.sunlightfoundation.com'
+          %p Founded in 2006, the Sunlight Foundation supports, develops and deploys new Internet technologies to make information about Congress and the federal government more accessible to the American people. Through its projects and grant-making, Sunlight serves as a catalyst to create greater political transparency and to foster more openness and accountability in government. Visit SunlightFoundation.com to learn more.

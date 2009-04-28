@@ -1,4 +1,4 @@
-%h1 Register
+%h3 Register
 
 - form_for @user do |f|
   = f.error_messages
@@ -12,7 +12,7 @@
   = f.text_field :email
   %br
   %br
-  %h3 Password
+  %h4 Password
   = f.label :password
   %br
   = f.password_field :password
@@ -22,7 +22,7 @@
   %br
   = f.password_field :password_confirmation
   %br
-  %h3 OR OpenID
+  %h4 OR OpenID
   = f.label :openid_identifier
   %br
   = f.text_field :openid_identifier
@@ -30,6 +30,6 @@
   %br
   = f.submit 'Register'
 
-%h3 OR Clickpass
+%h4 OR Clickpass
 
 = render :partial => 'layouts/clickpass'
