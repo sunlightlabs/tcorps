@@ -1,10 +1,9 @@
 ---
   environment: staging
   chdir: /home/tcorps/tcorps_staging/current
-  rackup: /home/tcorps/tcorps_staging/current/config/thin_staging.ru
   address: 127.0.0.1
   user: tcorps
-  group: tcorps
+  group: www-data
   port: 8300
   pid: /home/tcorps/tcorps_staging/shared/pid/thin.pid
   log: /home/tcorps/tcorps_staging/shared/log/thin.log
