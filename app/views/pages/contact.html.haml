@@ -1,0 +1,20 @@
+- content_for :class, :contact
+- content_for :header, :scoreboard
+
+.mainTaskHeader
+  %h2 Contact Us
+%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id urna ut nibh tincidunt sodales. Pellentesque vitae turpis sit amet odio imperdiet suscipit. Suspendisse ornare. In imperdiet mauris sed nibh. Maecenas lacinia, sem in aliquam tempor, dolor nibh tincidunt nisi, a adipiscing justo neque in nibh.
+
+%form#contactForm{:method => :post, :action => ''}
+  %ul
+    %li
+      %label{:for => 'name'} Name
+      %input#name.text{:type => 'text', :name => 'name', :size => 32}
+    %li
+      %label{:for => 'email'} Email
+      %input#email.text{:type => 'text', :name => 'email', :size => 32}
+    %li
+      %label{:for => 'text'} Your Inquiry
+      %textarea#text.textarea{:name => 'text', :cols => 32, :rows => 5}
+  %button.submitBtn{:type => 'submit'}
+    %span Submit

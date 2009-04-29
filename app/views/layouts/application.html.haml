@@ -9,7 +9,7 @@
     
     = stylesheet_link_tag 'style'
   
-  %body.home
+  %body{:class => yield(:class)}
     #headerWrapper
       #pageMain
         #header
@@ -30,17 +30,12 @@
               %li#nav_leaders
                 = link_to 'Transparency Leaders', '#'
               %li#nav_about
-                = link_to 'About', '#'
+                = link_to 'About', about_path, :class => (yield(:class).to_s == 'about' ? 'active' : '')
               %li#nav_contact
-                = link_to 'Contact', '#'
-        #featureSection
-          #featureText
-            %h2 
-              Help Us Make the Government
-              %br
-              More Transparent
-            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id urna ut nibh tincidunt sodales. Morbi ligula ipsum, dapibus non, vehicula et, suscipit at, mauris.
-          = link_to 'Get Started', '#'
+                = link_to 'Contact', contact_path, :class => (yield(:class).to_s == 'contact' ? 'active' : '')
+        - if yield :header
+          = render :partial => "layouts/#{yield :header}"
+        
         
         #mainContent
           
@@ -52,14 +47,15 @@
           #rtColumn
             #rtBorder
               #rtContent
-                %h3 Get Started by Choosing <br/>A Task Below
+                %h3= yield(:sidebar_title) || "Get Started by Choosing <br/>a Task Below"
                 %ul
                   %li
                     .taskTop
                       .taskHeader
                         %h4= link_to 'Title of Task (what if this title is much much much longer)', '#'
                         .taskMetadata
-                          %span points
+                          - if is_home? yield(:class)
+                            %span points
                           %span.taskValue 2
                         .clear
                       %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id urna ut nibh tincidunt sodales. Pellentesque vitae turpis sit amet odio imperdiet suscipit.
