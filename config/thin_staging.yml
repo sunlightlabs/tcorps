@@ -1,0 +1,14 @@
+---
+  environment: staging
+  chdir: /home/tcorps/tcorps_staging/current
+  rackup: /home/tcorps/tcorps_staging/current/config/thin_staging.ru
+  address: 127.0.0.1
+  user: tcorps
+  group: tcorps
+  port: 8300
+  pid: /home/tcorps/tcorps_staging/shared/pid/thin.pid
+  log: /home/tcorps/tcorps_staging/shared/log/thin.log
+  max_conns: 1024
+  timeout: 30
+  max_persistent_conns: 512
+  daemonize: true
