@@ -23,12 +23,12 @@ set :admin_runner, runner
 namespace :deploy do  
   desc "Start the server"
   task :start, :roles => [:web, :app] do
-    run "cd #{deploy_to}/current && nohup thin -s #{instances} -C config/thin_#{environment}.yml -R config/thin_#{environment}.ru start"
+    run "cd #{deploy_to}/current && nohup thin -s #{instances} -C config/thin_#{environment}.yml start"
   end
  
   desc "Stop the server"
   task :stop, :roles => [:web, :app] do
-    run "cd #{deploy_to}/current && nohup thin -s #{instances} -C config/thin_#{environment}.yml -R config/thin_#{environment}.ru stop"
+    run "cd #{deploy_to}/current && nohup thin -s #{instances} -C config/thin_#{environment}.yml stop"
   end
   
   desc "Restart the server"
@@ -39,12 +39,13 @@ namespace :deploy do
   
   desc "Migrate the database"
   task :migrate, :roles => [:web, :app] do
-    run "cd #{deploy_to}/current && rake db:migrate RACK_ENV=#{environment}"
+    run "cd #{deploy_to}/current && rake db:migrate RAILS_ENV=#{environment}"
   end
   
   desc "Get shared files into position"
   task :after_update_code, :roles => [:web, :app] do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/#{environment}.sqlite3 #{release_path}/db/#{environment}.sqlite3"
   end
   
   desc "Deploy, and migrate the database"
