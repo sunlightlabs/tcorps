@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.resources :users
   map.resources :tasks
+  map.resources :campaigns
   
   map.complete_task '/tasks/complete', :controller => 'tasks', :action => 'complete'
   
