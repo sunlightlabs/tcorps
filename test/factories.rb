@@ -23,6 +23,7 @@ Factory.define :campaign do |c|
   c.description 'Public description'
   c.private_description 'Private description'
   c.points 5
+  c.runs 100
 end
 Factory.sequence(:campaign_keyword) {|i| "campaign#{i}"}
 

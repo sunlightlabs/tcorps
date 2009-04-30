@@ -36,4 +36,21 @@ class TaskTest < ActiveSupport::TestCase
     task.update_attribute :completed_at, Time.now
     assert task.complete?
   end
+  
+  test 'named scope of #completed finds completed tasks' do
+    task1 = Factory :task
+    task2 = Factory :task
+    completed_task1 = Factory :completed_task
+    completed_task2 = Factory :completed_task
+    completed_task3 = Factory :completed_task
+    
+    completed = Task.completed.all
+    assert !completed.include?(task1)
+    assert !completed.include?(task2)
+    assert completed.include?(completed_task1)
+    assert completed.include?(completed_task2)
+    assert completed.include?(completed_task3)
+    
+    completed.each {|t| assert t.complete?}
+  end
 end

@@ -1,2 +1,20 @@
-content_for :sidebar, :scoreboard
-content_for :class, :tasks
+- content_for :class, :tasks
+- content_for :header, :scoreboard
+- content_for :sidebar_title, 'Not the Task for You, Choose Another'
+
+.mainTaskHeader
+  %h2= h @campaign.name
+  - percent = @campaign.percent_complete
+  .taskMetadata
+    %span= pluralize(@campaign.points, 'point').gsub(/\d\s/, '')
+    %span.taskValue= @campaign.points
+
+.taskDetail
+  %h3 Progress on This Task
+  .taskBar
+    %span.tagValue{:style => "width: #{percent}%"}== #{percent}%
+  %span.tagNumber== #{100 - percent}% To Go
+
+%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id urna ut nibh tincidunt sodales. Pellentesque vitae turpis sit amet odio imperdiet suscipit. Suspendisse ornare. In imperdiet mauris sed nibh. Maecenas lacinia, sem in aliquam tempor, dolor nibh tincidunt nisi, a adipiscing justo neque in nibh. Donec leo felis, gravida nec, gravida ut, porta vitae, elit. Cras vitae magna. Fusce aliquam orci vitae est. Nunc eget leo vitae tortor lacinia tincidunt. Nullam quis enim a odio tristique aliquam.
+
+= link_to "I'd Like Another Task", '#', :id => 'anotherTask'
