@@ -28,4 +28,4 @@ config.action_view.cache_template_loading            = true
 # config.threadsafe!
 
 # TODO: eventually, change this to a production key
-CLICKPASS_SITE_KEY = 'uvdTy5rmBP'
+CLICKPASS_SITE_KEY = 'ttaGIWTjWK'
