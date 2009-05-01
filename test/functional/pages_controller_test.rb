@@ -2,7 +2,8 @@ require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
   
-#   test '#index loads the top 5 campaigns for the sidebar' do
+  # every page should have these campaigns for the sidebar, but we'll just test it here
+#   test '#index loads the most recent 5 incomplete campaigns for the sidebar' do
 #     assert false
 #   end
   

@@ -45,25 +45,7 @@
             = yield
             
           #rtColumn
-            #rtBorder
-              #rtContent
-                %h3= yield(:sidebar_title) || "Get Started by Choosing <br/>a Task Below"
-                %ul
-                  %li
-                    .taskTop
-                      .taskHeader
-                        %h4= link_to 'Title of Task (what if this title is much much much longer)', '#'
-                        .taskMetadata
-                          - if is_home? yield(:class)
-                            %span points
-                          %span.taskValue 2
-                        .clear
-                      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id urna ut nibh tincidunt sodales. Pellentesque vitae turpis sit amet odio imperdiet suscipit.
-                    .taskDetail
-                      .taskBar
-                        %span.tagValue{:style => "width: 60%"} 60%
-                      %span.tagNumber 40% To Go
-                    .clear
+            = render :partial => 'layouts/sidebar', :locals => {:campaigns => @campaigns}
           
           .clear
         

@@ -23,4 +23,8 @@ class CampaignTest < ActiveSupport::TestCase
     assert_equal 100, campaign.percent_complete
   end
   
+#   test '#incomplete named scope limits search to campaigns who have fewer completed tasks than the # of specified runs' do
+#     assert false
+#   end
+  
 end

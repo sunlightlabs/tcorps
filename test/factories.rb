@@ -16,7 +16,7 @@ end
 
 Factory.define :campaign do |c|
   c.association :organization
-  c.name 'Campaign Name'
+  c.name {Factory.next :campaign_name}
   c.keyword {Factory.next :campaign_keyword}
   c.url {|a| "http://example.com/#{a.keyword}"}
   c.instructions 'Instructions'
@@ -26,6 +26,7 @@ Factory.define :campaign do |c|
   c.runs 100
 end
 Factory.sequence(:campaign_keyword) {|i| "campaign#{i}"}
+Factory.sequence(:campaign_name) {|i| "Campaign #{i}"}
 
 Factory.define :user do |u|
   u.login {Factory.next :user_login}
