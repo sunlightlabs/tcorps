@@ -31,6 +31,8 @@ class UsersController < ApplicationController
     # done with #valid? and #save! so that authlogic-oid doesn't attempt to re-authenticate the openid
     if @user.valid?
       @user.save!
+      UserSession.create @user
+      
       flash[:success] = 'Your account has been created, and you have been logged in'
       redirect_to root_path
     else
@@ -47,6 +49,9 @@ class UsersController < ApplicationController
     if @user_session.save
       current_user.update_attribute :openid_identifier, session[:working_openid]
       session[:working_openid] = nil
+      
+      # updating the user apparently invalidates authlogic's session, so we make a new one
+      UserSession.create current_user
       
       flash[:success] = "You have been successfully logged in."
       redirect_to root_path
