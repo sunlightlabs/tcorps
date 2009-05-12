@@ -23,8 +23,20 @@ class CampaignTest < ActiveSupport::TestCase
     assert_equal 100, campaign.percent_complete
   end
   
-#   test '#incomplete named scope limits search to campaigns who have fewer completed tasks than the # of specified runs' do
-#     assert false
-#   end
+  test '#active named scope limits search to campaigns who have fewer completed tasks than the # of specified runs' do
+    campaign1 = Factory :campaign, :runs => 2
+    campaign2 = Factory :campaign, :runs => 2
+    campaign3 = Factory :campaign, :runs => 2
+    
+    Factory :task, :campaign => campaign1
+    Factory :task, :campaign => campaign1
+    Factory :completed_task, :campaign => campaign2
+    Factory :completed_task, :campaign => campaign3
+    Factory :completed_task, :campaign => campaign3
+    
+    assert Campaign.active.include?(campaign1)
+    assert Campaign.active.include?(campaign2)
+    assert !Campaign.active.include?(campaign3)
+  end
   
 end
