@@ -18,7 +18,7 @@
 
           #accountInfo
             - if logged_in?
-              == Username: #{current_user.login}
+              == #{current_user.login}
               = link_to 'Sign Out', logout_path
             - else
               = link_to 'Sign Up', register_path

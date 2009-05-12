@@ -1,0 +1,11 @@
+<% if logged_in? %>
+  <div id="taskScoreboard">
+    <dl>
+      <dt>Tasks Completed:</dt>
+      <dd><%= current_user.tasks.completed.count %></dd>
+      
+      <dt>Transparency Points:</dt>
+      <dd><%= current_user.total_points %></dd>
+    </dl>
+  </div>
+<% end %>
