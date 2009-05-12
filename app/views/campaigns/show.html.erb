@@ -1,0 +1,30 @@
+<% content_for :class, :tasks %>
+<% content_for :header, :scoreboard %>
+<% content_for :sidebar_title, 'Not the Task for You, Choose Another' %>
+
+<div class="mainTaskHeader">
+  <h2><%= h @campaign.name %></h2>
+  <% percent = @campaign.percent_complete %>
+  <div class="taskMetadata">
+    <span><%= pluralize(@campaign.points, 'point').gsub(/\d\s/, '') %></span>
+    <span class="taskValue"><%= @campaign.points %></span>
+  </div>
+</div>
+
+<div class="taskDetail">
+  <h3>Progress on This Task</h3>
+  <div class="taskBar">
+    <span class="tagValue" style="width: <%= percent %>%">
+      <%= percent %>%
+    </span>
+  </div>
+  <span class="tagNumber">
+    <%= 100 - percent %>% To Go
+  </span>
+</div>
+
+<p>
+  <%= h @campaign.description %>
+</p>
+
+<%= link_to "I'd Like Another Task", '#', :id => 'anotherTask' %>

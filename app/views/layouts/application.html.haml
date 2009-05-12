@@ -26,7 +26,7 @@
           #nav
             %ul
               %li#nav_tasks
-                = link_to 'Tasks', '#', :class => (yield(:class).to_s == 'tasks' ? 'active' : '')
+                = link_to 'Tasks', campaigns_path, :class => (yield(:class).to_s == 'tasks' ? 'active' : '')
               %li#nav_leaders
                 = link_to 'Transparency Leaders', '#'
               %li#nav_about
@@ -43,9 +43,10 @@
           
           #ltColumn
             = yield
-            
-          #rtColumn
-            = render :partial => 'layouts/sidebar', :locals => {:campaigns => @campaigns}
+          
+          - unless yield(:hide_sidebar)
+            #rtColumn
+              = render :partial => 'layouts/sidebar', :locals => {:campaigns => @sidebar_campaigns}
           
           .clear
         

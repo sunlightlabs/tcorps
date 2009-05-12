@@ -1,8 +1,12 @@
 class CampaignsController < ApplicationController
   
-  before_filter :load_campaign
+  before_filter :load_campaign, :only => :show
   
   def show
+  end
+  
+  def index
+    @campaigns = Campaign.active.all :order => 'created_at DESC'
   end
   
   private

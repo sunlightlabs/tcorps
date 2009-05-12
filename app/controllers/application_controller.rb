@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   # the sidebar will always display the most recent 5 incomplete campaigns
   def load_campaigns
-    @campaigns = Campaign.all :limit => 5
+    @sidebar_campaigns = Campaign.active.all :limit => 5, :order => 'created_at DESC'
   end
 
   def require_login
