@@ -1,5 +1,7 @@
 class UserSessionsController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token, :only => [:begin_openid_login, :complete_openid_login]
+
   def new
     @user_session = UserSession.new
   end

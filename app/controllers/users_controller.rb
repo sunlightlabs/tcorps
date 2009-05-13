@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token, :only => [:process_openid_registration, :add_openid_to_user]
+
   def new
     @user = User.new
   end
