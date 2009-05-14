@@ -1,0 +1,29 @@
+<% content_for :class, :contact %>
+
+<div class="mainTaskHeader">
+  <h2>Contact Us</h2>
+</div>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id urna ut nibh tincidunt sodales. Pellentesque vitae turpis sit amet odio imperdiet suscipit. Suspendisse ornare. In imperdiet mauris sed nibh. Maecenas lacinia, sem in aliquam tempor, dolor nibh tincidunt nisi, a adipiscing justo neque in nibh.
+</p>
+
+<% form_tag '', :method => :post, :id => "contactForm" do %>
+  <ul>
+    <li>
+      <label for='name'>Name</label>
+      <input id="name" class="text" type="text" name="name" size="32" />
+    </li>
+    <li>
+      <label for='email'>Email</label>
+      <input id="email" class="text" type="text" name="email" size="32" />
+    </li>
+    <li>
+      <label for="text">Your Inquiry</label>
+      <textarea id="text" class="textarea" name="text" cols="32" rows="5"></textarea>
+    </li>
+  </ul>
+  <button class="submitBtn" type="submit">
+    <span>Submit</span>
+  </button>
+<% end %>
