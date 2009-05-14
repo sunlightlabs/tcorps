@@ -14,6 +14,7 @@ class TasksController < ApplicationController
   end
   
   def show
+    render :action => :show, :layout => 'task'
   end
   
   def create

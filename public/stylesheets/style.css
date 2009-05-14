@@ -136,3 +136,9 @@ button.submitBtn{ border: 0; background: none; margin-left: 100px; margin-top: 2
 div#footer{ width: 960; margin: 0 auto; font-size: 90%; padding: 0 20px;}
 div#footerBrand{ float: left; border-right: 1px solid #6c6b6b; margin-right: 15px; padding-right: 15px;}
 div#footerBrand a{ background: url(/images/foundationLogo.png) top left no-repeat; display: block; text-indent: -9999em; width: 132px; height: 61px;}
+
+
+body.task div.header {height: 50px; padding: 10px;}
+body.task div.header span {float: left; font-size: 200%;}
+body.task div.header input {float: right;}
+iframe {width: 95%; margin: 0; padding: 0; clear: both;}

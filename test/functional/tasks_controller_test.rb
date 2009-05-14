@@ -51,6 +51,16 @@ class TasksControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test '#show should use the task layout and render an iframe with the task url' do
+    task = Factory :task
+    login task.user
+    
+    get :show, :id => task
+    assert_layout :task
+    assert_select 'iframe'
+    assert_match task.campaign.url, @response.body
+  end
+  
   test '#show for a missing task should return a 404' do
     task = Factory :task
     login task.user

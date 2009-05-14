@@ -27,4 +27,13 @@
   <%= h @campaign.description %>
 </p>
 
-<%= link_to "I'd Like Another Task", '#', :id => 'anotherTask' %>
+<% if logged_in? %>
+  <% form_tag tasks_path, :method => :post, :target => '_blank' do %>
+    <%= hidden_field_tag :campaign_id, @campaign.id %>
+    <%= submit_tag 'Start This Task', :id => 'startTask' %>
+  <% end %>
+<% else %>
+  <% form_tag login_path, :method => :get do %>
+    <%= submit_tag 'Start This Task', :id => 'startTask' %>
+  <% end %>
+<% end %>
