@@ -1,0 +1,26 @@
+<h3>Sign In</h3>
+
+<p>
+  You can log in with a username and password, or an OpenID.
+</p>
+
+<% form_for @user_session, :url => user_session_path do |f| %>
+  <%= f.label :login %>
+  <%= f.text_field :login %>
+  <br/>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <h4> or login using OpenID</h4>
+  <%= f.label :openid_identifier %>
+  <%= f.text_field :openid_identifier %>
+  <br/>
+  <%= f.submit 'Login' %>
+
+<% end %>
+
+
+<h3>Use another account</h3>
+
+Sign up with your Google, Facebook, or Yahoo account, or your OpenID.
+
+<%= render :partial => 'layouts/clickpass' %>

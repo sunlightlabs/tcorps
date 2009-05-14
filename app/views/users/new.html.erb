@@ -1,0 +1,33 @@
+<h3>Sign Up</h3>
+
+<p>
+  Don't have an account? Signing up for one is easy. Choose a login, then provide a password or OpenID.
+</p>
+
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :login %>
+  <%= f.text_field :login %>
+  <br/>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <br/>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  
+  <h4>OR</h4>
+  
+  <%= f.label :openid_identifier %>
+  <%= f.text_field :openid_identifier %>
+  <br/>
+  <%= f.submit 'Register' %>
+<% end %>
+
+<h3>Use another account</h3>
+
+Login with your Google, Facebook, or Yahoo account, or your OpenID.
+
+<%= render :partial => 'layouts/clickpass' %>

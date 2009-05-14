@@ -141,4 +141,4 @@ div#footerBrand a{ background: url(/images/foundationLogo.png) top left no-repea
 body.task div.header {height: 50px; padding: 10px;}
 body.task div.header span {float: left; font-size: 200%;}
 body.task div.header input {float: right;}
-iframe {width: 95%; margin: 0; padding: 0; clear: both;}
+iframe#task_frame {width: 95%; margin: 0; padding: 0; clear: both;}
