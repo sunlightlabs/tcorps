@@ -18,8 +18,13 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = @campaign.tasks.create! :user => current_user
-    redirect_to task_path(@task)
+    @task = @campaign.tasks.new :user => current_user
+    if @task.save
+      redirect_to task_path(@task)
+    else
+      flash[:failure] = "You can't do any more tasks from this campaign."
+      redirect_to root_path
+    end    
   end
   
   private

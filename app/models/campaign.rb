@@ -11,4 +11,12 @@ class Campaign < ActiveRecord::Base
   def percent_complete
     ((tasks.completed.count.to_f / runs.to_f) * 100).to_i
   end
+  
+  def complete?(user = nil)
+    if user
+      tasks.for_user(user).completed.count == user_runs
+    else
+      tasks.completed.count == runs
+    end
+  end
 end

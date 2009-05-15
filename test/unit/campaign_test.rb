@@ -39,4 +39,50 @@ class CampaignTest < ActiveSupport::TestCase
     assert !Campaign.active.include?(campaign3)
   end
   
+  test '#complete? indicates whether the maximum runs have been met' do
+    campaign1 = Factory :campaign, :runs => 2
+    campaign2 = Factory :campaign, :runs => 2
+    campaign3 = Factory :campaign, :runs => 2
+    
+    Factory :task, :campaign => campaign1
+    Factory :task, :campaign => campaign1
+    Factory :completed_task, :campaign => campaign2
+    Factory :completed_task, :campaign => campaign3
+    Factory :completed_task, :campaign => campaign3
+    
+    assert !campaign1.complete?
+    assert !campaign2.complete?
+    assert campaign3.complete?
+  end
+  
+  test '#complete? with a user passed in indicates whether the maximum runs for that user have been met' do
+    user1 = Factory :user
+    user2 = Factory :user
+    user3 = Factory :user
+    
+    campaign1 = Factory :campaign, :runs => 3, :user_runs => 1
+    campaign2 = Factory :campaign, :runs => 3, :user_runs => 2
+    campaign3 = Factory :campaign, :runs => 3, :user_runs => 3
+    
+    Factory :task, :campaign => campaign1, :user => user1
+    Factory :completed_task, :campaign => campaign2, :user => user2
+    Factory :completed_task, :campaign => campaign2, :user => user2
+    Factory :completed_task, :campaign => campaign3, :user => user1
+    Factory :completed_task, :campaign => campaign3, :user => user2
+    Factory :completed_task, :campaign => campaign3, :user => user3
+    
+    assert !campaign1.complete?(user1)
+    assert !campaign1.complete?(user2)
+    assert !campaign1.complete?
+    
+    assert !campaign2.complete?(user1)
+    assert campaign2.complete?(user2)
+    assert !campaign2.complete?
+    
+    assert !campaign3.complete?(user1)
+    assert !campaign3.complete?(user2)
+    assert !campaign3.complete?(user3)
+    assert campaign3.complete?
+  end
+  
 end
