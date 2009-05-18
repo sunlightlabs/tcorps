@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
   skip_before_filter :verify_authenticity_token, :only => [:process_openid_registration, :add_openid_to_user]
+  
+  before_filter :require_login, :only => [:edit, :update]
+  before_filter :require_self, :only => [:edit, :update]
 
   def new
     @user = User.new
@@ -18,6 +21,18 @@ class UsersController < ApplicationController
       else
         render :action => :new
       end
+    end
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @user.update_attributes(params[:user])
+      flash[:success] = 'Your profile has been updated.'
+      redirect_to edit_user_path(@user)
+    else
+      render :action => :edit
     end
   end
   
@@ -59,6 +74,15 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       redirect_to "#{params[:clickpass_merge_callback_url]}&userid_authenticated=false"
+    end
+  end
+  
+  protected
+  
+  def require_self
+    unless (@user = User.find_by_id(params[:id])) and logged_in? and (@user == current_user)
+      flash[:failure] = "You do not have permission to edit this user's profile."
+      redirect_to root_path and return false
     end
   end
   

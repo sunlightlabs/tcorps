@@ -41,17 +41,70 @@ class UsersControllerTest < ActionController::TestCase
     assert_nil UserSession.find
   end
   
-  # authlogic-specific checks
-  test 'creating a new user does not autologin' do
-    assert_nil UserSession.find
-    Factory :user
-    assert_nil UserSession.find
+  test '#edit loads a user' do
+    user = Factory :user
+    login user
+    
+    get :edit, :id => user.id
+    assert_response :success
+    assert_template 'edit'
+    assert_equal user, assigns(:user)
   end
   
-  test 'login helper does login a user' do
-    assert_nil UserSession.find
+  test '#edit can only load oneself' do
+    user = Factory :user
     login Factory(:user)
-    assert_not_nil UserSession.find
+    
+    get :edit, :id => user.id
+    assert_redirected_to root_path
+    assert_not_nil flash[:failure]
+  end
+  
+  test '#edit requires login' do
+    user = Factory :user
+    
+    get :edit, :id => user.id
+    assert_redirected_to root_path
+  end
+  
+  test '#update updates a user' do
+    user = Factory :user, :login => 'login1'
+    login user
+    
+    put :update, :id => user.id, :user => {:login => 'login2'}
+    assert_redirected_to edit_user_path(user)
+    assert_not_nil flash[:success]
+    assert_equal 'login2', user.reload.login
+  end
+  
+  test '#update with invalid user data renders the edit form with errors' do
+    user = Factory :user
+    login user
+    
+    put :update, :id => user.id, :user => {:login => ''}
+    assert_response :success
+    assert_template 'edit'
+    assert assigns(:user).errors.any?
+    assert !user.reload.login.blank?
+  end
+  
+  test '#update can only update onself' do
+    user = Factory :user, :login => 'login1'
+    login Factory(:user)
+    
+    put :update, :id => user.id, :user => {:login => 'login2'}
+    assert_redirected_to root_path
+    assert_nil flash[:success]
+    assert_not_equal 'login2', user.reload.login
+  end
+  
+  test '#update requires login' do
+    user = Factory :user, :login => 'login1'
+    
+    put :update, :id => user.id, :user => {:login => 'login2'}
+    assert_redirected_to root_path
+    assert_nil flash[:success]
+    assert_not_equal 'login2', user.reload.login
   end
   
   # clickpass
