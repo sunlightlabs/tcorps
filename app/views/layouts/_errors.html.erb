@@ -1,0 +1,9 @@
+<% if object.respond_to?(:errors) and object.errors.any? %>
+  <div class="errors <%= object.class.to_s.underscore %>">
+    <% object.errors.full_messages.each do |message| %>
+      <div class="error">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

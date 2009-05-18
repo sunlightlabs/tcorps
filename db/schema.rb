@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -67,15 +67,19 @@ ActiveRecord::Schema.define(:version => 7) do
 
   create_table "users", :force => true do |t|
     t.integer  "organization_id"
-    t.boolean  "admin",             :default => false
+    t.boolean  "admin",               :default => false
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "login",             :default => "",    :null => false
+    t.string   "login",               :default => "",    :null => false
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token",                    :null => false
+    t.string   "persistence_token",                      :null => false
     t.string   "openid_identifier"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login"

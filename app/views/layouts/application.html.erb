@@ -20,6 +20,7 @@
           <div id="accountInfo">
             <% if logged_in? %>
               <%= current_user.login %>
+              <%= link_to 'Edit Profile', edit_user_path(current_user) %>
               <%= link_to 'Sign Out', logout_path %>
             <% else %>
               <%= link_to 'Sign Up', register_path %>

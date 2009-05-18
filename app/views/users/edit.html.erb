@@ -1,0 +1,12 @@
+<%= errors @user %>
+
+<% if @user.avatar.file? %>
+  Current Avatar:<br/>
+  <%= image_tag @user.avatar.url(:normal) %>
+<% end %>
+
+<% form_for @user, :html => {:multipart => true} do |form| %>
+  Upload a new avatar: 
+  <%= form.file_field :avatar %>
+  <%= submit_tag 'Update' %>
+<% end %>
