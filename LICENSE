@@ -1,4 +1,4 @@
-Exceptions: all code libraries inside the /vendor/gems and /vendor/plugins subdirectories have their own licenses.
+Exceptions: all code libraries inside the /vendor/gems, /vendor/plugins, and /vendor/rails subdirectories have their own licenses.
 
 ==================
 
