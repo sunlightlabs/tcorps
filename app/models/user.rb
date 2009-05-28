@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-
-  belongs_to :organization
   has_many :tasks
+  has_many :campaigns, :foreign_key => :creator_id
   
   has_attached_file :avatar,
     :styles => {:normal => '64x64#'}

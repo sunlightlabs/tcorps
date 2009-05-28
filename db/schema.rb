@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 8) do
+ActiveRecord::Schema.define(:version => 9) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -20,15 +20,15 @@ ActiveRecord::Schema.define(:version => 8) do
     t.text     "private_description"
     t.text     "template"
     t.integer  "points"
-    t.integer  "organization_id"
     t.integer  "runs",                :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_runs"
+    t.integer  "creator_id"
   end
 
+  add_index "campaigns", ["creator_id"], :name => "index_campaigns_on_creator_id"
   add_index "campaigns", ["keyword"], :name => "index_campaigns_on_keyword"
-  add_index "campaigns", ["organization_id"], :name => "index_campaigns_on_organization_id"
 
   create_table "open_id_authentication_associations", :force => true do |t|
     t.integer "issued"
@@ -43,12 +43,6 @@ ActiveRecord::Schema.define(:version => 8) do
     t.integer "timestamp",  :null => false
     t.string  "server_url"
     t.string  "salt",       :null => false
-  end
-
-  create_table "organizations", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tasks", :force => true do |t|
@@ -66,12 +60,11 @@ ActiveRecord::Schema.define(:version => 8) do
   add_index "tasks", ["user_id", "campaign_id"], :name => "index_tasks_on_user_id_and_campaign_id"
 
   create_table "users", :force => true do |t|
-    t.integer  "organization_id"
     t.boolean  "admin",               :default => false
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "login",               :default => "",    :null => false
+    t.string   "login",                                  :null => false
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token",                      :null => false
@@ -80,11 +73,11 @@ ActiveRecord::Schema.define(:version => 8) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "organization_name"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
-  add_index "users", ["organization_id"], :name => "index_users_on_organization_id"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end
