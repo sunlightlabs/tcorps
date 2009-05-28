@@ -6,15 +6,23 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   filter_parameter_logging :password, :password_confirmation
 
-  before_filter :load_campaigns
 
-  # the sidebar will always display the most recent 5 incomplete campaigns
-  def load_campaigns
+  before_filter :load_sidebar
+
+  def load_sidebar
     @sidebar_campaigns = Campaign.active.all :limit => 5, :order => 'created_at DESC'
   end
 
   def require_login
     redirect_to root_path and return false unless logged_in?
+  end
+  
+  def require_manager
+    redirect_to root_path and return false unless current_user.manager? or current_user.admin?
+  end
+  
+  def require_admin
+    redirect_to root_path and return false unless current_user.admin?
   end
   
   def logged_in?

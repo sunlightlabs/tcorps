@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
     tasks.sum :points, :conditions => ['completed_at is not null and campaign_id = ?', campaign.id]
   end
   
+  def manager?
+    !organization_name.blank?
+  end
+  
 end

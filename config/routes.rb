@@ -4,8 +4,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :tasks
   map.resources :campaigns
-  
+    
   map.complete_task '/tasks/complete', :controller => 'tasks', :action => 'complete'
+  
+  map.namespace(:admin) do |admin|
+    admin.resources :campaigns
+  end
+  map.admin '/admin', :controller => 'admin/campaigns', :action => 'index'
   
   map.register '/register', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'user_sessions', :action => 'new'

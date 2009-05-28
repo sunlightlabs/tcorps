@@ -20,6 +20,11 @@
           <div id="accountInfo">
             <% if logged_in? %>
               <%= current_user.login %>
+              
+              <% if current_user.manager? or current_user.admin? %>
+                <%= link_to 'Admin', admin_path %>
+              <% end %>
+              
               <%= link_to 'Edit Profile', edit_user_path(current_user) %>
               <%= link_to 'Sign Out', logout_path %>
             <% else %>

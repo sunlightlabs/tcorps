@@ -63,4 +63,10 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 2, user.campaign_points(campaign)
   end
   
+  test '#manager? depends on presence of organization name' do
+    assert Factory(:user, :organization_name => 'any name').manager?
+    assert !Factory(:user, :organization_name => nil).manager?
+    assert !Factory(:user, :admin => true, :organization_name => nil).manager?
+  end
+  
 end
