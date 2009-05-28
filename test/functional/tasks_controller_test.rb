@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class TasksControllerTest < ActionController::TestCase
-
   setup :activate_authlogic
 
   test '#create should create a new valid task' do
