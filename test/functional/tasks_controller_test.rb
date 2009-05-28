@@ -8,7 +8,7 @@ class TasksControllerTest < ActionController::TestCase
     count = Task.count
     
     campaign = Factory :campaign
-    user = campaign.organization.user
+    user = campaign.creator
     login user
     
     post :create, :campaign_id => campaign.id
@@ -23,7 +23,7 @@ class TasksControllerTest < ActionController::TestCase
     count = Task.count
     
     campaign = Factory :campaign
-    login campaign.organization.user
+    login campaign.creator
     post :create
     assert_response :not_found
     
@@ -46,7 +46,7 @@ class TasksControllerTest < ActionController::TestCase
     count = Task.count
     assert campaign.complete?
     
-    login campaign.organization.user
+    login campaign.creator
     post :create, :campaign_id => campaign.id
     assert_redirected_to root_path
     assert_not_nil flash[:failure]
@@ -57,11 +57,11 @@ class TasksControllerTest < ActionController::TestCase
   test '#create should fail if the campaign has hits its maximum runs for that user' do
     user = Factory :user
     campaign = Factory :campaign, :runs => 2, :user_runs => 1
-    task = Factory :completed_task, :campaign => campaign, :user => campaign.organization.user
+    task = Factory :completed_task, :campaign => campaign, :user => campaign.creator
     count = Task.count
     assert !campaign.complete?
     
-    login campaign.organization.user
+    login campaign.creator
     post :create, :campaign_id => campaign.id
     assert_redirected_to root_path
     assert_not_nil flash[:failure]
