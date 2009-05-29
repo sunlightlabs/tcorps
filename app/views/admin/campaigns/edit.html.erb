@@ -1,0 +1,83 @@
+<div id="editTask_header">
+  <h2>Edit Task</h2>
+  <div id="statusSection">
+    <h3>Status</h3>
+    <!-- 
+    <select name="Status" class="statusDropdown">
+      <option value="Draft">Draft</option>
+      <option value="Public">Public</option>
+      <option value="Closed">Closed</option>
+    </select>
+    -->
+  </div>
+</div>
+
+<% form_tag(campaign_path(@campaign), :method => :put) do %>
+  <ul>
+    <li>
+      <label for="name">Name</label>
+      <input id="name" class="text" type="text" name="name" maxlength="329"/>
+    </li>
+    <li>
+      <label for="nreated">Created By</label>
+      <input id="created" class="text" type="text" name="created" maxlength="329"/>
+    </li>
+    <li>
+      <label for="organization">Organization</label>
+      <input id="organization" class="text" type="text" name="organization" maxlength="329"/>
+    </li>
+    <li>
+      <label for="internalDescription">Internal Description</label>
+      <textarea id="internalDescription" class="textarea" name="text" cols="32" rows="5"></textarea>
+    </li>
+    <li>
+      <label for="externalDescription">External Description</label>
+      <textarea id="externallDescription" class="textarea" name="text" cols="32" rows="5"></textarea>
+    </li>
+    <li>
+      <label for="points">Points Per Task</label>
+      <select name="Points" class="pointsDropdown">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+      <span><a href="#">Recommended Number of Points</a></span>
+    </li>
+    <li>
+      <label for="taskInstructions">Task Instructions</label>
+      <textarea id="taskInstructions" class="textarea" name="text" cols="32" rows="5"></textarea>
+    </li>
+    <li>
+      <label id="startTitle" for="start">Start</label>
+      <ul id="startDetails">
+        <li>
+          <label for="Date">Date</label>
+          <input id="date" class="text" type="text" name="date" maxlength="329"/>
+            <a id="calendarToday" href="#">Today</a>
+            <a id="calendar" href="#">Calendar</a>  
+        </li>
+        <li>
+          <label for="Time">Time</label>
+          <input id="time" class="text" type="text" name="time" maxlength="329"/>
+          <div id="timeHelp">
+            <a id="timeNow" href="#">Now</a>
+            <a id="clock" href="#">Clock</a>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <label for="times">Times to Run Task</label>
+      <input id="times" class="text" type="text" name="times" maxlength="329" />
+    </li>
+  </ul>
+  <button class="updateTaskBtn" type="submit">
+    Update Task
+  </button>
+<% end %>

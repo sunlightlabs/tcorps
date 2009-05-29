@@ -1,9 +1,13 @@
+<div id="editTask_header">
+  <h2>My Tasks</h2>
+</div>
+
 <% @campaigns.each do |campaign| %>
   <div class="task">
     <a class="deleteTask" href="#">Delete Task</a>
     <div class="taskMain">
       <h3>
-        <a href="#"><%= h campaign.name %></a>
+        <%= link_to h(campaign.name), edit_admin_campaign_path(campaign) %>
       </h3>
       <p>
         <%= h campaign.private_description %>
