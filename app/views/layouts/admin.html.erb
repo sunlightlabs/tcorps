@@ -1,1 +1,48 @@
-<%= yield %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+  <head>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Transparency Corps</title>
+    
+    <%= stylesheet_link_tag 'admin' %>
+
+  </head>
+
+  <body class="home">
+    <div id="headerWrapper">
+      <div id="pageMain">
+        <div id="header">
+          <div id="logNav">
+            <ul>
+              <li>Welcome <%= current_user.login %></li>
+              <li id="logout">
+                <%= link_to 'Logout', logout_path %>
+              </li>
+            </ul>
+          </div>
+          <h1>
+            <%= link_to 'Transparency Corps', root_path %>
+          </h1>
+          <a id="addTask" href="#">Add Task</a>
+        </div>
+        <div id="addTask_header">
+          <h2>My Tasks</h2>
+        </div>
+
+        <div id="mainContent">
+          
+          <div id="ltColumn">
+            <%= render :partial => 'layouts/partials/stats' %>
+          </div>
+
+          <div id="rtColumn">
+            <%= yield %>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

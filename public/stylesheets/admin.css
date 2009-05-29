@@ -1,0 +1,88 @@
+/*
+ * YUI Resect CSS version: 2.2.2 
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * Licensed under the BSD License: http://developer.yahoo.net/yui/license.txt
+ */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,optgroup,button,p,blockquote,th,td{margin:0;padding:0;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}table{border-collapse:collapse;border-spacing:0;}caption,th{text-align:left;}ol,ul{list-style:none;}fieldset,img{border:0;}input,textarea,select,optgroup,option,button{font-family:inherit;font-size:100%;}button,input {width: auto;overflow: visible;}optgroup,address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;}
+dl li{list-style: none;}
+
+a:link{outline: none; color: #00788a;}
+a:visited{outline: none; color: #00788a}
+a:hover{outline: none; color: #00788a}
+a:active{outline: none; color: #00788a}
+
+body{
+	color:#58595b;
+	background: url(/images/mainBg.jpg) top left repeat;
+	font-size: 76%;
+  	line-height: 20px;
+  	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+div#headerWrapper{ background: url(/images/bg_2.png) top center repeat-x;}
+div#pageMain{ width: 920px; margin: 0 auto 50px auto; padding: 0 20px;}
+h1{ width: 287px; height: 119px;}
+h1 a{ background: url(/images/logo_admin.png) top left no-repeat; width: 287px; height: 119px; text-indent: -9999em; display: block;}
+
+div#logNav{ float: right; color: #000; padding-top: 5px;}
+div#logNav li{ float: left;}
+
+li#logout{ border-left: #444 solid 1px; padding-left: 15px; margin-left: 15px;}
+
+
+div#header{ height: 177px; margin-bottom: 40px;}
+
+a#addTask{ margin-top: 32px; background: url(/images/btn_add.png) top left no-repeat; padding-left: 25px; font-size: 120%; display: block; color: #444;}
+
+h2{ font-size: 220%; color: #262020; font-family:Baskerville,Georgia,Times New Roman,Times,serif;}
+div#addTask_header h2{ float: left;}
+div#addTask_header{ border-bottom: 1px solid #999; padding-bottom: 10px; margin-bottom: 30px; height:22px;}
+
+div#statusSection{ float: right;}
+div#statusSection h3 { float: left; font-size: 150%; margin-right: 10px; font-family: Baskerville,Georgia,Times New Roman,Times,serif;}
+
+label{ width: 150px; display: block; float: left; font-weight: bold; }
+
+ul li{ margin-bottom: 10px;}
+label#startTitle{ float: none; }
+
+input, textarea{ border: 1px solid #dedada; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 3px; background-color: #f5f4f4;}
+input{ height: 16px;}
+
+ul#startDetails label { margin-left: 15px; width: 135px; color: #808285;}
+
+ul select{ margin-right: 10px;}
+
+button{ border: 5px solid #f7f3cf; padding: 10px 10px 8px; background-color: #fff; color: #d65203; font-weight: bold; margin-top: 20px; text-transform: uppercase; font-size: 120%; cursor: pointer;}
+
+div#ltColumn{ width: 231px; float: left; background: #F9F9F9; border: 1px solid #E6E7E7; padding: 15px;}
+div#rtColumn{ width: 629px; margin-left: 25px; float: left;}
+
+a.deleteTask{ background: url(/images/deleteBtn.png) left 2px no-repeat; float: left; text-indent: -9999em; display: block; width: 17px; height: 19px;}
+div.taskMain{ margin-left: 15px; display: block; float: left; width: 420px; border-right: dashed 1px #999; padding-right: 20px; margin-right: 20px;}
+
+div.task{ margin-bottom: 30px; background: #F9F9F9; border: 1px solid #E6E7E7; padding: 15px;}
+
+div.task h3, div#ltColumn h3{ margin-bottom: 10px; font-size: 150%; font-family: Baskerville,Georgia,Times New Roman,Times,serif;}
+div#ltColumn h3{ border-bottom: solid 1px #999; padding-bottom: 5px; text-align: left;}
+div#ltColumn { text-align: center;}
+
+div#ltColumn li{ border-bottom: solid 1px #d4d3d3; margin: 20px 0; padding: 20px 0;}
+div#ltColumn li span{ font-size: 400%; font-weight: bold;}
+
+div.taskComplete{ border-top: solid 1px #d4d3d3; margin-top: 18px; padding-top: 18px; }
+div.taskStatus {text-align: center;}
+div.taskComplete span { font-size: 250%; font-weight: bold;}
+
+div.taskStatus { width: 100px; float: left;}
+
+div#editTask_header h2{ float: left;  }
+div#editTask_header { border-bottom: solid 1px #999; margin-bottom: 30px; height:22px; padding-bottom: 10px;}
+
+a#calendar{ background: url(/images/calendarIcon.png) top left no-repeat; text-indent: -9999em; width: 20px; height: 19px;  display: block; margin-left: 350px;}
+a#clock{ background: url(/images/clockIcon.png) top left no-repeat; text-indent: -9999em; width: 19px; height: 20px; display: block; margin-left: 350px;}
+
+.clear{ clear: both;}
+input#date, input#time, a#calendarToday, a#timeNow{ float: left; margin-right: 10px;}
+
+ul#startDetails{ margin-bottom: 20px;}

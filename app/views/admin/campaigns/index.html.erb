@@ -1,0 +1,30 @@
+<% @campaigns.each do |campaign| %>
+  <div class="task">
+    <a class="deleteTask" href="#">Delete Task</a>
+    <div class="taskMain">
+      <h3>
+        <a href="#"><%= h campaign.name %></a>
+      </h3>
+      <p>
+        <%= h campaign.private_description %>
+      </p>
+    </div>
+
+    <div class="taskStatus">
+      <!--
+        <select name="Status" class="statusDropdown">
+          <option value="Draft">Draft</option>
+          <option value="Public">Public</option>
+          <option value="Closed">Closed</option>
+        </select>
+      -->
+      <div class="taskComplete">
+        <span>
+          <%= campaign.percent_complete %>%
+        </span>
+        <p>complete</p>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+<% end %>
