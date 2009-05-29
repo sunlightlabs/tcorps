@@ -50,11 +50,11 @@
           </div>
         </div>
         <% if yield :header %>
-          <%= render :partial => "layouts/#{yield :header}" %>
+          <%= render :partial => "layouts/partials/#{yield :header}" %>
         <% end %>
         
         <div id="mainContent">
-          <%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
+          <%= render :partial => 'layouts/partials/flash', :locals => {:flash => flash} %>
           
           <div id="ltColumn">
             <%= yield %>
@@ -62,7 +62,7 @@
           
           <% unless yield(:hide_sidebar) %>
             <div id="rtColumn">
-              <%= render :partial => 'layouts/sidebar', :locals => {:campaigns => @sidebar_campaigns} %>
+              <%= render :partial => 'layouts/partials/sidebar', :locals => {:campaigns => @sidebar_campaigns} %>
             </div>
           <% end %>
           

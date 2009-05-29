@@ -4,6 +4,6 @@ module ApplicationHelper
   end
   
   def errors(object)
-    render :partial => 'layouts/errors', :locals => {:object => object}
+    render :partial => 'layouts/partials/errors', :locals => {:object => object}
   end
 end

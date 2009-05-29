@@ -30,7 +30,7 @@ h1{ float: left; width: 260px; height: 176px; margin-left: 20px;}
 h1 a{ width: 260px; height: 176px; background: url(/images/logo.png) top left no-repeat; text-indent: -9999em; display: block;}
 
 div#accountInfo a{ color: #fff; font-weight: bold; padding-right: 3px; margin-right: 3px;}
-div#accountInfo{ margin-left: 820px; padding-top: 8px;}
+div#accountInfo{ margin-left: 720px; padding-top: 8px;}
 
 div#featureSection a { background: url(/images/btn_getStarted.png) bottom left no-repeat; display: block; width: 197px; height: 85px; text-indent: -9999em; margin-left: 720px; padding-top: 130px;}
 div#featureSection h2{ font-size: 250%; color: #e7e7e8; line-height: 35px; margin-bottom: 10px;}
