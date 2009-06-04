@@ -45,7 +45,7 @@ class UsersControllerTest < ActionController::TestCase
     user = Factory :user
     login user
     
-    get :edit, :id => user.id
+    get :edit, :id => user
     assert_response :success
     assert_template 'edit'
     assert_equal user, assigns(:user)
@@ -55,7 +55,7 @@ class UsersControllerTest < ActionController::TestCase
     user = Factory :user
     login Factory(:user)
     
-    get :edit, :id => user.id
+    get :edit, :id => user
     assert_redirected_to root_path
     assert_not_nil flash[:failure]
   end
@@ -63,7 +63,7 @@ class UsersControllerTest < ActionController::TestCase
   test '#edit requires login' do
     user = Factory :user
     
-    get :edit, :id => user.id
+    get :edit, :id => user
     assert_redirected_to root_path
   end
   
@@ -71,7 +71,7 @@ class UsersControllerTest < ActionController::TestCase
     user = Factory :user, :login => 'login1'
     login user
     
-    put :update, :id => user.id, :user => {:login => 'login2'}
+    put :update, :id => user, :user => {:login => 'login2'}
     assert_redirected_to edit_user_path(user)
     assert_not_nil flash[:success]
     assert_equal 'login2', user.reload.login
@@ -81,7 +81,7 @@ class UsersControllerTest < ActionController::TestCase
     user = Factory :user
     login user
     
-    put :update, :id => user.id, :user => {:login => ''}
+    put :update, :id => user, :user => {:login => ''}
     assert_response :success
     assert_template 'edit'
     assert assigns(:user).errors.any?
@@ -92,7 +92,7 @@ class UsersControllerTest < ActionController::TestCase
     user = Factory :user, :login => 'login1'
     login Factory(:user)
     
-    put :update, :id => user.id, :user => {:login => 'login2'}
+    put :update, :id => user, :user => {:login => 'login2'}
     assert_redirected_to root_path
     assert_nil flash[:success]
     assert_not_equal 'login2', user.reload.login
@@ -101,7 +101,7 @@ class UsersControllerTest < ActionController::TestCase
   test '#update requires login' do
     user = Factory :user, :login => 'login1'
     
-    put :update, :id => user.id, :user => {:login => 'login2'}
+    put :update, :id => user, :user => {:login => 'login2'}
     assert_redirected_to root_path
     assert_nil flash[:success]
     assert_not_equal 'login2', user.reload.login

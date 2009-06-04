@@ -19,7 +19,7 @@ class CampaignsControllerTest < ActionController::TestCase
   test '#show loads a campaign' do
     campaign = Factory :campaign
     
-    get :show, :id => campaign.id
+    get :show, :id => campaign
     assert_response :success
     assert_template 'show'
     assert_equal assigns(:campaign), campaign

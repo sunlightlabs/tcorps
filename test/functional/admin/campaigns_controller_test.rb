@@ -41,7 +41,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     campaign = Factory :campaign, :creator => user
     
     login user
-    get :edit, :id => campaign.id
+    get :edit, :id => campaign
     assert_response :success
     assert_template 'edit'
     
@@ -53,7 +53,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     campaign = Factory :campaign
     
     login user
-    get :edit, :id => campaign.id
+    get :edit, :id => campaign
     assert_redirected_to root_path
   end
   
@@ -77,7 +77,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     new_name = campaign.name.succ
     
     login user
-    put :update, :id => campaign.id, :campaign => {:name => new_name}
+    put :update, :id => campaign, :campaign => {:name => new_name}
     assert_redirected_to admin_campaigns_path
     assert_not_nil flash[:success]
     assert_equal new_name, campaign.reload.name
@@ -88,7 +88,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     campaign = Factory :campaign, :creator => user
     
     login user
-    put :update, :id => campaign.id, :campaign => {:name => ''}
+    put :update, :id => campaign, :campaign => {:name => ''}
     assert_response :success
     assert assigns(:campaign).errors.any?
     
@@ -101,7 +101,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     new_name = campaign.name.succ
     
     login user
-    put :update, :id => campaign.id, :campaign => {:name => new_name}
+    put :update, :id => campaign, :campaign => {:name => new_name}
     assert_redirected_to root_path
     assert_nil flash[:success]
     assert_not_equal new_name, campaign.reload.name
@@ -112,7 +112,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     campaign = Factory :campaign, :creator => user
     new_name = campaign.name.succ
     
-    put :update, :id => campaign.id, :campaign => {:name => new_name}
+    put :update, :id => campaign, :campaign => {:name => new_name}
     assert_redirected_to root_path
     assert_nil flash[:success]
     assert_not_equal new_name, campaign.reload.name
@@ -124,10 +124,59 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     new_name = campaign.name.succ
     
     login user
-    put :update, :id => campaign.id, :campaign => {:name => new_name}
+    put :update, :id => campaign, :campaign => {:name => new_name}
     assert_redirected_to root_path
     assert_nil flash[:success]
     assert_not_equal new_name, campaign.reload.name
+  end
+  
+  test '#destroy removes campaign' do
+    user = Factory :manager
+    campaign = Factory :campaign, :creator => user
+    count = Campaign.count
+    
+    login user
+    delete :destroy, :id => campaign
+    assert_redirected_to admin_campaigns_path
+    assert_not_nil flash[:success]
+    
+    assert_equal count - 1, Campaign.count
+  end
+  
+  test '#destroy will not remove campaigns owned by others' do
+    user = Factory :admin
+    campaign = Factory :campaign
+    count = Campaign.count
+    
+    login user
+    delete :destroy, :id => campaign
+    assert_redirected_to root_path
+    assert_nil flash[:success]
+    
+    assert_equal count, Campaign.count
+  end
+  
+  test '#destroy requires login' do
+    campaign = Factory :campaign
+    count = Campaign.count
+    
+    delete :destroy, :id => campaign
+    assert_redirected_to root_path
+    assert_nil flash[:success]
+    
+    assert_equal count, Campaign.count
+  end
+  
+  test '#destroy requires login as at least a manager' do
+    user = Factory :user
+    campaign = Factory :campaign, :creator => user
+    count = Campaign.count
+    
+    delete :destroy, :id => campaign
+    assert_redirected_to root_path
+    assert_nil flash[:success]
+    
+    assert_equal count, Campaign.count
   end
   
 end

@@ -4,7 +4,10 @@
 
 <% @campaigns.each do |campaign| %>
   <div class="task">
-    <a class="deleteTask" href="#">Delete Task</a>
+    <% if_javascript do %>
+      <%= link_to 'Delete Task', admin_campaign_path(campaign), :method => :delete, :confirm => 'Are you sure you want to delete this campaign?', :class => 'deleteTask' %>
+    <% end %>
+    
     <div class="taskMain">
       <h3>
         <%= link_to h(campaign.name), edit_admin_campaign_path(campaign) %>

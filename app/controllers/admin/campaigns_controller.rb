@@ -5,7 +5,7 @@ class Admin::CampaignsController < ApplicationController
   before_filter :require_login
   before_filter :require_manager
   
-  before_filter :load_campaign, :only => [:edit, :update]
+  before_filter :load_campaign, :only => [:edit, :update, :destroy]
 
   def index
     @campaigns = current_user.campaigns
@@ -21,6 +21,12 @@ class Admin::CampaignsController < ApplicationController
     else
       render :action => :edit
     end
+  end
+  
+  def destroy
+    @campaign.destroy
+    flash[:success] = 'Your campaign has been deleted.'
+    redirect_to admin_campaigns_path
   end
   
   protected
