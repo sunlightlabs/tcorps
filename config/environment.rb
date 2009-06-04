@@ -20,7 +20,6 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   config.gem 'authlogic', :version => '2.0.9'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
-  config.gem 'haml'
   config.gem 'ruby-openid', :lib => 'openid'
   config.gem 'authlogic-oid', :lib => 'authlogic_openid'
   config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com'
