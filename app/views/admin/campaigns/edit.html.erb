@@ -1,8 +1,8 @@
 <div id="editTask_header">
   <h2>Edit Task</h2>
   <div id="statusSection">
+    <!-- Add this in when there's a concept of state
     <h3>Status</h3>
-    <!-- 
     <select name="Status" class="statusDropdown">
       <option value="Draft">Draft</option>
       <option value="Public">Public</option>
@@ -12,69 +12,54 @@
   </div>
 </div>
 
-<% form_tag(campaign_path(@campaign), :method => :put) do %>
+<% form_for @campaign, :url => admin_campaign_path(@campaign) do |f| %>
   <ul>
     <li>
-      <label for="name">Name</label>
-      <input id="name" class="text" type="text" name="name" maxlength="329"/>
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => 'text' %>
     </li>
     <li>
-      <label for="nreated">Created By</label>
-      <input id="created" class="text" type="text" name="created" maxlength="329"/>
+      <%= f.label :url %>
+      <%= f.text_field :url, :class => 'text' %>
     </li>
     <li>
-      <label for="organization">Organization</label>
-      <input id="organization" class="text" type="text" name="organization" maxlength="329"/>
+      <label for="campaign[private_description]">Internal Description</label>
+      <%= f.text_area :private_description, :class => 'textarea', :cols => 32, :rows => 5 %>
     </li>
     <li>
-      <label for="internalDescription">Internal Description</label>
-      <textarea id="internalDescription" class="textarea" name="text" cols="32" rows="5"></textarea>
+      <label for="campaign[description]">External Description</label>
+      <%= f.text_area :description, :class => 'textarea', :cols => 32, :rows => 5 %>
     </li>
     <li>
-      <label for="externalDescription">External Description</label>
-      <textarea id="externallDescription" class="textarea" name="text" cols="32" rows="5"></textarea>
+      <label for="campaign[points]">Points Per Task</label>
+      <%= f.select :points, 1..9, :class => 'pointsDropdown' %>
+      
+      <% if_javascript do %>
+        <span>
+          <a href="#" onclick="$('#campaign_points').val('<%= RECOMMENDED_CAMPAIGN_POINTS %>'); return false">
+            Recommended Number of Points
+          </a>
+        </span>
+      <% end %>
+      
     </li>
     <li>
-      <label for="points">Points Per Task</label>
-      <select name="Points" class="pointsDropdown">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-      </select>
-      <span><a href="#">Recommended Number of Points</a></span>
+      <label for="campaign[instructions]">Task Instructions</label>
+      <%= f.text_area :instructions, :class => 'textarea', :cols => '32', :rows => '5' %>
     </li>
     <li>
-      <label for="taskInstructions">Task Instructions</label>
-      <textarea id="taskInstructions" class="textarea" name="text" cols="32" rows="5"></textarea>
+      <!--
+      <label for="campaign[start_at]">Start</label>
+      <%= f.datetime_select :updated_at %>
+      -->
     </li>
     <li>
-      <label id="startTitle" for="start">Start</label>
-      <ul id="startDetails">
-        <li>
-          <label for="Date">Date</label>
-          <input id="date" class="text" type="text" name="date" maxlength="329"/>
-            <a id="calendarToday" href="#">Today</a>
-            <a id="calendar" href="#">Calendar</a>  
-        </li>
-        <li>
-          <label for="Time">Time</label>
-          <input id="time" class="text" type="text" name="time" maxlength="329"/>
-          <div id="timeHelp">
-            <a id="timeNow" href="#">Now</a>
-            <a id="clock" href="#">Clock</a>
-          </div>
-        </li>
-      </ul>
+      <label for="campaign[runs]">Times to Run Task</label>
+      <%= f.text_field :runs, :class => 'text' %>
     </li>
     <li>
-      <label for="times">Times to Run Task</label>
-      <input id="times" class="text" type="text" name="times" maxlength="329" />
+      <label for="campaign[user_runs]">Runs Per User </label>
+      <%= f.text_field :user_runs, :class => 'text' %>
     </li>
   </ul>
   <button class="updateTaskBtn" type="submit">
