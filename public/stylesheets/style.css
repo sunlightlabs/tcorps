@@ -29,8 +29,8 @@ div#header{ height: 237px;}
 h1{ float: left; width: 260px; height: 176px; margin-left: 20px;}
 h1 a{ width: 260px; height: 176px; background: url(/images/logo.png) top left no-repeat; text-indent: -9999em; display: block;}
 
-div#accountInfo a{ color: #fff; font-weight: bold; padding-right: 3px; margin-right: 3px;}
-div#accountInfo{ margin-left: 820px; padding-top: 8px;}
+div#accountInfo a{ color: #fff; font-weight: bold; padding: 0 3px 0 4px; margin-right: 3px;}
+div#accountInfo{ text-align: right; padding-top: 8px; color: #e6e7e8;}
 
 div#featureSection a { background: url(/images/btn_getStarted.png) bottom left no-repeat; display: block; width: 197px; height: 85px; text-indent: -9999em; margin-left: 720px; padding-top: 130px;}
 div#featureSection h2{ font-size: 250%; color: #e7e7e8; line-height: 35px; margin-bottom: 10px;}
@@ -98,7 +98,9 @@ div#rtColumn ul li { margin-bottom: 20px;}
 
 div.taskDetail{ background: #ececed; -moz-border-radius-bottomright: 3px; -webkit-border-radius-bottomleft: 3px; padding: 5px 15px;}
 body.home div.taskDetail{ padding: 5px 20px;}
-div#ltColumn div.taskDetail, form#contactForm{ background: #f9f9f9; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: solid 1px #ececed;  padding: 15px 20px; margin-bottom: 15px;}
+div#ltColumn div.taskDetail, form#contactForm, form#new_user, form#new_user_session, form#edit_user_1{ background: #f9f9f9; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: solid 1px #ececed;  padding: 15px 20px; margin-bottom: 15px;}
+
+form#new_user{ margin-bottom: 20px;}
 
 span.tagValue{
     background: url(/images/highlightBar2.jpg) left top repeat-x;
@@ -125,9 +127,10 @@ div#taskScoreboard dt{ float: left; font-weight: bold; margin-right: 5px;}
 
 a#anotherTask{ background: url(/images/btn_anotherTask.png) top left no-repeat; width: 148px; height: 37px; display: block; text-indent: -9999em;}
 
-form#contactForm label{ font-weight: bold; width: 100px; display: block; float: left; padding-top:5px;}
-form#contactForm input, form#contactForm textarea{ border: dotted 1px #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 300px; padding: 5px;}
-form#contactForm input { height: 15px;}
+form#contactForm label, form#new_user label, form#new_user_session label, form#edit_user_1 label{ font-weight: bold; width: 100px; display: block; float: left; padding-top:5px;}
+form#new_user label, form#edit_user_1 label{ width: 160px;}
+form#contactForm input, form#contactForm textarea, form#new_user input, form#new_user textarea, form#new_user_session input, form#new_user_session textarea, form#edit_user_1 input{ border: dotted 1px #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 300px; padding: 5px;}
+form#contactForm input, form#new_user input, form#new_user_session input, form#edit_user_1 input{ height: 15px;}
 form li{ margin-bottom: 10px;}
 
 button.submitBtn span{ background: url(/images/btn_submit.png) top left no-repeat; display: block; width: 136px; height: 43px; text-indent: -9999em; }
@@ -142,3 +145,8 @@ body.task div.header {height: 50px; padding: 10px;}
 body.task div.header span {float: left; font-size: 200%;}
 body.task div.header input {float: right;}
 iframe#task_frame {width: 95%; margin: 0; padding: 0; clear: both;}
+
+form#new_user input#user_submit, form#new_user_session input#user_session_submit{  border: none; display: block; width: 137px; height: 44px; text-indent: -9999em; margin-top: 20px;}
+form#new_user input#user_submit{ background: url(/images/btn_register.png) top left no-repeat; margin-left: 160px;}
+form#new_user_session input#user_session_submit { background: url(/images/btn_login.png) top left no-repeat; margin-left: 100px;}
+
