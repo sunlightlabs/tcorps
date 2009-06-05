@@ -1,37 +1,42 @@
-<p>
-  Already have an account? <%= link_to 'Sign in', login_path %> with it.
-</p>
-
-<h3>Sign Up</h3>
-
-<p>
-  Don't have an account? Signing up for one is easy. Choose a login, then provide a password or OpenID.
-</p>
+<div class="mainTaskHeader">
+	<h2>Sign Up</h2>
+</div>	
+<p>Already have an account? <%= link_to 'Log in', login_path %> now!</p>
+<p>Don't have an account? Signing up is easy, choose a username, then provide a password or OpenID.</p>
 
 <% form_for @user do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :login %>
-  <%= f.text_field :login %>
-  <br/>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br/>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  
-  <h4>OR</h4>
-  
-  <%= f.label :openid_identifier %>
-  <%= f.text_field :openid_identifier %>
-  <br/>
+<ul>
+	<li>
+  		<%= f.error_messages %>
+  		<%= f.label :login %>
+  		<%= f.text_field :login %>
+  	</li>
+	<li>
+  		<%= f.label :email %>
+  		<%= f.text_field :email %>
+	</li>
+  	<li>
+  		<%= f.label :password %>
+  		<%= f.password_field :password %>
+  	</li>
+  	<li>
+  		<%= f.label :password_confirmation %>
+  		<%= f.password_field :password_confirmation %>
+	</li>
+	<li>
+		<span id="or">OR</hspan>
+	</li>	
+	<li>
+		<%= f.label :openid_identifier %>
+		<%= f.text_field :openid_identifier %>
+	</li>	
+</ul>
+
   <%= f.submit 'Register' %>
 <% end %>
 
 <h3>Use another account</h3>
-
-Login with your Google, Facebook, or Yahoo account, or your OpenID.
-
-<%= render :partial => 'layouts/clickpass' %>
+<p>Login with your Google, Facebook, or Yahoo account, or your OpenID.</p>
+<div id="clickPass">
+	<%= render :partial => 'layouts/clickpass' %>
+</div>	
