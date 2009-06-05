@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 10) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 9) do
     t.datetime "updated_at"
     t.integer  "user_runs"
     t.integer  "creator_id"
+    t.datetime "start_at"
   end
 
   add_index "campaigns", ["creator_id"], :name => "index_campaigns_on_creator_id"

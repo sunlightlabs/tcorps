@@ -2,7 +2,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :creator, :class_name => 'User'
   has_many :tasks
   
-  validates_presence_of :name, :points, :url, :runs
+  validates_presence_of :name, :points, :url, :runs, :start_at
   validates_numericality_of :runs, :greater_than => 0
   
   named_scope :active, :select => "campaigns.*, (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) as task_count", :conditions => "task_count < campaigns.runs"
