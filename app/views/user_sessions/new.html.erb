@@ -1,30 +1,30 @@
-<p>
-  Don't have an account? <%= link_to 'Sign up', register_path %> for one.
-</p>
 
-<h3>Sign In</h3>
-
-<p>
-  You can log in with a username and password, or an OpenID.
-</p>
+<div class="mainTaskHeader">
+	<h2>Sign In</h2>
+</div>	
+<p>Don't have an account? <%= link_to 'Sign up', register_path %> now!</p>
 
 <% form_for @user_session, :url => user_session_path do |f| %>
-  <%= f.label :login %>
-  <%= f.text_field :login %>
-  <br/>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <h4> or login using OpenID</h4>
+	<ul>
+		<li>
+  			<%= f.label :login %>
+  			<%= f.text_field :login %>
+		</li>
+		<li>
+  			<%= f.label :password %>
+  			<%= f.password_field :password %>
+		</li>
+  <!--<h4> or login using OpenID</h4>
   <%= f.label :openid_identifier %>
-  <%= f.text_field :openid_identifier %>
-  <br/>
+  <%= f.text_field :openid_identifier %>-->
+
   <%= f.submit 'Login' %>
 
 <% end %>
 
 
-<h3>Use another account</h3>
+ <!--<h3>Use another account</h3>
 
 Sign up with your Google, Facebook, or Yahoo account, or your OpenID.
 
-<%= render :partial => 'layouts/clickpass' %>
+<%= render :partial => 'layouts/clickpass' %>-->
