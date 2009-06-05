@@ -19,17 +19,19 @@
           </h1>
           <div id="accountInfo">
             <% if logged_in? %>
-              <%= current_user.login %>
+              <span id="username">Welcome <%= current_user.login %>!</span>
               
               <% if current_user.manager? or current_user.admin? %>
                 <%= link_to 'Admin', admin_path %>
               <% end %>
               
               <%= link_to 'Edit Profile', edit_user_path(current_user) %>
+				|
               <%= link_to 'Sign Out', logout_path %>
             <% else %>
               <%= link_to 'Sign Up', register_path %>
-              <%= link_to 'Sign In', login_path %>
+				|
+              <%= link_to 'Log In', login_path %>
             <% end %>
           </div>
           <div id="nav">
