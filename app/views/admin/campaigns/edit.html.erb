@@ -48,10 +48,11 @@
       <%= f.text_area :instructions, :class => 'textarea', :cols => '32', :rows => '5' %>
     </li>
     <li>
-      <!--
       <label for="campaign[start_at]">Start</label>
-      <%= f.datetime_select :updated_at %>
-      -->
+      <%= f.datetime_select :start_at, :prompt => true %>
+      <% if_javascript do %>
+        <%= link_to 'Now', '#', :onclick => 'setToNow("campaign", "start_at"); return false' %>
+      <% end %>
     </li>
     <li>
       <label for="campaign[runs]">Times to Run Task</label>
