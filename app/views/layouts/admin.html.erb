@@ -32,7 +32,8 @@
         </div>
 
         <div id="mainContent">
-          
+          <%= render :partial => 'layouts/partials/flash', :locals => {:flash => flash} %>
+
           <div id="ltColumn">
             <%= render :partial => 'layouts/partials/stats' %>
           </div>
