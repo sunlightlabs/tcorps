@@ -1,30 +1,70 @@
-
 <div class="mainTaskHeader">
 	<h2>Sign In</h2>
 </div>	
 <p>Don't have an account? <%= link_to 'Sign up', register_path %> now!</p>
 
-<% form_for @user_session, :url => user_session_path do |f| %>
+<div id="signinNav">
 	<ul>
-		<li>
-  			<%= f.label :login %>
-  			<%= f.text_field :login %>
-		</li>
-		<li>
-  			<%= f.label :password %>
-  			<%= f.password_field :password %>
-		</li>
-  <!--<h4> or login using OpenID</h4>
-  <%= f.label :openid_identifier %>
-  <%= f.text_field :openid_identifier %>-->
+		<li id="nav_standard" class="active"><a href="#">Standard Sign In</a></li>
+		<li id="nav_aol"><a href="#">AOL</a></li>
+		<li id="nav_yahoo"><a href="#">Yahoo</a></li>
+		<li id="nav_google"><a href="#">Google</a></li>
+		<li id="nav_facebook"><a href="#">Facebook</a></li>
+		<li id="nav_openid"><a href="#">OpenID</a></li>
+	</ul>
+	<div class="clear"></div>	
+</div>
+<div id="signin_options">
+	<div id="signin_standard">
+		<% form_for @user_session, :url => user_session_path do |f| %>
+			<ul>
+				<li>
+		  			<%= f.label :login %>
+		  			<%= f.text_field :login %>
+				</li>
+				<li>
+		  			<%= f.label :password %>
+		  			<%= f.password_field :password %>
+				</li>
+			</ul>	
+		  <%= f.submit 'Login' %>
 
-  <%= f.submit 'Login' %>
-
-<% end %>
-
-
- <!--<h3>Use another account</h3>
-
-Sign up with your Google, Facebook, or Yahoo account, or your OpenID.
-
-<%= render :partial => 'layouts/clickpass' %>-->
+		<% end %>
+	</div>
+	<div id="signin_aol">
+		<h3>Sign In using your AOL account.</h3>
+		<p class="tip">Clicking this button will take you to AOL to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+		<button class="aolBtn" type="submit">
+		    <span>Sign In Using AOL</span>
+		</button>
+	</div>	
+	<div id="signin_yahoo">
+		<h3>Sign In using your Yahoo account.</h3>
+		<p class="tip">Clicking this button will take you to Yahoo to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+		<button class="yahooBtn" type="submit">
+		    <span>Sign In Using Yahoo</span>
+		</button>
+	</div>
+	<div id="signin_google">
+		<h3>Sign In using your Google account.</h3>
+		<p class="tip">Clicking this button will take you to Google to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+		<button class="googleBtn" type="submit">
+		    <span>Sign In Using Google</span>
+		</button>
+	</div>
+	<div id="signin_facebook">
+		<h3>Sign In using your Facebook account.</h3>
+		<p class="tip">Clicking this button will take you to Facebook to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+		<button class="facebookBtn" type="submit">
+		    <span>Sign In Using Facebook</span>
+		</button>
+	</div>
+	<div id="signin_openid">
+		<h3>Sign In using your OpenID account.</h3>
+		<p class="tip">Clicking this button will take you to OpenID to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+		<input id="openid_username" class="text" type="text" name="email" size="32" value="http://" />
+		<button class="openidBtn" type="submit">
+		    <span>Sign In Using OpenID</span>
+		</button>
+	</div>	
+</div>
