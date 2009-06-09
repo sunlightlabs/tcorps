@@ -23,13 +23,11 @@
 		<li>
 			<label for='avatar'>Current Avatar</label>
 			<%= image_tag @user.avatar.url(:normal) %>
-			<ul>
-				<li>
-					<label for='avatar_new'>Upload a new avatar</label>
-					<%= form.file_field :avatar %>
-				</li>
-			</ul>
 		</li>	
+		<li>
+			<label for='avatar_new'>Upload a new avatar</label>
+			<%= form.file_field :avatar %>
+		</li>
 		<%= submit_tag 'Update' %>
 	</ul>	
 <% end %>
