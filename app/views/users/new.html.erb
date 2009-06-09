@@ -15,7 +15,7 @@
 	<div class="clear"></div>	
 </div>
 <div id="signup_options">
-	<div id="signup_standard">
+	<div id="signup_standard" class="signup_option">
 		<% form_for @user do |f| %>
 		<ul>
 			<li>
@@ -39,35 +39,35 @@
 		<%= f.submit 'Register' %>
 		<% end %>
 	</div>
-	<div id="signup_aol">
+	<div id="signup_aol" class="signup_option">
 		<h3>Sign up using your AOL account.</h3>
 		<p class="tip">Clicking this button will take you to AOL to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
 		<button class="aolBtn" type="submit">
 		    <span>Sign Up Using AOL</span>
 		</button>
 	</div>	
-	<div id="signup_yahoo">
+	<div id="signup_yahoo" class="signup_option">
 		<h3>Sign up using your Yahoo account.</h3>
 		<p class="tip">Clicking this button will take you to Yahoo to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
 		<button class="yahooBtn" type="submit">
 		    <span>Sign Up Using Yahoo</span>
 		</button>
 	</div>
-	<div id="signup_google">
+	<div id="signup_google" class="signup_option">
 		<h3>Sign up using your Google account.</h3>
 		<p class="tip">Clicking this button will take you to Google to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
 		<button class="googleBtn" type="submit">
 		    <span>Sign Up Using Google</span>
 		</button>
 	</div>
-	<div id="signup_facebook">
+	<div id="signup_facebook" class="signup_option">
 		<h3>Sign up using your Facebook account.</h3>
 		<p class="tip">Clicking this button will take you to Facebook to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
 		<button class="facebookBtn" type="submit">
 		    <span>Sign Up Using Facebook</span>
 		</button>
 	</div>
-	<div id="signup_openid">
+	<div id="signup_openid" class="signup_option">
 		<h3>Sign up using your OpenID account.</h3>
 		<p class="tip">Clicking this button will take you to OpenID to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
 		<input id="openid_username" class="text" type="text" name="email" size="32" value="http://" />
