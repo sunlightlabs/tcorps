@@ -1,37 +1,78 @@
-<p>
-  Already have an account? <%= link_to 'Sign in', login_path %> with it.
-</p>
-
-<h3>Sign Up</h3>
-
-<p>
-  Don't have an account? Signing up for one is easy. Choose a login, then provide a password or OpenID.
-</p>
-
-<% form_for @user do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :login %>
-  <%= f.text_field :login %>
-  <br/>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br/>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  
-  <h4>OR</h4>
-  
-  <%= f.label :openid_identifier %>
-  <%= f.text_field :openid_identifier %>
-  <br/>
-  <%= f.submit 'Register' %>
-<% end %>
-
-<h3>Use another account</h3>
-
-Login with your Google, Facebook, or Yahoo account, or your OpenID.
-
-<%= render :partial => 'layouts/partials/clickpass' %>
+<div class="mainTaskHeader">
+  <h2>Join Us</h2>
+</div>  
+<p>Already have an account? <%= link_to 'Sign in!', login_path %></p>
+<p>Join the cause, by signing up for Transparency Corps with one of the options below.</p>
+<div id="signupNav">
+  <ul>
+    <li id="nav_standard" class="active"><a href="#">Standard Sign Up</a></li>
+    <li id="nav_aol"><a href="#">AOL</a></li>
+    <li id="nav_yahoo"><a href="#">Yahoo</a></li>
+    <li id="nav_google"><a href="#">Google</a></li>
+    <li id="nav_facebook"><a href="#">Facebook</a></li>
+    <li id="nav_openid"><a href="#">OpenID</a></li>
+  </ul>
+  <div class="clear"></div>  
+</div>
+<div id="signup_options">
+  <div id="signup_standard" class="signup_option">
+    <% form_for @user do |f| %>
+    <ul>
+      <li>
+          <%= f.error_messages %>
+          <%= f.label :login %>
+          <%= f.text_field :login %>
+        </li>
+      <li>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+      </li>
+        <li>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </li>
+        <li>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+      </li>
+    </ul>
+    <%= f.submit 'Register' %>
+    <% end %>
+  </div>
+  <div id="signup_aol" class="signup_option">
+    <h3>Sign up using your AOL account.</h3>
+    <p class="tip">Clicking this button will take you to AOL to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+    <button class="aolBtn" type="submit">
+        <span>Sign Up Using AOL</span>
+    </button>
+  </div>  
+  <div id="signup_yahoo" class="signup_option">
+    <h3>Sign up using your Yahoo account.</h3>
+    <p class="tip">Clicking this button will take you to Yahoo to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+    <button class="yahooBtn" type="submit">
+        <span>Sign Up Using Yahoo</span>
+    </button>
+  </div>
+  <div id="signup_google" class="signup_option">
+    <h3>Sign up using your Google account.</h3>
+    <p class="tip">Clicking this button will take you to Google to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+    <button class="googleBtn" type="submit">
+        <span>Sign Up Using Google</span>
+    </button>
+  </div>
+  <div id="signup_facebook" class="signup_option">
+    <h3>Sign up using your Facebook account.</h3>
+    <p class="tip">Clicking this button will take you to Facebook to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+    <button class="facebookBtn" type="submit">
+        <span>Sign Up Using Facebook</span>
+    </button>
+  </div>
+  <div id="signup_openid" class="signup_option">
+    <h3>Sign up using your OpenID account.</h3>
+    <p class="tip">Clicking this button will take you to OpenID to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
+    <input id="openid_username" class="text" type="text" name="email" size="32" value="http://" />
+    <button class="openidBtn" type="submit">
+        <span>Sign Up Using OpenID</span>
+    </button>
+  </div>  
+</div>
