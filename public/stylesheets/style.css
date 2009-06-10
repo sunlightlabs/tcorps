@@ -134,6 +134,8 @@ form#contactForm input, form#contactForm textarea, form#new_user input, form#new
 form#contactForm input, form#new_user input, form#new_user_session input, form#edit_user_1 input{ height: 15px;}
 form li{ margin-bottom: 10px;}
 
+form#edit_user_1 input#user_avatar{ height: 25px;}
+
 input#openid_username{ margin-bottom: 15px;}
 
 button.submitBtn span{ background: url(/images/btn_submit.png) top left no-repeat; display: block; width: 136px; height: 43px; text-indent: -9999em; }
@@ -153,7 +155,8 @@ body.task div.header input {float: right;}
 
 iframe#task_frame {width: 95%; height: 500px; margin: 0; padding: 0; clear: both;}
 
-form#new_user input#user_submit, form#new_user_session input#user_session_submit{  border: none; display: block; width: 137px; height: 44px; text-indent: -9999em; margin-top: 20px;}
+form#new_user input#user_submit, form#new_user_session input#user_session_submit, form#edit_user_1 input#update_button{  border: none; display: block; width: 137px; height: 44px; text-indent: -9999em; margin-top: 20px;}
+input#update_button{ background: url(/images/btn_update.png) top left no-repeat; margin-left: 160px;}
 form#new_user input#user_submit{ background: url(/images/btn_register.png) top left no-repeat; margin-left: 160px;}
 form#new_user_session input#user_session_submit { background: url(/images/btn_login.png) top left no-repeat; margin-left: 100px;}
 
