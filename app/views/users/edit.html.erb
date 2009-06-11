@@ -1,32 +1,32 @@
 <div class="mainTaskHeader">
   <h2>Edit Profile</h2>
 </div>
-<% form_for @user, :html => {:multipart => true} do |form| %>
+<% form_for @user, :html => {:multipart => true} do |f| %>
   <%= errors @user %>
   <ul>
     <li>
       <label for='username'>Username</label>
-         <input id="username" class="text" type="text" name="name" size="32" />
-    </li>  
-    <li>
-      <label for='email'>Email</label>
-        <input id="email" class="text" type="text" name="name" size="32" />
+      <%= f.text_field :login, :id => 'username', :class => 'text', :size => '32' %>
     </li>
     <li>
-      <label for='password'>Password</label>
-        <input id="password" class="text" type="text" name="name" size="32" />
+      <%= f.label :email %>
+      <%= f.text_field :email, :class => 'text', :size => '32' %>
     </li>
     <li>
-      <label for='password_confirm'>Password Comfirmation</label>
-        <input id="password_confirm" class="text" type="text" name="name" size="32" />
+      <%= f.label :password %>
+      <%= f.password_field :password, :class => 'text', :size => '32' %>
+    </li>
+    <li>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, :class => 'text', :size => '32' %>
     </li>
     <li>
       <label for='avatar'>Current Avatar</label>
       <%= image_tag @user.avatar.url(:normal) %>
-    </li>  
+    </li>
     <li>
       <label for='avatar_new'>Upload a new avatar</label>
-      <%= form.file_field :avatar %>
+      <%= f.file_field :avatar %>
     </li>
     <input type="submit" value="Update" name="commit" id="update_button" />
   </ul>  
