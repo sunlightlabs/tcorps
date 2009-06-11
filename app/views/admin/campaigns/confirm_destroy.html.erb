@@ -1,0 +1,14 @@
+<div id="editTask_header">
+  <h2>Delete Campaign</h2>
+</div>
+
+<% form_tag admin_campaign_path(@campaign), :method => :delete do %>
+
+  <p>
+    Are you sure you want to delete the campaign "<%= h @campaign.name %>"?
+  </p>
+  
+  <button class="updateTaskBtn" type="submit">
+    Delete Campaign
+  </button>
+<% end %>

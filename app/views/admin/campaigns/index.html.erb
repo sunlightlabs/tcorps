@@ -1,11 +1,14 @@
 <div id="editTask_header">
-  <h2>My Tasks</h2>
+  <h2>My Campaign</h2>
 </div>
 
 <% @campaigns.each do |campaign| %>
   <div class="task">
     <% if_javascript do %>
-      <%= link_to 'Delete Task', admin_campaign_path(campaign), :method => :delete, :confirm => 'Are you sure you want to delete this campaign?', :class => 'deleteTask' %>
+      <%= link_to 'Delete Campaign', admin_campaign_path(campaign), :method => :delete, :confirm => 'Are you sure you want to delete this campaign?', :class => 'deleteTask' %>
+    <% end %>
+    <% no_javascript do %>
+      <%= link_to 'Delete Campaign', confirm_destroy_admin_campaign_path(:id => campaign), :class => 'deleteTask' %>
     <% end %>
     
     <div class="taskMain">

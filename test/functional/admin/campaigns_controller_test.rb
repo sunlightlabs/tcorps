@@ -196,6 +196,40 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     assert_not_equal new_name, campaign.reload.name
   end
   
+  test '#confirm_destroy renders correctly' do
+    user = Factory :manager
+    campaign = Factory :campaign, :creator => user
+    count = Campaign.count
+    login user
+    
+    get :confirm_destroy, :id => campaign
+    assert_reponse :success
+    assert_template 'confirm_destroy'
+    
+    assert_equal count, Campaign.count
+  end
+  
+  test '#confirm_destroy requires login' do
+    get :confirm_destroy, :id => Factory(:campaign)
+    assert_redirected_to root_path
+  end
+  
+  test '#confirm_destroy requires login as a manager' do
+    user = Factory :user
+    campaign = Factory :campaign, :creator => user
+    login user
+    get :confirm_destroy, :id => campaign
+    assert_redirected_to root_path
+  end
+  
+  test '#confirm_destroy requires login as the manager for this campaign' do
+    user = Factory :manager
+    campaign = Factory :campaign, :creator => Factory(:manager)
+    login user
+    get :confirm_destroy, :id => campaign
+    assert_redirected_to root_path
+  end
+  
   test '#destroy removes campaign' do
     user = Factory :manager
     campaign = Factory :campaign, :creator => user
