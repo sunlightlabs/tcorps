@@ -6,4 +6,8 @@ module ApplicationHelper
   def errors(object)
     render :partial => 'layouts/partials/errors', :locals => {:object => object}
   end
+  
+  def period(string)
+    string << (string.last == '.' ? '' : '.')
+  end
 end

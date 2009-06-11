@@ -2,7 +2,7 @@
   <div class="errors <%= object.class.to_s.underscore %>">
     <% object.errors.full_messages.each do |message| %>
       <div class="error">
-        <%= message %>.
+        <%= period message %>
       </div>
     <% end %>
   </div>
