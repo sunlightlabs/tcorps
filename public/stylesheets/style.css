@@ -211,3 +211,5 @@ div#signin_options button.openidBtn{ background: url(/images/btn_openid2.png) to
 
 p.tip{ font-style: oblique; font-size: 90%; line-height: 15px; color: #909192;}
 
+input#startTask { background: url(/images/btn_startthis.png) top left no-repeat; width: 124px; height: 36px; display: block; text-indent: -9999em; border: none;}
+
