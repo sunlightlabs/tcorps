@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.complete_task '/tasks/complete', :controller => 'tasks', :action => 'complete'
   
   map.namespace(:admin) do |admin|
-    admin.resources :campaigns
+    admin.resources :campaigns, :member => {:confirm_destroy => :get}
   end
   map.admin '/admin', :controller => 'admin/campaigns', :action => 'index'
   

@@ -5,6 +5,9 @@ module Admin::CampaignsHelper
     concat(javascript_tag do
       %Q{document.write("#{escape_javascript capture(&block)}");}
     end) if block_given?
-  end 
-
+  end
+  
+  def no_javascript(&block)
+    concat "<noscript>\n#{capture &block}\n</noscript>" if block_given?
+  end
 end

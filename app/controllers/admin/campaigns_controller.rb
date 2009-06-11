@@ -5,7 +5,7 @@ class Admin::CampaignsController < ApplicationController
   before_filter :require_login
   before_filter :require_manager
   
-  before_filter :load_campaign, :only => [:edit, :update, :destroy]
+  before_filter :load_campaign, :only => [:edit, :update, :confirm_destroy, :destroy]
 
   def index
     @campaigns = current_user.campaigns.all(:order => 'created_at DESC')
@@ -35,6 +35,10 @@ class Admin::CampaignsController < ApplicationController
     else
       render :action => :edit
     end
+  end
+  
+  def confirm_destroy
+    
   end
   
   def destroy

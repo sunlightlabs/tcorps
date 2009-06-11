@@ -1,4 +1,5 @@
 admin:
+  id: 1
   admin: 1
   email: user1@example.com
   login: user1
