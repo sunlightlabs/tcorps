@@ -34,7 +34,7 @@
   </li>
   <li>
     <label for="campaign[start_at]">Start</label>
-    <%= f.datetime_select :start_at, :prompt => true %>
+    <%= f.datetime_select :start_at, :prompt => true, :twelve_hour => true %>
     <% if_javascript do %>
       <%= link_to 'Now', '#', :onclick => 'setToNow("campaign", "start_at"); return false' %>
     <% end %>

@@ -36,6 +36,12 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
   
+  test '#new defaults the campaign to the recommended points' do
+    login Factory(:manager)
+    get :new
+    assert_equal RECOMMENDED_CAMPAIGN_POINTS, assigns(:campaign).points
+  end
+  
   test '#new requires login' do
     get :new
     assert_redirected_to root_path
@@ -203,7 +209,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     login user
     
     get :confirm_destroy, :id => campaign
-    assert_reponse :success
+    assert_response :success
     assert_template 'confirm_destroy'
     
     assert_equal count, Campaign.count
