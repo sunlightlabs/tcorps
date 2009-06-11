@@ -12,7 +12,7 @@ class Admin::CampaignsController < ApplicationController
   end
   
   def new
-    @campaign = current_user.campaigns.new
+    @campaign = current_user.campaigns.new :points => RECOMMENDED_CAMPAIGN_POINTS
   end
   
   def create
