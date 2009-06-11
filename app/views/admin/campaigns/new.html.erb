@@ -14,6 +14,8 @@
 
 <% form_for @campaign, :url => admin_campaigns_path do |f| %>
   
+  <%= render :partial => 'layouts/partials/errors', :locals => {:object => @campaign} %>
+  
   <%= render :partial => 'admin/campaigns/form', :locals => {:f => f} %>
 
   <button class="updateTaskBtn" type="submit">

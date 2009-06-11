@@ -19,6 +19,8 @@ body{
   	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+.fieldWithErrors {padding: 0; margin: 0; display: inline;}
+
 div#headerWrapper{ background: url(/images/bg_2.png) top center repeat-x;}
 div#pageMain{ width: 920px; margin: 0 auto 50px auto; padding: 0 20px;}
 h1{ width: 287px; height: 119px;}
