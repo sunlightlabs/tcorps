@@ -2,29 +2,39 @@
 <% content_for :header, :scoreboard %>
 <% content_for :hide_sidebar, true %>
 
-<ul>
+<div class="mainTaskHeader">
+	<h2>Tasks</h2>
+</div>	
+<ul id="taskList">
   <% @campaigns.each do |campaign| %>
     <li>
       <div class="taskTop">
         <div class="taskHeader">
-          <h4><%= link_to h(campaign.name), campaign_path(campaign) %></h4>
+          <h3><%= link_to h(campaign.name), campaign_path(campaign) %></h3>
           <div class="taskMetadata">
-            <% if is_home? yield(:class) %>
+            <!--<% if is_home? yield(:class) %>-->
               <span>points</span>
-            <% end %>
+            <!--<% end %>-->
+			<span>points</span>
             <span class="taskValue"><%= campaign.points %></span>
           </div>
           <div class="clear"></div>
         </div>
-        <p><%= campaign.description %></p>
-      </div>
-      <div class="taskDetail">
-        <% percent = campaign.percent_complete %>
-        <div class="taskBar">
-          <span class="tagValue" style="width: <%= percent %>%"><%= percent %>%</span>
-        </div>
-        <span class="tagNumber"><%= 100 - percent %>% To Go</span>
-      <div class="clear"></div>
+		<div class="taskDetail">
+	        <% percent = campaign.percent_complete %>
+	        <div class="taskBar">
+	          <span class="tagValue" style="width: <%= percent %>%"><%= percent %>%</span>
+	        </div>
+	        <span class="tagNumber"><%= 100 - percent %>% To Go</span>
+	      	<div class="clear"></div>
+		  </div>
+		</div>
+        <p><%= h(campaign.description) %></p>
+		<span class="startBtn">
+			<a href="#">Start Task</a>
+		</span>
+		<div class="clear"></div>
+
     </li>
   <% end %>
 </ul>
