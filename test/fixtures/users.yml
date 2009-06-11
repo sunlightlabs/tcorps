@@ -1,0 +1,11 @@
+admin:
+  admin: 1
+  email: user1@example.com
+  login: user1
+  crypted_password: b3e4a120cdf9eea166834df675d71c4a5f1ea0d45bb2ce594c8a6575e9d08666a77627824eba827ac44928057b4effec7d0400184ccbbaf7fd5011a1be278a58
+  password_salt: xpWo3_ICelmdgAC5guLx
+  created_at: <%= 1.day.ago.to_s :db %>
+  updated_at: <%= 1.day.ago.to_s :db %>
+  persistence_token: bc7fa76c23f5e35f2d8db3a65c0fa5255583ed614e5902d9f077f4effd9fc20b96b08e90de53e820e4233ac10f7a0de650df21b9d64f8e4c99c2d604e3df248a
+  organization_name: Example Organization
+  
