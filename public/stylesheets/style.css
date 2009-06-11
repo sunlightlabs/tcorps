@@ -98,12 +98,12 @@ div#rtColumn ul li { margin-bottom: 20px;}
 
 div.taskDetail{ background: #ececed; -moz-border-radius-bottomright: 3px; -webkit-border-radius-bottomleft: 3px; padding: 5px 15px;}
 body.home div.taskDetail{ padding: 5px 20px;}
-div#ltColumn div.taskDetail, form#contactForm, div#signup_options, form#edit_user_1, div#signin_options{ background: #f9f9f9; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: solid 1px #ececed;  padding: 15px 20px; margin-bottom: 15px;}
+div#ltColumn div.taskDetail, form#contactForm, div#signup_options, form.edit_user, div#signin_options{ background: #f9f9f9; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: solid 1px #ececed;  padding: 15px 20px; margin-bottom: 15px;}
 div#signup_options, div#signin_options{ margin-top: -1px;}
 
 
 
-div#signup_options, form#contactForm, form#new_user_session, form#edit_user_1{ padding-top: 25px; padding-bottom: 40px;}
+div#signup_options, form#contactForm, form#new_user_session, form.edit_user{ padding-top: 25px; padding-bottom: 40px;}
 
 span.tagValue{
     background: url(/images/highlightBar2.jpg) left top repeat-x;
@@ -144,13 +144,13 @@ div#taskScoreboard dt{ float: left; font-weight: bold; margin-right: 5px;}
 
 a#anotherTask{ background: url(/images/btn_anotherTask.png) top left no-repeat; width: 148px; height: 37px; display: block; text-indent: -9999em;}
 
-form#contactForm label, form#new_user label, form#new_user_session label, form#edit_user_1 label{ font-weight: bold; width: 100px; display: block; float: left; padding-top:5px;}
-form#new_user label, form#edit_user_1 label{ width: 160px;}
-form#contactForm input, form#contactForm textarea, form#new_user input, form#new_user textarea, form#new_user_session input, form#new_user_session textarea, form#edit_user_1 input, input#openid_username{ border: dotted 1px #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 300px; padding: 5px;}
-form#contactForm input, form#new_user input, form#new_user_session input, form#edit_user_1 input{ height: 15px;}
+form#contactForm label, form#new_user label, form#new_user_session label, form.edit_user label{ font-weight: bold; width: 100px; display: block; float: left; padding-top:5px;}
+form#new_user label, form.edit_user label{ width: 160px;}
+form#contactForm input, form#contactForm textarea, form#new_user input, form#new_user textarea, form#new_user_session input, form#new_user_session textarea, form.edit_user input, input#openid_username{ border: dotted 1px #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 300px; padding: 5px;}
+form#contactForm input, form#new_user input, form#new_user_session input, form.edit_user input{ height: 15px;}
 form li{ margin-bottom: 10px;}
 
-form#edit_user_1 input#user_avatar{ height: 25px;}
+form.edit_user input#user_avatar{ height: 25px;}
 
 input#openid_username{ margin-bottom: 15px;}
 
@@ -171,7 +171,7 @@ body.task div.header input {float: right;}
 
 iframe#task_frame {width: 95%; height: 500px; margin: 0; padding: 0; clear: both;}
 
-form#new_user input#user_submit, form#new_user_session input#user_session_submit, form#edit_user_1 input#update_button{  border: none; display: block; width: 137px; height: 44px; text-indent: -9999em; margin-top: 20px;}
+form#new_user input#user_submit, form#new_user_session input#user_session_submit, form.edit_user input#update_button{  border: none; display: block; width: 137px; height: 44px; text-indent: -9999em; margin-top: 20px;}
 input#update_button{ background: url(/images/btn_update.png) top left no-repeat; margin-left: 160px;}
 form#new_user input#user_submit{ background: url(/images/btn_register.png) top left no-repeat; margin-left: 160px;}
 form#new_user_session input#user_session_submit { background: url(/images/btn_login.png) top left no-repeat; margin-left: 100px;}
@@ -210,3 +210,6 @@ div#signin_options button.facebookBtn{ background: url(/images/btn_facebook2.png
 div#signin_options button.openidBtn{ background: url(/images/btn_openid2.png) top left no-repeat; width: 209px; }
 
 p.tip{ font-style: oblique; font-size: 90%; line-height: 15px; color: #909192;}
+
+input#startTask { background: url(/images/btn_startthis.png) top left no-repeat; width: 124px; height: 36px; display: block; text-indent: -9999em; border: none;}
+
