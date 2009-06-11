@@ -1,0 +1,50 @@
+<ul>
+  <li>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => 'text' %>
+  </li>
+  <li>
+    <%= f.label :url %>
+    <%= f.text_field :url, :class => 'text' %>
+  </li>
+  <li>
+    <label for="campaign[private_description]">Internal Description</label>
+    <%= f.text_area :private_description, :class => 'textarea', :cols => 32, :rows => 5 %>
+  </li>
+  <li>
+    <label for="campaign[description]">External Description</label>
+    <%= f.text_area :description, :class => 'textarea', :cols => 32, :rows => 5 %>
+  </li>
+  <li>
+    <label for="campaign[points]">Points Per Task</label>
+    <%= f.select :points, 1..9, :class => 'pointsDropdown' %>
+    
+    <% if_javascript do %>
+      <span>
+        <a href="#" onclick="$('#campaign_points').val('<%= RECOMMENDED_CAMPAIGN_POINTS %>'); return false">
+          Recommended Number of Points
+        </a>
+      </span>
+    <% end %>
+    
+  </li>
+  <li>
+    <label for="campaign[instructions]">Task Instructions</label>
+    <%= f.text_area :instructions, :class => 'textarea', :cols => '32', :rows => '5' %>
+  </li>
+  <li>
+    <label for="campaign[start_at]">Start</label>
+    <%= f.datetime_select :start_at, :prompt => true %>
+    <% if_javascript do %>
+      <%= link_to 'Now', '#', :onclick => 'setToNow("campaign", "start_at"); return false' %>
+    <% end %>
+  </li>
+  <li>
+    <label for="campaign[runs]">Times to Run Task</label>
+    <%= f.text_field :runs, :class => 'text' %>
+  </li>
+  <li>
+    <label for="campaign[user_runs]">Runs Per User </label>
+    <%= f.text_field :user_runs, :class => 'text' %>
+  </li>
+</ul>

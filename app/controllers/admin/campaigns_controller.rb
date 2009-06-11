@@ -1,14 +1,28 @@
 class Admin::CampaignsController < ApplicationController
   layout 'admin'
-  
   skip_before_filter :load_sidebar
+  
   before_filter :require_login
   before_filter :require_manager
   
   before_filter :load_campaign, :only => [:edit, :update, :destroy]
 
   def index
-    @campaigns = current_user.campaigns
+    @campaigns = current_user.campaigns.all(:order => 'created_at DESC')
+  end
+  
+  def new
+    @campaign = current_user.campaigns.new
+  end
+  
+  def create
+    @campaign = current_user.campaigns.new params[:campaign]
+    if @campaign.save
+      flash[:success] = 'Campaign created.'
+      redirect_to admin_campaigns_path
+    else
+      render :action => :new
+    end
   end
   
   def edit

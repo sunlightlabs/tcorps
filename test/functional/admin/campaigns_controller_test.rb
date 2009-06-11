@@ -36,6 +36,72 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
   
+  test '#new requires login' do
+    get :new
+    assert_redirected_to root_path
+  end
+  
+  test '#new requires login as at least a manager' do
+    login Factory(:user)
+    get :new
+    assert_redirected_to root_path
+  end
+  
+  test '#create creates a campaign' do
+    count = Campaign.count
+    
+    user = Factory :manager
+    login user
+    
+    post :create, :campaign => Factory.attributes_for(:campaign, :creator => user)
+    assert_redirected_to admin_campaigns_path
+    assert_not_nil flash[:success]
+    
+    assert_equal count + 1, Campaign.count
+  end
+  
+  test '#create renders with errors if campaign is invalid' do
+    count = Campaign.count
+    
+    user = Factory :manager
+    login user
+    
+    post :create, :campaign => Factory.attributes_for(:campaign, :creator => user, :name => nil)
+    assert_response :success
+    assert assigns(:campaign).errors.any?
+    
+    assert_equal count, Campaign.count
+  end
+  
+  test '#create will only create a campaign for the logged in user' do
+    user = Factory :manager
+    login user
+   
+    count = Campaign.count
+    my_count = user.campaigns.count
+    
+    post :create, :campaign => Factory.attributes_for(:campaign, :creator_id => Factory(:manager).id)
+    assert_redirected_to admin_campaigns_path
+    
+    assert_equal my_count + 1, user.campaigns.count
+    assert_equal count + 1, Campaign.count
+  end
+  
+  test '#create requires login' do
+    count = Campaign.count
+    post :create, :campaign => Factory.attributes_for(:campaign)
+    assert_redirected_to root_path
+    assert_equal count, Campaign.count
+  end
+  
+  test '#create requires login as at least a manager' do
+    count = Campaign.count
+    login Factory(:user)
+    post :create, :campaign => Factory.attributes_for(:campaign)
+    assert_redirected_to root_path
+    assert_equal count, Campaign.count
+  end
+  
   test '#edit loads a campaign for editing' do
     user = Factory :manager
     campaign = Factory :campaign, :creator => user
