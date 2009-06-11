@@ -101,6 +101,8 @@ body.home div.taskDetail{ padding: 5px 20px;}
 div#ltColumn div.taskDetail, form#contactForm, div#signup_options, form#edit_user_1, div#signin_options{ background: #f9f9f9; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: solid 1px #ececed;  padding: 15px 20px; margin-bottom: 15px;}
 div#signup_options, div#signin_options{ margin-top: -1px;}
 
+
+
 div#signup_options, form#contactForm, form#new_user_session, form#edit_user_1{ padding-top: 25px; padding-bottom: 40px;}
 
 span.tagValue{
@@ -117,6 +119,20 @@ div#rtColumn span.tagValue{ background: url(/images/highlightBar.jpg) left top r
 div.taskBar{ background-color: #fff; width: 403px; border: 1px solid #bfbfbe; position: relative; line-height: 1.3em; height: 10px; float: left; margin: 6px 13px 0 0;}
 div#rtColumn div.taskBar{ width: 180px; height: 5px;}
 body.home div#rtColumn div.taskBar{ width: 185px;}
+
+ul#taskList div.taskBar{ height: 5px;}
+div#ltColumn ul#taskList div.taskMetadata span{ margin-right: 10px;}
+div#ltColumn ul#taskList div.taskTop{ padding: 15px 0 0 0 ;}
+ul#taskList li { border-bottom: solid 1px #ececed; padding-bottom: 15px; margin-bottom: 15px;}
+ul#taskList h3 { font-size: 150%; float: left;}
+div#ltColumn ul#taskList div.taskDetail { padding: 8px 20px;}
+div#ltColumn ul#taskList span.tagNumber{ font-size: 90%;}
+div#ltColumn ul#taskList span.tagValue { background: url(/images/highlightBar.jpg) repeat-x left top;}
+
+span.startBtn{ width: 98px; height: 36px; border: none 0; background: none; margin-bottom: 10px; float: right; cursor: pointer;}
+span.startBtn a{ width: 98px; height: 36px; text-indent: -9999em; background: url(/images/btn_start.png) top left no-repeat; display: block;  border: none;}
+
+
 
 span.tagNumber { font-weight: bold; font-size: 90%; color: #da7c02;}
 div#ltColumn span.tagNumber { font-size: 110%; padding-top: 5px; }
