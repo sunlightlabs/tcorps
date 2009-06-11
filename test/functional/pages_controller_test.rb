@@ -27,7 +27,7 @@ class PagesControllerTest < ActionController::TestCase
     post :contact, :email => email, :message => message
     assert_response :success
     assert_template 'contact'
-    assert_not_nil flash[:failure]
+    assert_not_nil assigns(:error_messages)
   end
   
   test '#contact with post requires email' do
@@ -39,7 +39,7 @@ class PagesControllerTest < ActionController::TestCase
     post :contact, :name => name, :message => message
     assert_response :success
     assert_template 'contact'
-    assert_not_nil flash[:failure]
+    assert_not_nil assigns(:error_messages)
   end
   
   test '#contact with post requires message' do
@@ -51,7 +51,7 @@ class PagesControllerTest < ActionController::TestCase
     post :contact, :name => name, :email => email
     assert_response :success
     assert_template 'contact'
-    assert_not_nil flash[:failure]
+    assert_not_nil assigns(:error_messages)
   end
   
   test 'page routes' do

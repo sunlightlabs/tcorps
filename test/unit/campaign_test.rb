@@ -85,4 +85,12 @@ class CampaignTest < ActiveSupport::TestCase
     assert campaign3.complete?
   end
   
+  test '#complete? for a user will always return true if the user_runs field is blank' do
+    user = Factory :user
+    endless_campaign = Factory :campaign, :user_runs => nil
+    
+    Factory :completed_task, :user => user
+    assert false
+  end
+  
 end
