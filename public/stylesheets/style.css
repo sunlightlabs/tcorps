@@ -213,3 +213,24 @@ p.tip{ font-style: oblique; font-size: 90%; line-height: 15px; color: #909192;}
 
 input#startTask { background: url(/images/btn_startthis.png) top left no-repeat; width: 124px; height: 36px; display: block; text-indent: -9999em; border: none;}
 
+
+
+div.rank { margin-left: 30px; margin-bottom: 30px;}
+div.rank p{ text-align: center; font-style: oblique;}
+ol#leaders{ margin-left: 50px;}
+ol#leaders li{ margin-left: 10px; margin-right: 10px;float: left; width: 170px; }
+ol#leaders li img{ float: left; margin: 0 10px 20px 0;}
+div.rankHeader{ background: url(images/fullBar.png) bottom left no-repeat; width: ; padding-bottom: 30px; margin-bottom: 20px;}
+body.leaders dl{ font-family: Baskerville, Georgia, Times New Roman, Times, serif; padding-top: 40px; padding-left: 60px;}
+body.leaders dt{ float: left;}
+span.leaderName{ display: block; line-height: 18px; margin-bottom: 5px;}
+
+dt.rankTitle, dt.pointTitle {display: none; }
+dd.rankTitle{ font-size: 280%; color: #231f20; margin-bottom: 10px; font-weight: bold;}
+
+div.rankHeader dl dt { margin-right: 3px;}
+
+.level{ font-size: 140%; margin-bottom: 8px; color: #797474; }
+
+dd.pointTitle, span.leaderPoints {font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #a8a8a8; font-style: oblique;}
+div.rankHeader img { float: left; margin: 0 10px 10px 40px;}
