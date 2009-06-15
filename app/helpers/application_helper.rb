@@ -10,4 +10,8 @@ module ApplicationHelper
   def period(string)
     string << (string.last == '.' ? '' : '.')
   end
+  
+  def open_id_return?
+    params[:open_id_complete] == '1'
+  end
 end

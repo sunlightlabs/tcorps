@@ -176,7 +176,7 @@ input#update_button{ background: url(/images/btn_update.png) top left no-repeat;
 form#new_user input#user_submit{ background: url(/images/btn_register.png) top left no-repeat; margin-left: 160px;}
 form#new_user_session input#user_session_submit { background: url(/images/btn_login.png) top left no-repeat; margin-left: 100px;}
 
-div#signupNav li, div#signinNav li{ float: left; padding: 5px 5px 8px; margin-top: 10px;}
+div#signup_nav li, div#signin_nav li{ float: left; padding: 5px 5px 8px; margin-top: 10px;}
 li#nav_aol a{ width: 75px; height: 20px; background: url(/images/logo_aol.png) top center no-repeat; text-indent: -9999em; display: block;}
 li#nav_aol { width: 75px; height: 20px;}
 

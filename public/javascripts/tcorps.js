@@ -1,73 +1,24 @@
 var GB_ANIMATION = true;
+
 $(document).ready(function(){    
-  $("div.signup_option").hide();
-  $("div#signup_standard").show();
-    
-  $("li#nav_standard a").click(function(){
-    $("div.signup_option").hide();
-    $("div#signup_standard").show();
+  $('div#signin_nav li a, div#signup_nav li a').click(function() {
+    var name = $(this).parent('li')[0].id.split('_')[1];
+    var type = $(this).parents('div.nav')[0].id.split('_')[0];
+    return switch_nav(name, type);
   });
-  
-  $("li#nav_aol a").click(function(){
-    $("div.signup_option").hide();
-    $("div#signup_aol").show();
-  });
-  
-  $("li#nav_yahoo a").click(function(){
-    $("div.signup_option").hide();
-    $("div#signup_yahoo").show();
-  });
-  
-  $("li#nav_google a").click(function(){
-    $("div.signup_option").hide();
-    $("div#signup_google").show();
-  });
-  
-  $("li#nav_facebook a").click(function(){
-    $("div.signup_option").hide();
-    $("div#signup_facebook").show();
-  });
-  
-  $("li#nav_openid a").click(function(){
-    $("div.signup_option").hide();
-    $("div#signup_openid").show();
-  });
-  
-  
-  $("div.signin_option").hide();
-  $("div#signin_standard").show();
-    
-  $("li#nav_standard a").click(function(){
-    $("div.signin_option").hide();
-    $("div#signin_standard").show();
-  });
-  
-  $("li#nav_aol a").click(function(){
-    $("div.signin_option").hide();
-    $("div#signin_aol").show();
-  });
-  
-  $("li#nav_yahoo a").click(function(){
-    $("div.signin_option").hide();
-    $("div#signin_yahoo").show();
-  });
-  
-  $("li#nav_google a").click(function(){
-    $("div.signin_option").hide();
-    $("div#signin_google").show();
-  });
-  
-  $("li#nav_facebook a").click(function(){
-    $("div.signin_option").hide();
-    $("div#signin_facebook").show();
-  });
-  
-  $("li#nav_openid a").click(function(){
-    $("div.signin_option").hide();
-    $("div#signin_openid").show();
-  });
-  
 });
+
+function switch_nav(name, type) {
+  var nav_item = $('li#nav_' + name);
+  var other_navs = $('div#' + type + '_nav li:not(#nav_' + name + ')');
+  
+  $('div.' + type + '_option').hide();
+  $('div#' + type + '_' + name).show();
+  other_navs.removeClass('active');
+  nav_item.addClass('active');
+  
+  return false;
+}
 
 function setToNow(object, field) {
   var base = object + "_" + field;
