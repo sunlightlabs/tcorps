@@ -67,7 +67,7 @@ $(document).ready(function(){
     $("div#signin_openid").show();
   });
   
-};
+});
 
 function setToNow(object, field) {
   var base = object + "_" + field;
