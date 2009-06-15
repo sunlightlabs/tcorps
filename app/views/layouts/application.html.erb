@@ -29,11 +29,11 @@
               <% end %>
               
               <%= link_to 'Edit Profile', edit_user_path(current_user) %>
-				|
+        |
               <%= link_to 'Sign Out', logout_path %>
             <% else %>
               <%= link_to 'Join Us', register_path %>
-				|
+        |
               <%= link_to 'Sign In', login_path %>
             <% end %>
           </div>
