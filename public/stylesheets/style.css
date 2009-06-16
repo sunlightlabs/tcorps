@@ -268,3 +268,6 @@ div.rankHeader img { float: left; margin: 0 10px 10px 40px;}
 div.contact_form_validation, div.error { margin-bottom: 15px; font-size: 120%; font-weight: bold; color: #b52802;}
 div.error{ margin-bottom: 0px;}
 div.errors{ margin-bottom: 15px;}
+
+div.success{ width: 520px; background: #f7f2cc; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: 1px solid #fae19c; padding: 10px; margin-left: 30px; color: #da7c02;}
+body.home div.success{ width: 472px;}
