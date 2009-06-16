@@ -265,4 +265,6 @@ div.rankHeader dl dt { margin-right: 3px;}
 dd.pointTitle, span.leaderPoints {font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #a8a8a8; font-style: oblique;}
 div.rankHeader img { float: left; margin: 0 10px 10px 40px;}
 
-div.contact_form_validation { margin-bottom: 15px; font-size: 130%; font-weight: bold; color: #b52802;}
+div.contact_form_validation, div.error { margin-bottom: 15px; font-size: 120%; font-weight: bold; color: #b52802;}
+div.error{ margin-bottom: 0px;}
+div.errors{ margin-bottom: 15px;}
