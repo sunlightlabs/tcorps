@@ -11,7 +11,7 @@ class TasksHelperTest < ActionView::TestCase
     task = Factory :task, :key => 'example_key', :user => user, :campaign => campaign
     url = task_url task, user
     
-    assert_match /login=#{user.login}/, url
+    assert_match /username=#{user.login}/, url
     assert_match /task_key=#{task.key}/, url
     assert_match /points=#{user.campaign_points(campaign)}/, url
     assert_match campaign.url, url

@@ -2,7 +2,7 @@ module TasksHelper
 
   def task_url(task, user)
     options = {
-      :login => user.login,
+      :username => user.login,
       :task_key => task.key,
       :points => user.campaign_points(task.campaign)
     }
