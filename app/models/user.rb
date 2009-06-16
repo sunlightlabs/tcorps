@@ -22,8 +22,7 @@ class User < ActiveRecord::Base
     !organization_name.blank?
   end
   
-  # custom Paperclip interpolation for the random male/female silhouette
-
+  # randomize the default silhouette between male and female
   Paperclip::Attachment.interpolations[:silhouette] = proc do |attachment, style|
     "avatar_#{[:female, :male][rand 2]}.jpg"
   end
