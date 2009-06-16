@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   before_filter :load_task, :only => :show
   before_filter :load_campaign, :only => :create
   
+  skip_before_filter :verify_authenticity_token, :only => :complete
+  
   def complete
     head :method_not_allowed and return false unless request.post?
    
@@ -22,7 +24,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to task_path(@task)
     else
-      flash[:failure] = "You can't do any more tasks from this campaign."
+      flash[:failure] = "You can't do any more tasks from this campaign. Please choose another!"
       redirect_to root_path
     end    
   end
