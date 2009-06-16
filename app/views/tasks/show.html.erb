@@ -1,14 +1,15 @@
 <div class="header">
   <span class="title"><%= h @task.campaign.name %></span>
   
+  <% form_tag tasks_path, :method => :post do %>
+    <%= hidden_field_tag :campaign_id, @task.campaign.id %>
+    <%= submit_tag "I'd Like Another Task", :id => 'anotherTask' %>
+  <% end %>
+  <div class="clear"></div>
   <span class="instructions">
     <%= h @task.campaign.instructions %>
   </span>
-  
-  <% form_tag tasks_path, :method => :post do %>
-    <%= hidden_field_tag :campaign_id, @task.campaign.id %>
-    <%= submit_tag "I'd Like Another Task", :id => 'startTask' %>
-  <% end %>
+
 </div>
 
 <iframe id="task_frame" name="task_frame" src="<%= task_url @task, current_user %>"></iframe>

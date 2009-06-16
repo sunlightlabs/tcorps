@@ -32,10 +32,33 @@ h1 a{ width: 260px; height: 176px; background: url(/images/logo.png) top left no
 div#accountInfo a{ color: #fff; font-weight: bold; padding: 0 3px 0 4px; margin-right: 3px;}
 div#accountInfo{ text-align: right; padding-top: 8px; color: #e6e7e8;}
 
-div#featureSection a { background: url(/images/btn_getStarted.png) bottom left no-repeat; display: block; width: 197px; height: 85px; text-indent: -9999em; margin-left: 720px; padding-top: 130px;}
-div#featureSection h2{ font-size: 250%; color: #e7e7e8; line-height: 35px; margin-bottom: 10px;}
-div#featureText{ width: 480px; float: left; margin-left: 220px; padding-top: 55px;}
-div#featureText p { width: 370px; font-size: 113%; color: #848383;}
+div#featureSection a { 
+    background: url(/images/btn_getStarted.png) bottom left no-repeat; 
+    display: block; 
+    width: 197px; 
+    height: 85px; 
+    text-indent: -9999em; 
+    margin-left: 720px; 
+    //padding-top: 130px;
+    padding-top: 105px;
+}
+
+div#featureSection h2{ font-size: 250%; color: #e7e7e8; line-height: 35px; margin-bottom: 10px;   width: 600px;}
+div#featureText{ 
+    //width: 480px; 
+    width: 550px; 
+    float: left; 
+    //margin-left: 220px; 
+    margin-left: 50px; 
+    //padding-top: 55px;
+    padding-top: 65px;
+}
+div#featureText p { 
+    //width: 370px; 
+    width: 600px; 
+    font-size: 113%; 
+    color: #848383;
+}
 
 div#nav ul{ margin-bottom: 122px; margin-left:350px;}
 div#nav ul li {float: left; margin-left: 10px;}
@@ -59,7 +82,12 @@ div#featureSection { background: url(/images/featureBox2.jpg) top left no-repeat
 body.home div#ltColumn{ width: 492px;}
 div#ltColumn{ padding: 20px 30px 40px; width: 540px; float: left;}
 
-h2{ font-family: Baskerville, Georgia, Times New Roman, Times, serif; color: #231f20; font-size: 235%; float: left;}
+h2{ 
+    font-family: Baskerville, Georgia, Times New Roman, Times, serif; 
+    color: #231f20; 
+    font-size: 235%; 
+    float: left;
+}
 
 /*div#ltColumn h2{ background: url(/images/bar_ltColumn.png) bottom left no-repeat; width: 492px; height: 29px; display: block; font-size: 235%; padding-bottom: 10px; margin-bottom: 10px;}*/
 div.mainTaskHeader{ background: url(/images/bar_ltColumn.png) bottom left no-repeat; width: 572px; height: 29px; display: block; padding-bottom: 10px; margin-bottom: 20px;}
@@ -99,7 +127,7 @@ div#rtColumn ul li { margin-bottom: 20px;}
 div.taskDetail{ background: #ececed; -moz-border-radius-bottomright: 3px; -webkit-border-radius-bottomleft: 3px; padding: 5px 15px;}
 body.home div.taskDetail{ padding: 5px 20px;}
 div#ltColumn div.taskDetail, form#contactForm, div#signup_options, form.edit_user, div#signin_options{ background: #f9f9f9; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: solid 1px #ececed;  padding: 15px 20px; margin-bottom: 15px;}
-div#signup_options, div#signin_options{ margin-top: -1px;}
+div#signup_options, div#signin_options{ margin-top: -2px;}
 
 
 
@@ -142,7 +170,7 @@ div#taskScoreboard dt, div#taskScoreboard dd{ color: #fff; font-size: 150%; font
 div#taskScoreboard dl { padding: 50px 0 0 60px;}
 div#taskScoreboard dt{ float: left; font-weight: bold; margin-right: 5px;}
 
-a#anotherTask{ background: url(/images/btn_anotherTask.png) top left no-repeat; width: 148px; height: 37px; display: block; text-indent: -9999em;}
+input#anotherTask{ background: url(/images/btn_anotherTask.png) top left no-repeat; width: 148px; height: 37px; display: block; text-indent: -9999em; border: none; float: right;}
 
 form#contactForm label, form#new_user label, form#new_user_session label, form.edit_user label{ font-weight: bold; width: 100px; display: block; float: left; padding-top:5px;}
 form#new_user label, form.edit_user label{ width: 160px;}
@@ -165,18 +193,20 @@ div#footerBrand a{ background: url(/images/foundationLogo.png) top left no-repea
 /* Styling for popup task page - needs attention */
 
 body.task div.header {height: 50px; padding: 10px;}
-body.task div.header span.title {float: left; font-size: 200%;}
-body.task div.header span.instructions {float: left; font-size: 100%; padding-left: 20px;}
+body.task div.header span.title {font-size: 200%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; color: #231f20; margin-bottom: 10px; float: left; padding-top: 5px;}
+body.task div.header span.instructions {float: left; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; margin-bottom: 15px;}
 body.task div.header input {float: right;}
 
 iframe#task_frame {width: 95%; height: 500px; margin: 0; padding: 0; clear: both;}
 
-form#new_user input#user_submit, form#new_user_session input#user_session_submit, form.edit_user input#update_button{  border: none; display: block; width: 137px; height: 44px; text-indent: -9999em; margin-top: 20px;}
+form#new_user input#user_submit, form#new_user_session input#user_session_submit, form.edit_user input#update_button, button.openidBtn {  border: none; display: block; width: 137px; height: 44px; text-indent: -9999em; margin-top: 20px;}
+div#signin_options button.openidBtn{ margin-left: 0px;}
+button.openidBtn{ margin-left: 160px;}
 input#update_button{ background: url(/images/btn_update.png) top left no-repeat; margin-left: 160px;}
 form#new_user input#user_submit{ background: url(/images/btn_register.png) top left no-repeat; margin-left: 160px;}
 form#new_user_session input#user_session_submit { background: url(/images/btn_login.png) top left no-repeat; margin-left: 100px;}
 
-div#signup_nav li, div#signin_nav li{ float: left; padding: 5px 5px 8px; margin-top: 10px;}
+div#signup_nav li, div#signin_nav li{ float: left; padding: 5px 5px 8px; margin-top: 10px; margin-right: 5px;}
 li#nav_aol a{ width: 75px; height: 20px; background: url(/images/logo_aol.png) top center no-repeat; text-indent: -9999em; display: block;}
 li#nav_aol { width: 75px; height: 20px;}
 
@@ -234,3 +264,7 @@ div.rankHeader dl dt { margin-right: 3px;}
 
 dd.pointTitle, span.leaderPoints {font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color: #a8a8a8; font-style: oblique;}
 div.rankHeader img { float: left; margin: 0 10px 10px 40px;}
+
+div.contact_form_validation, div.error { margin-bottom: 15px; font-size: 120%; font-weight: bold; color: #b52802;}
+div.error{ margin-bottom: 0px;}
+div.errors{ margin-bottom: 15px;}
