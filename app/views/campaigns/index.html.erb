@@ -12,29 +12,28 @@
         <div class="taskHeader">
           <h3><%= link_to h(campaign.name), campaign_path(campaign) %></h3>
           <div class="taskMetadata">
-            <!--<% if is_home? yield(:class) %>-->
-              <span>points</span>
-            <!--<% end %>-->
-			<span>points</span>
+            <span>points</span>
             <span class="taskValue"><%= campaign.points %></span>
           </div>
           <div class="clear"></div>
         </div>
-		<div class="taskDetail">
-	        <% percent = campaign.percent_complete %>
-	        <div class="taskBar">
-	          <span class="tagValue" style="width: <%= percent %>%"><%= percent %>%</span>
-	        </div>
-	        <span class="tagNumber"><%= 100 - percent %>% To Go</span>
-	      	<div class="clear"></div>
-		  </div>
-		</div>
-        <p><%= h(campaign.description) %></p>
-		<span class="startBtn">
-			<a href="#">Start Task</a>
-		</span>
-		<div class="clear"></div>
-
+        <div class="taskDetail">
+          <% percent = campaign.percent_complete %>
+          <div class="taskBar">
+            <span class="tagValue" style="width: <%= percent %>%"><%= percent %>%</span>
+          </div>
+          <span class="tagNumber"><%= 100 - percent %>% To Go</span>
+          <div class="clear"></div>
+        </div>
+      </div>
+      
+      <p><%= campaign.description %></p>
+      
+      <span class="startBtn">
+        <a href="#">Start Task</a>
+      </span>
+      <div class="clear"></div>
+      
     </li>
   <% end %>
 </ul>
