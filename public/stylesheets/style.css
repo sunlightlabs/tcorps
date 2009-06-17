@@ -245,7 +245,7 @@ input#startTask { background: url(/images/btn_startthis.png) top left no-repeat;
 
 
 
-body.leaders div#ltColumn{ width: 960px;}
+body.leaders div#ltColumn{ width: 860px;}
 div.rank { margin-bottom: 30px;}
 div.rank p{ text-align: center; font-style: oblique;}
 ol.leaders{ margin-left: 50px;}
