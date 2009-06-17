@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
 
+  def index
+    redirect_to campaigns_path if logged_in?
+  end
+
   def contact
     if request.post?
       if params[:name].blank? or params[:email].blank? or params[:message].blank?
