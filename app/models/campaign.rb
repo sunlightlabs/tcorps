@@ -14,7 +14,7 @@ class Campaign < ActiveRecord::Base
     # and the id attribute is not subject to user manipulation, so this is safe
     {
       :select => "campaigns.*, (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) as task_count, (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL and tasks.user_id = #{user.id}) as user_task_count", 
-      :conditions => "task_count < campaigns.runs and user_task_count < campaigns.user_runs"
+      :conditions => "task_count < campaigns.runs and (campaigns.user_runs IS NULL OR campaigns.user_runs = 0 OR user_task_count < campaigns.user_runs)"
     }
   }
   

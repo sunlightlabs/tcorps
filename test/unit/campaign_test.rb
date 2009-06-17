@@ -45,6 +45,7 @@ class CampaignTest < ActiveSupport::TestCase
     campaign1 = Factory :campaign, :runs => 20, :user_runs => 2
     campaign2 = Factory :campaign, :runs => 20, :user_runs => 2
     campaign3 = Factory :campaign, :runs => 20, :user_runs => 2
+    campaign4 = Factory :campaign, :runs => 20, :user_runs => nil
     
     Factory :task, :campaign => campaign1, :user => user
     Factory :task, :campaign => campaign1, :user => user
@@ -55,10 +56,12 @@ class CampaignTest < ActiveSupport::TestCase
     assert Campaign.active.include?(campaign1)
     assert Campaign.active.include?(campaign2)
     assert Campaign.active.include?(campaign3)
+    assert Campaign.active.include?(campaign4)
     
     assert Campaign.active_for(user).include?(campaign1)
     assert Campaign.active_for(user).include?(campaign2)
     assert !Campaign.active_for(user).include?(campaign3)
+    assert Campaign.active_for(user).include?(campaign4)
   end
   
   test '#complete? indicates whether the maximum runs have been met' do
