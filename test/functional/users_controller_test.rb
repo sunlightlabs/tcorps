@@ -4,7 +4,7 @@ class UsersControllerTest < ActionController::TestCase
 
   setup :activate_authlogic
 
-  test '#index loads users by and with points' do
+  test '#index loads leaders with points' do
     User.expects(:by_points).returns User
     User.expects(:leaders).returns User
     get :index

@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   def index
     @users = User.by_points.leaders.all
     @groups = @users.group_by {|u| u.level}
+    @max_level = @users.any? ? [@users.first.level + 1, LEVELS.keys.size].min : 1
+    @levels = (1..@max_level).to_a.reverse
   end
 
   def new

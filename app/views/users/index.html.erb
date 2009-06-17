@@ -1,8 +1,7 @@
 <% content_for :class, :leaders %>
 <% content_for :hide_sidebar, true %>
 
-<% LEVELS.keys.each_with_index do |points, level| %>
-  <% level = LEVELS.keys.size - level %>
+<% @levels.each do |level| %>
   <div class="rank">
     <div class="rankHeader">
       <img src="/images/leaders_<%= level %>.png" />
