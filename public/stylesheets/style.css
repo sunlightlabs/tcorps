@@ -131,7 +131,7 @@ div#signup_options, div#signin_options{ margin-top: -2px;}
 
 
 
-div#signup_options, form#contactForm, form#new_user_session, form.edit_user{ padding-top: 25px; padding-bottom: 40px;}
+div#signup_options, form#contactForm, div.signin_option ul, form.edit_user{ padding-top: 25px; padding-bottom: 40px;}
 
 span.tagValue{
     background: url(/images/highlightBar2.jpg) left top repeat-x;
