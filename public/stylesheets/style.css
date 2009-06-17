@@ -250,7 +250,7 @@ div.rank p{ text-align: center; font-style: oblique;}
 ol.leaders{ margin-left: 50px;}
 ol.leaders li{ margin-left: 10px; margin-right: 10px;float: left; width: 170px; }
 ol.leaders li img{ float: left; margin: 0 10px 20px 0;}
-div.rankHeader{ background: url(images/fullBar.png) bottom left no-repeat; width: ; padding-bottom: 30px; margin-bottom: 20px;}
+div.rankHeader{ background: url(/images/fullBar.png) bottom left no-repeat; width: ; padding-bottom: 30px; margin-bottom: 20px;}
 body.leaders dl{ font-family: Baskerville, Georgia, Times New Roman, Times, serif; padding-top: 40px; padding-left: 60px;}
 body.leaders dt{ float: left;}
 span.leaderName{ display: block; line-height: 18px; margin-bottom: 5px;}
