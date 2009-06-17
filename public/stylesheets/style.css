@@ -129,7 +129,7 @@ body.home div.taskDetail{ padding: 5px 20px;}
 div#ltColumn div.taskDetail, form#contactForm, div#signup_options, form.edit_user, div#signin_options{ background: #f9f9f9; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: solid 1px #ececed;  padding: 15px 20px; margin-bottom: 15px;}
 div#signup_options, div#signin_options{ margin-top: -2px;}
 
-
+p.join {font-weight: bold; font-size: 1.2em;}
 
 div#signup_options, form#contactForm, div.signin_option ul, form.edit_user{ padding-top: 25px; padding-bottom: 40px;}
 
