@@ -39,6 +39,28 @@ class CampaignTest < ActiveSupport::TestCase
     assert !Campaign.active.include?(campaign3)
   end
   
+  test '#active named scope limits search to campaigns where the user has not reached their individual run limit' do
+    user = Factory :user
+    
+    campaign1 = Factory :campaign, :runs => 20, :user_runs => 2
+    campaign2 = Factory :campaign, :runs => 20, :user_runs => 2
+    campaign3 = Factory :campaign, :runs => 20, :user_runs => 2
+    
+    Factory :task, :campaign => campaign1, :user => user
+    Factory :task, :campaign => campaign1, :user => user
+    Factory :completed_task, :campaign => campaign2, :user => user
+    Factory :completed_task, :campaign => campaign3, :user => user
+    Factory :completed_task, :campaign => campaign3, :user => user
+    
+    assert Campaign.active.include?(campaign1)
+    assert Campaign.active.include?(campaign2)
+    assert Campaign.active.include?(campaign3)
+    
+    assert Campaign.active_for(user).include?(campaign1)
+    assert Campaign.active_for(user).include?(campaign2)
+    assert !Campaign.active_for(user).include?(campaign3)
+  end
+  
   test '#complete? indicates whether the maximum runs have been met' do
     campaign1 = Factory :campaign, :runs => 2
     campaign2 = Factory :campaign, :runs => 2
