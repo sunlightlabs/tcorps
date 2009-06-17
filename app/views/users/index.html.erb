@@ -1,0 +1,31 @@
+<% @users.group_by {|user| user.level}.each do |level, users| %>
+  <div class="rank">
+    <div class="rankHeader">
+      <img src="/images/leaders_<%= level %>.png" />
+      <dl>
+        <dt class="level">Level</dt>
+        <dd class="level"><%= to_word level %></dd>
+        
+        <dt class="rankTitle">Rank</dt>
+        <dd class="rankTitle"><%= LEVELS[LEVELS.keys.sort[level-1]] %></dd>
+        
+        <dt class="pointTitle">Points</dt>
+        <dd class="pointTitle"><%= LEVELS.keys.sort[level-1] %> Points</dd>
+      </dl>
+    </div>
+    <% if users.any? %>
+      <ol class="leaders">
+        <% users.each do |user| %>
+          <li>
+            <%= image_tag user.avatar.url(:normal) %>
+            <span class="leaderName"><%= h user.login %></span>
+            <span class="leaderPoints"><%= user.sum_points %> pts</span>
+          </li>
+        <% end %>
+      </ol>
+    <% else %>
+      <p>No one has achieved this level.</p>
+    <% end %>
+    <div class="clear"></div>
+  </div>
+<% end %>

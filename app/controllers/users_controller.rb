@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   before_filter :require_login, :only => [:edit, :update]
   before_filter :require_self, :only => [:edit, :update]
 
+  def index
+    @users = User.by_points.leaders.all
+  end
+
   def new
     @user = User.new
   end

@@ -247,9 +247,9 @@ input#startTask { background: url(/images/btn_startthis.png) top left no-repeat;
 
 div.rank { margin-left: 30px; margin-bottom: 30px;}
 div.rank p{ text-align: center; font-style: oblique;}
-ol#leaders{ margin-left: 50px;}
-ol#leaders li{ margin-left: 10px; margin-right: 10px;float: left; width: 170px; }
-ol#leaders li img{ float: left; margin: 0 10px 20px 0;}
+ol.leaders{ margin-left: 50px;}
+ol.leaders li{ margin-left: 10px; margin-right: 10px;float: left; width: 170px; }
+ol.leaders li img{ float: left; margin: 0 10px 20px 0;}
 div.rankHeader{ background: url(images/fullBar.png) bottom left no-repeat; width: ; padding-bottom: 30px; margin-bottom: 20px;}
 body.leaders dl{ font-family: Baskerville, Georgia, Times New Roman, Times, serif; padding-top: 40px; padding-left: 60px;}
 body.leaders dt{ float: left;}

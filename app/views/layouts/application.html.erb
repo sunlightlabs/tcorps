@@ -43,7 +43,7 @@
                 <%= link_to 'Tasks', campaigns_path, :class => (yield(:class).to_s == 'tasks' ? 'active' : '') %>
               </li>
               <li id="nav_leaders">
-                <%= link_to 'Transparency Leaders', '#' %>
+                <%= link_to 'Transparency Leaders', leaders_path %>
               </li>
               <li id="nav_about">
                 <%= link_to 'About', about_path, :class => (yield(:class).to_s == 'about' ? 'active' : '') %>

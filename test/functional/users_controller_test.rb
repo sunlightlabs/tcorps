@@ -4,6 +4,14 @@ class UsersControllerTest < ActionController::TestCase
 
   setup :activate_authlogic
 
+  test '#index loads users by and with points' do
+    User.expects(:by_points).returns User
+    User.expects(:leaders).returns User
+    get :index
+    assert_response :success
+    assert_template 'index'
+  end
+
   test '#new renders successfully' do
     get :new
     assert_response :success
@@ -201,4 +209,5 @@ class UsersControllerTest < ActionController::TestCase
     assert_not_equal openid, user.reload.openid_identifier
     assert_equal openid.succ, session[:working_openid]
   end
+  
 end

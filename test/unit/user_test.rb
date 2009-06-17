@@ -2,6 +2,43 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   
+  test '#by_points includes points as an attribute on user and sorts on this attribute' do
+    user1 = Factory :user
+    user2 = Factory :user
+    user3 = Factory :user
+    
+    campaign_one = Factory :campaign, :creator => user1, :points => 1
+    campaign_two = Factory :campaign, :creator => user2, :points => 2
+    campaign_three = Factory :campaign, :creator => user3, :points => 4
+    campaign_four = Factory :campaign, :creator => user3, :points => 8
+    Factory :completed_task, :campaign => campaign_one, :user => user3
+    Factory :completed_task, :campaign => campaign_two, :user => user1
+    Factory :completed_task, :campaign => campaign_three, :user => user2
+    Factory :completed_task, :campaign => campaign_four, :user => user2
+    
+    assert_equal [user2, user1, user3], User.by_points.all
+    assert_nothing_raised do
+      assert_equal 12, User.by_points.first.sum_points.to_i
+    end
+  end
+  
+  test '#leaders only returns people who are at least level 1' do
+    minimum = LEVELS.keys.sort.first
+    
+    user1 = Factory :user
+    user2 = Factory :user
+    user3 = Factory :user
+    
+    campaign_one = Factory :campaign, :creator => user1, :points => minimum - 1
+    campaign_two = Factory :campaign, :creator => user1, :points => minimum
+    campaign_three = Factory :campaign, :creator => user1, :points => minimum + 1
+    Factory :completed_task, :campaign => campaign_one, :user => user1
+    Factory :completed_task, :campaign => campaign_two, :user => user2
+    Factory :completed_task, :campaign => campaign_three, :user => user3
+    
+    assert_equal [user3, user2], User.by_points.leaders.all
+  end
+  
   test '#total_points counts tasks from all campaigns' do
     user = Factory :user
     assert_equal 0, user.total_points
