@@ -27,7 +27,11 @@
   <%= @campaign.description %>
 </p>
 
-<% form_tag tasks_path, :method => :post, :target => '_blank' do %>
+<% form_tag tasks_path, :method => :post, :target => (logged_in? ? '_blank' : '') do %>
+  <% if !logged_in? %>
+    <%= hidden_field_tag :goto, campaign_path(@campaign) %>
+  <% end %>
+  
   <%= hidden_field_tag :campaign_id, @campaign.id %>
   <%= submit_tag 'Start This Task', :id => 'startTask' %>
 <% end %>

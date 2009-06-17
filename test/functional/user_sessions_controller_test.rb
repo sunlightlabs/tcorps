@@ -9,7 +9,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     assert_nil UserSession.find
     
     post :create, :user_session => {:login => user.login, :password => 'test'}
-    assert_redirected_to root_path
+    assert_redirected_to tasks_path
     assert_not_nil flash[:success]
     
     assert_not_nil UserSession.find
@@ -26,6 +26,15 @@ class UserSessionsControllerTest < ActionController::TestCase
     assert_not_nil flash[:failure]
     
     assert_nil UserSession.find
+  end
+  
+  test '#create from an interrupted request will redirect the user there instead' do
+    user = Factory :user
+    assert_nil UserSession.find
+    
+    post :create, {:user_session => {:login => user.login, :password => 'test'}}, {:goto => admin_path}
+    assert_not_nil UserSession.find
+    assert_redirected_to admin_path
   end
   
   test '#destroy logs a user out' do

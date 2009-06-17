@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
     @user_session.save do |result|
       if result
         flash[:success] = 'You have been logged in.'
-        redirect_to root_path
+        redirect_to goto_path! || tasks_path
       else
         flash.now[:failure] = 'Invalid credentials.'
         render :action => :new

@@ -25,13 +25,23 @@ class UsersControllerTest < ActionController::TestCase
     assert_nil UserSession.find
     
     post :create, :user => {:login => user.login, :password => user.password, :password_confirmation => user.password_confirmation, :email => user.email}
-    assert_redirected_to root_path
+    assert_redirected_to tasks_path
     assert_not_nil flash[:success]
     
     assert_equal count + 1, User.count
     assert_not_nil UserSession.find
     
     assert_equal user.login, UserSession.find.user.login
+  end
+  
+  test '#create from an interrupted request will redirect the user there instead' do
+    user = Factory.build :user
+    assert_nil UserSession.find
+    
+    post :create, {:user => {:login => user.login, :password => user.password, :password_confirmation => user.password_confirmation, :email => user.email}}, {:goto => admin_path}
+    assert_not_nil UserSession.find
+    
+    assert_redirected_to admin_path
   end
   
   test '#create with invalid user credentials does not create a new user and logs no one in' do

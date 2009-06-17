@@ -20,11 +20,10 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     @user.save do |result|
       if result
-        # log them in
         UserSession.create @user
         
         flash[:success] = 'Your account has been created, and you have been logged in.'
-        redirect_to root_path
+        redirect_to goto_path! || tasks_path
       else
         render :action => :new
       end

@@ -12,9 +12,18 @@ class ApplicationController < ActionController::Base
   def load_sidebar
     @sidebar_campaigns = Campaign.active.all :limit => 5, :order => 'created_at DESC'
   end
+  
+  def goto_path!
+    goto = session[:goto]
+    session[:goto] = nil
+    goto
+  end
 
   def require_login
-    redirect_to register_path and return false unless logged_in?
+    unless logged_in?
+      session[:goto] = params[:goto] || request.path
+      redirect_to register_path and return false 
+    end
   end
   
   def require_manager
