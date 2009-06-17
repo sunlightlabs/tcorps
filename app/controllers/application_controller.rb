@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to root_path and return false unless logged_in?
+    redirect_to register_path and return false unless logged_in?
   end
   
   def require_manager

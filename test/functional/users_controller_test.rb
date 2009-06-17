@@ -72,7 +72,7 @@ class UsersControllerTest < ActionController::TestCase
     user = Factory :user
     
     get :edit, :id => user
-    assert_redirected_to root_path
+    assert_redirected_to register_path
   end
   
   test '#update updates a user' do
@@ -110,7 +110,7 @@ class UsersControllerTest < ActionController::TestCase
     user = Factory :user, :login => 'login1'
     
     put :update, :id => user, :user => {:login => 'login2'}
-    assert_redirected_to root_path
+    assert_redirected_to register_path
     assert_nil flash[:success]
     assert_not_equal 'login2', user.reload.login
   end

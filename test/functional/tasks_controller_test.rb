@@ -34,7 +34,7 @@ class TasksControllerTest < ActionController::TestCase
     campaign = Factory :campaign
     
     post :create, :campaign_id => campaign.id
-    assert_redirected_to root_path
+    assert_redirected_to register_path
     
     assert_equal count, Task.count
   end
@@ -97,7 +97,7 @@ class TasksControllerTest < ActionController::TestCase
   test '#show should require login' do
     task = Factory :task
     get :show, :id => task
-    assert_redirected_to root_path
+    assert_redirected_to register_path
   end
   
   test '#complete with a valid task key updates the task to mark it as complete' do

@@ -27,7 +27,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
   
   test '#index requires login' do
     get :index
-    assert_redirected_to root_path
+    assert_redirected_to register_path
   end
   
   test '#index requires login as at least a manager' do
@@ -44,7 +44,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
   
   test '#new requires login' do
     get :new
-    assert_redirected_to root_path
+    assert_redirected_to register_path
   end
   
   test '#new requires login as at least a manager' do
@@ -96,7 +96,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
   test '#create requires login' do
     count = Campaign.count
     post :create, :campaign => Factory.attributes_for(:campaign)
-    assert_redirected_to root_path
+    assert_redirected_to register_path
     assert_equal count, Campaign.count
   end
   
@@ -131,7 +131,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
   
   test '#edit requires login' do    
     get :edit, :id => Factory(:campaign)
-    assert_redirected_to root_path
+    assert_redirected_to register_path
   end
   
   test '#edit requires login as at least a manager' do
@@ -185,7 +185,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     new_name = campaign.name.succ
     
     put :update, :id => campaign, :campaign => {:name => new_name}
-    assert_redirected_to root_path
+    assert_redirected_to register_path
     assert_nil flash[:success]
     assert_not_equal new_name, campaign.reload.name
   end
@@ -217,7 +217,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
   
   test '#confirm_destroy requires login' do
     get :confirm_destroy, :id => Factory(:campaign)
-    assert_redirected_to root_path
+    assert_redirected_to register_path
   end
   
   test '#confirm_destroy requires login as a manager' do
@@ -267,7 +267,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     count = Campaign.count
     
     delete :destroy, :id => campaign
-    assert_redirected_to root_path
+    assert_redirected_to register_path
     assert_nil flash[:success]
     
     assert_equal count, Campaign.count
@@ -278,6 +278,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     campaign = Factory :campaign, :creator => user
     count = Campaign.count
     
+    login user
     delete :destroy, :id => campaign
     assert_redirected_to root_path
     assert_nil flash[:success]
