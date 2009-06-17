@@ -87,6 +87,13 @@ class TasksControllerTest < ActionController::TestCase
     assert_match task.campaign.url, @response.body
   end
   
+  test '#show for a completed task should redirect out' do
+    task = Factory :completed_task
+    login task.user
+    get :show, :id => task
+    assert_redirected_to campaign_path(task.campaign)
+  end
+  
   test '#show for a missing task should return a 404' do
     task = Factory :task
     login task.user

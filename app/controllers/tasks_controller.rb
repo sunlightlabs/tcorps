@@ -16,7 +16,11 @@ class TasksController < ApplicationController
   end
   
   def show
-    render :action => :show, :layout => 'task'
+    if @task.complete?
+      redirect_to campaign_path(@task.campaign)
+    else
+      render :action => :show, :layout => 'task'
+    end
   end
   
   def create
