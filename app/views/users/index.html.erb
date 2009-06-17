@@ -1,4 +1,5 @@
-<% @users.group_by {|user| user.level}.each do |level, users| %>
+<% LEVELS.keys.each_with_index do |points, level| %>
+  <% level = LEVELS.keys.size - level %>
   <div class="rank">
     <div class="rankHeader">
       <img src="/images/leaders_<%= level %>.png" />
@@ -13,9 +14,10 @@
         <dd class="pointTitle"><%= LEVELS.keys.sort[level-1] %> Points</dd>
       </dl>
     </div>
-    <% if users.any? %>
+    
+    <% if @groups[level] and @groups[level].any? %>
       <ol class="leaders">
-        <% users.each do |user| %>
+        <% @groups[level].each do |user| %>
           <li>
             <%= image_tag user.avatar.url(:normal) %>
             <span class="leaderName"><%= h user.login %></span>
