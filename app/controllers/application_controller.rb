@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_sidebar
 
   def load_sidebar
-    @sidebar_campaigns = Campaign.active.all :limit => 5, :order => 'created_at DESC'
+    @sidebar_campaigns = (logged_in? ? Campaign.active_for(current_user) : Campaign.active).all :limit => 5, :order => 'created_at DESC'
   end
   
   def goto_path!

@@ -4,16 +4,19 @@ class CampaignsControllerTest < ActionController::TestCase
   setup :activate_authlogic
 
   test '#index loads all active campaigns' do
-    campaign = Factory :campaign
-    active = Campaign.active
-    assert active.include?(campaign)
-    
-    Campaign.expects(:active).times(2).returns(active)
+    Campaign.expects(:active).times(2).returns Campaign
     get :index
     assert_response :success
     assert_template 'index'
+  end
+  
+  test '#index loads all active campaigns relevant to the logged in user, if the user is logged in' do
+    user = Factory :user
     
-    assert assigns(:campaigns).include?(campaign)
+    Campaign.expects(:active_for).with(user).times(2).returns Campaign
+    login user
+    
+    get :index
   end
 
   test '#show loads a campaign' do

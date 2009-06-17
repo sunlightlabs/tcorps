@@ -1,11 +1,22 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
+  setup :activate_authlogic
   
   # every page should have these campaigns for the sidebar, but we'll just test it here
-#   test '#index loads the most recent 5 active campaigns for the sidebar' do
-#     assert false
-#   end
+  test '#about loads the most recent 5 active campaigns for the sidebar' do
+    Campaign.expects(:active).returns Campaign
+    
+    get :about
+  end
+  
+  test '#about loads the most recent 5 active campaigns for the logged in user for the sidebar, if logged in' do
+    user = Factory :user
+    Campaign.expects(:active_for).with(user).returns Campaign
+    
+    login user
+    get :about
+  end
 
   test '#contact with post and all data sends contact form email' do
     name = 'name'

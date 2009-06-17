@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
   end
   
   def index
-    @campaigns = Campaign.active.all :order => 'created_at DESC'
+    @campaigns = (logged_in? ? Campaign.active_for(current_user) : Campaign.active).all :order => 'created_at DESC'
   end
   
   private
