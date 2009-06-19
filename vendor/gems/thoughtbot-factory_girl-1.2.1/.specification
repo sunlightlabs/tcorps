@@ -27,10 +27,13 @@ files:
 - lib/factory_girl
 has_rdoc: false
 homepage: 
+licenses: []
+
 post_install_message: 
 rdoc_options: []
 
 require_paths: 
+- bin
 - bin
 - bin
 - bin
@@ -55,7 +58,7 @@ required_rubygems_version: !ruby/object:Gem::Requirement
 requirements: []
 
 rubyforge_project: 
-rubygems_version: 1.3.1
+rubygems_version: 1.3.4
 signing_key: 
 specification_version: 2
 summary: 
