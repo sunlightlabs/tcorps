@@ -25,7 +25,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_nil UserSession.find
     
     post :create, :user => {:login => user.login, :password => user.password, :password_confirmation => user.password_confirmation, :email => user.email}
-    assert_redirected_to tasks_path
+    assert_redirected_to campaigns_path
     assert_not_nil flash[:success]
     
     assert_equal count + 1, User.count

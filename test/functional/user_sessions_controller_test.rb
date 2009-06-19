@@ -9,7 +9,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     assert_nil UserSession.find
     
     post :create, :user_session => {:login => user.login, :password => 'test'}
-    assert_redirected_to tasks_path
+    assert_redirected_to campaigns_path
     assert_not_nil flash[:success]
     
     assert_not_nil UserSession.find

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         UserSession.create @user
         
         flash[:success] = 'Your account has been created, and you have been logged in.'
-        redirect_to goto_path! || tasks_path
+        redirect_to goto_path! || campaigns_path
       else
         render :action => :new
       end

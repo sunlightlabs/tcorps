@@ -18,8 +18,6 @@ class Campaign < ActiveRecord::Base
     }
   }
   
-  541702186
-  
   def percent_complete
     ((tasks.completed.count.to_f / runs.to_f) * 100).to_i
   end
