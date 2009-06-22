@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 10) do
     t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "elapsed_seconds"
   end
 
   add_index "tasks", ["campaign_id"], :name => "index_tasks_on_campaign_id"

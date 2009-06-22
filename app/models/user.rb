@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  attr_accessible :login, :email, :openid_identifier, :password, :password_confirmation, :avatar
+
   has_many :tasks
   has_many :campaigns, :foreign_key => :creator_id
   

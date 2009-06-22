@@ -34,6 +34,20 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal user.login, UserSession.find.user.login
   end
   
+  test '#create with valid user credentials still cannot create an admin' do
+    user = Factory.build :user
+    assert !user.admin?
+    
+    post :create, :user => {:login => user.login, :password => user.password, :password_confirmation => user.password_confirmation, :email => user.email, :admin => true}
+    assert_redirected_to campaigns_path
+    assert_not_nil flash[:success]
+    
+    new_user = UserSession.find.user
+    assert_equal user.login, new_user.login
+    
+    assert !new_user.admin?
+  end
+  
   test '#create from an interrupted request will redirect the user there instead' do
     user = Factory.build :user
     assert_nil UserSession.find
@@ -123,6 +137,19 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to register_path
     assert_nil flash[:success]
     assert_not_equal 'login2', user.reload.login
+  end
+  
+  test '#update cannot turn a non-admin into an admin' do
+    user = Factory :user, :login => 'login1'
+    assert !user.admin?
+    login user
+    
+    put :update, :id => user, :user => {:login => 'login2', :admin => true}
+    assert_redirected_to edit_user_path(user)
+    assert_not_nil flash[:success]
+    assert_equal 'login2', user.reload.login
+    
+    assert !user.reload.admin?
   end
   
   # clickpass

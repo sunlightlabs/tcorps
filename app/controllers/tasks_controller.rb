@@ -11,7 +11,10 @@ class TasksController < ApplicationController
    
     head :not_found and return false unless @task = Task.find_by_key(params[:task_key])
     
-    @task.update_attribute :completed_at, Time.now
+    now = Time.now
+    elapsed = Time.now - @task.created_at
+    @task.update_attributes :completed_at => now, :elapsed_seconds => elapsed
+    
     head :ok
   end
   

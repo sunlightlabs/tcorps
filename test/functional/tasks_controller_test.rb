@@ -127,6 +127,19 @@ class TasksControllerTest < ActionController::TestCase
     assert_equal campaign_points + task.points, user.campaign_points(task.campaign)
   end
   
+  test '#complete with a valid task key records the time it took a user to complete the task' do
+    user = Factory :user
+    task = Factory :task, :user => user
+    ActiveRecord::Base.connection.execute "update tasks set created_at = '#{2.days.ago.to_s :db}' where id= #{task.id}"
+    assert task.reload.created_at <= 2.days.ago
+    assert_nil task.elapsed_seconds
+    
+    post :complete, :task_key => task.key
+    
+    assert_not_nil task.reload.elapsed_seconds
+    assert task.reload.elapsed_seconds >= 2.days.to_i
+  end
+  
   test '#complete with an invalid task key returns a 404' do
     task = Factory :task
     assert !task.complete?
