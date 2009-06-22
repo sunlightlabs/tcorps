@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   has_many :campaigns, :foreign_key => :creator_id
   
   has_attached_file :avatar,
-    :styles => {:normal => '64x64#'},
-    :default_url => "/images/:silhouette"
+    :styles => {:normal => '64x64#', :tiny => '24x24#'},
+    :default_url => "/images/avatar_:gender_:style.jpg"
   
   named_scope :by_points, :select => 'users.*, (select sum(tasks.points) as sum_points from tasks where completed_at is not null and tasks.user_id = users.id) as sum_points', :order => 'sum_points desc'
   named_scope :leaders, lambda {
@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
     level
   end
   
-  Paperclip.interpolates :silhouette do |attachment, style|
-    "avatar_#{[:female, :male][rand 2]}.jpg"
+  Paperclip.interpolates :gender do |attachment, style|
+    [:female, :male][rand 2]
   end
   
 end
