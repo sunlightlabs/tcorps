@@ -29,8 +29,13 @@ div#header{ height: 237px;}
 h1{ float: left; width: 260px; height: 176px; margin-left: 20px;}
 h1 a{ width: 260px; height: 176px; background: url(/images/logo.png) top left no-repeat; text-indent: -9999em; display: block;}
 
-div#accountInfo a{ color: #fff; font-weight: bold; padding: 0 3px 0 4px; margin-right: 3px;}
-div#accountInfo{ text-align: right; padding-top: 8px; color: #e6e7e8;}
+div#accountInfo a{ color: #fff; font-weight: bold; padding: 0 3px 0 4px; margin-right: 3px; float: right;}
+div#accountInfo span{ float: right; margin-right: 5px;}
+div#accountInfo{ text-align: right;  color: #e6e7e8; padding-top: 11px;}
+div#accountInfo a#smAvatar { padding-top:3px; width: 24px; height: 24px; display: block; padding-top: 3px; margin-top: -8px;}
+span.bar { float: right;}
+div#nav { float: left; margin-top: -25px;}
+
 
 div#featureSection a { 
     background: url(/images/btn_getStarted.png) bottom left no-repeat; 
@@ -60,7 +65,7 @@ div#featureText p {
     color: #848383;
 }
 
-div#nav ul{ margin-bottom: 122px; margin-left:350px;}
+div#nav ul{ margin-left:350px;}
 div#nav ul li {float: left; margin-left: 10px;}
 div#nav li a { width: 108px; height: 59px; text-indent: -9999em; display: block;}
 

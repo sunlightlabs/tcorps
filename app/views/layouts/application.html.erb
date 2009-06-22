@@ -24,23 +24,25 @@
           </h1>
           <div id="accountInfo">
             <% if logged_in? %>
-              <span id="username">Welcome <%= current_user.login %>!</span>
               
-              <% if current_user.manager? or current_user.admin? %>
+              <%= link_to 'Sign Out', logout_path %>
+        	  <span class="bar">|</span>
+			  <%= link_to 'Edit Profile', edit_user_path(current_user) %>
+
+              <%= link_to image_tag(current_user.avatar.url(:tiny)), edit_user_path(current_user), :id => 'smAvatar' %>
+
+			  <% if current_user.manager? or current_user.admin? %>
                 <%= link_to 'Admin', admin_path %>
               <% end %>
-              
-              <%= link_to image_tag(current_user.avatar.url(:tiny)), edit_user_path(current_user) %>
-              
-              <%= link_to 'Edit Profile', edit_user_path(current_user) %>
-        |
-              <%= link_to 'Sign Out', logout_path %>
+
+			  <span id="username">Welcome <%= current_user.login %>!</span>
             <% else %>
+			  <%= link_to 'Sign In', login_path %>
+        	  <span class="bar">|</span>
               <%= link_to 'Join Us', register_path %>
-        |
-              <%= link_to 'Sign In', login_path %>
             <% end %>
           </div>
+		  <div class="clear"></div>
           <div id="nav">
             <ul>
               <li id="nav_tasks">
