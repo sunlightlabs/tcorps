@@ -1,0 +1,53 @@
+h1 a{  background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/logo.png", sizingMethod="crop"); }
+li#nav_tasks a{  background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/nav_tasks.png", sizingMethod="crop"); }
+li#nav_tasks a.active{  background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/nav_tasks.png", sizingMethod="crop"); }
+
+div.mainTaskHeader {  background: url("/images/bar_ltColumn_8.png") 10px left no-repeat; height: 40px;}
+
+div#footerBrand a{  background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/foundationLogo.png", sizingMethod="crop"); }
+div.rankHeader {  background: url("/images/fullBar_8.png") bottom left no-repeat; width: 860px;}
+
+li#nav_tasks a{ background: url(/images/nav_tasks_8.png) left top no-repeat;}
+li#nav_tasks a.active{ background: url(/images/nav_tasks_8.png) left bottom no-repeat;}
+
+div#nav ul li#nav_leaders a{ background: url(/images/nav_leaders_8.png) left top no-repeat; width: 208px; }
+div#nav ul li#nav_leaders a.active{ background: url(/images/nav_leaders_8.png) left bottom no-repeat; width: 208px; }
+
+li#nav_about a{ background: url(/images/nav_about_8.png) left top no-repeat;}
+li#nav_about a.active{ background: url(/images/nav_about_8.png) left bottom no-repeat;}
+
+li#nav_contact a{ background: url(/images/nav_contact_8.png) left top no-repeat;}
+li#nav_contact a.active{ background: url(/images/nav_contact_8.png) left bottom no-repeat;}
+
+div.taskMetadata span.taskValue, body.home div#rtColumn div.taskMetadata span.taskValue { background: url(/images/task_pointCircle_8.png) left top no-repeat;}
+body.home div.mainTaskHeader { background: url(/images/bar_ltColumn_home_8.png) left bottom no-repeat; }
+
+div#featureText h2 { float: none;}
+
+div#pageMain{  margin: 0 auto; text-align: left;}
+body { text-align: center;}
+
+div#featureText { margin-left: 25px; }
+
+div#featureSection a { background: url(/images/btn_getStarted_8.png) left bottom no-repeat; padding-bottom: 90px;}
+
+div#rtColumn { overflow: hidden;}
+div#ltColumn { overflow: hidden;}
+
+li#nav_openid a{  background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/logo_openid.png", sizingMethod="crop"); }
+
+div#signin_nav, div#signup_nav { border: 1px solid #fff;}
+div#signin_options, div#signup_options { border:1px solid #ECECED;}
+
+div.taskMetadata { float: right; padding-top: 5px;}
+
+div#rtColumn div.taskTop img { width:expression(if(this.clientWidth>180)this.width=180); }
+div#ltColumn div.taskTop img { width:expression(if(this.clientWidth>540)this.width=540); }
+
+body.home div#rtColumn { width: 306px;}
+div#rtColumn { width: 275px;}
+body.home div#ltColumn { width: 540px;}
+div#ltColumn { width: 600px; }
+
+form#new_user_session input#user_session_submit { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/btn_login.png", sizingMethod="crop"); text-indent: -9999em; display: block;}
+div#signin_options button.openidBtn { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/btn_openid2.png", sizingMethod="crop");}
