@@ -6,5 +6,5 @@ LEVELS = {
   100 => 'Commoner',
   250 => 'Knight',
   500 => 'Warlord',
-  1000 => 'Grand Master'
+  1000 => 'Transparency Master'
 }
