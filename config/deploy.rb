@@ -1,40 +1,32 @@
-set :application, 'tcorps_staging'
-set :environment, 'staging'
+set :environment, (ENV['target'] || 'staging')
+
+# Change repo and domain for your setup
+if environment == 'production'
+  set :domain, 'belushi.sunlightlabs.org'
+else
+  set :domain, 'hammond.sunlightlabs.org'
+end
+
+set :application, "tcorps_#{environment}"
 set :branch, 'master'
 set :user, 'tcorps'
 
-# Number of thin processes
-set :instances, 2
- 
 set :scm, :git
- 
 set :repository, "git@github.com:sunlightlabs/tcorps.git"
  
-set :deploy_to, "/home/tcorps/#{application}"
+set :deploy_to, "/home/tcorps/www/#{application}"
 set :deploy_via, :remote_cache
  
-set :domain, 'tcorps.sunlightlabs.com'
 role :app, domain
 role :web, domain
  
 set :runner, user
 set :admin_runner, runner
  
-namespace :deploy do  
-  desc "Start the server"
-  task :start, :roles => [:web, :app] do
-    run "cd #{deploy_to}/current && nohup thin -s #{instances} -C config/thin_#{environment}.yml start"
-  end
- 
-  desc "Stop the server"
-  task :stop, :roles => [:web, :app] do
-    run "cd #{deploy_to}/current && nohup thin -s #{instances} -C config/thin_#{environment}.yml stop"
-  end
-  
+namespace :deploy do    
   desc "Restart the server"
   task :restart, :roles => [:web, :app] do
-    deploy.stop
-    deploy.start
+    run "touch #{deploy_to}/current/tmp/restart.txt"
   end
   
   desc "Migrate the database"
@@ -48,17 +40,9 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/#{environment}.sqlite3 #{release_path}/db/#{environment}.sqlite3"
   end
   
-  desc "Deploy, and migrate the database"
-  task :with_migrations do
-    deploy.update
-    deploy.migrate
-    deploy.restart
-  end
-  
   desc "Initial deploy"
   task :cold do
     deploy.update
     deploy.migrate
-    deploy.start
   end
 end
