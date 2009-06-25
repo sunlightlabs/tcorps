@@ -38,7 +38,7 @@
 
               <span id="username">Welcome <%= current_user.login %>!</span>
             <% else %>
-              <%= link_to 'Sign In!', login_path %>
+              <%= link_to 'Sign In', login_path %>
               <span class="bar">|</span>
               <%= link_to 'Join Us', register_path %>
             <% end %>
