@@ -23,6 +23,8 @@ role :web, domain
 set :runner, user
 set :admin_runner, runner
  
+after "deploy", "deploy:cleanup"
+ 
 namespace :deploy do    
   desc "Restart the server"
   task :restart, :roles => [:web, :app] do
