@@ -6,15 +6,15 @@ class Campaign < ActiveRecord::Base
   validates_numericality_of :runs, :greater_than => 0
   
   named_scope :active, 
-    :select => "campaigns.*, (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) as task_count", 
-    :conditions => "task_count < campaigns.runs"
+    :select => "campaigns.*", 
+    :conditions => "(select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) < campaigns.runs"
   
   named_scope :active_for, lambda {|user|
     # ActiveRecord does not offer ?-style interpolation for the select parameter,
     # and the id attribute is not subject to user manipulation, so this is safe
     {
-      :select => "campaigns.*, (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) as task_count, (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL and tasks.user_id = #{user.id}) as user_task_count", 
-      :conditions => "task_count < campaigns.runs and (campaigns.user_runs IS NULL OR campaigns.user_runs = 0 OR user_task_count < campaigns.user_runs)"
+      :select => "campaigns.*", 
+      :conditions => "(select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) < campaigns.runs and (campaigns.user_runs IS NULL OR campaigns.user_runs = 0 OR (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL and tasks.user_id = #{user.id}) < campaigns.user_runs)"
     }
   }
   
