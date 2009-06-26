@@ -12,7 +12,7 @@ class CampaignsController < ApplicationController
   private
   
   def load_campaign
-    head :not_found and return false unless @campaign = Campaign.find_by_id(params[:id])
+    redirect_to campaigns_path and return false unless @campaign = Campaign.find_by_id(params[:id])
   end
   
 end

@@ -13,9 +13,7 @@ class User < ActiveRecord::Base
     {:conditions => ['sum_points >= ?', LEVELS.keys.sort.first]}
   }
   
-  acts_as_authentic do |c|
-    c.maintain_sessions = false # this disables authlogic's autologin when a user is created
-  end
+  acts_as_authentic
   
   def total_points
     tasks.sum :points, :conditions => 'completed_at is not null'

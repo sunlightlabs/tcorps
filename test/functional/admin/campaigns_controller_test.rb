@@ -130,7 +130,10 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
   end
   
   test '#edit requires login' do    
-    get :edit, :id => Factory(:campaign)
+    campaign = Factory :campaign
+    logout
+    
+    get :edit, :id => campaign
     assert_redirected_to register_path
   end
   
@@ -183,6 +186,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     user = Factory :manager
     campaign = Factory :campaign, :creator => user
     new_name = campaign.name.succ
+    logout
     
     put :update, :id => campaign, :campaign => {:name => new_name}
     assert_redirected_to register_path
@@ -216,7 +220,10 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
   end
   
   test '#confirm_destroy requires login' do
-    get :confirm_destroy, :id => Factory(:campaign)
+    campaign = Factory :campaign
+    logout
+    
+    get :confirm_destroy, :id => campaign
     assert_redirected_to register_path
   end
   
@@ -265,6 +272,7 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
   test '#destroy requires login' do
     campaign = Factory :campaign
     count = Campaign.count
+    logout
     
     delete :destroy, :id => campaign
     assert_redirected_to register_path

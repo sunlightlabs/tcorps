@@ -33,7 +33,7 @@ class CampaignsControllerTest < ActionController::TestCase
     assert !Campaign.exists?(campaign.id.succ)
     
     get :show, :id => campaign.id.succ
-    assert_response :not_found
+    assert_redirected_to campaigns_path
   end
   
 end
