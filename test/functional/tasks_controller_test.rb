@@ -29,9 +29,10 @@ class TasksControllerTest < ActionController::TestCase
     assert_equal count, Task.count
   end
   
-  test '#create should require the user to be logged in' do
+  test '#create should require login' do
     count = Task.count
     campaign = Factory :campaign
+    logout
     
     post :create, :campaign_id => campaign.id
     assert_redirected_to register_path
@@ -103,6 +104,8 @@ class TasksControllerTest < ActionController::TestCase
   
   test '#show should require login' do
     task = Factory :task
+    logout
+    
     get :show, :id => task
     assert_redirected_to register_path
   end

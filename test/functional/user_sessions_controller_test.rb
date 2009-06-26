@@ -6,6 +6,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   
   test '#create with valid credentials logs a user in' do
     user = Factory :user
+    logout
     assert_nil UserSession.find
     
     post :create, :user_session => {:login => user.login, :password => 'test'}
@@ -18,6 +19,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   
   test '#create with invalid credentials logs no user in' do
     user = Factory :user
+    logout
     assert_nil UserSession.find
     
     post :create, :user_session => {:login => user.login, :password => 'test'.succ}
@@ -30,6 +32,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   
   test '#create from an interrupted request will redirect the user there instead' do
     user = Factory :user
+    logout
     assert_nil UserSession.find
     
     post :create, {:user_session => {:login => user.login, :password => 'test'}}, {:goto => admin_path}

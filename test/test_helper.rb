@@ -12,6 +12,12 @@ class ActiveSupport::TestCase
     UserSession.create user
   end
   
+  def logout
+    if UserSession.find
+      UserSession.find.destroy
+    end
+  end
+  
   def assert_layout(layout)
     assert_equal layout.to_s, @response.layout.split('/').last
   end

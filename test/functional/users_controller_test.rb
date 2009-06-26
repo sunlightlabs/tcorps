@@ -94,6 +94,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test '#edit requires login' do
     user = Factory :user
+    logout
     
     get :edit, :id => user
     assert_redirected_to register_path
@@ -132,6 +133,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test '#update requires login' do
     user = Factory :user, :login => 'login1'
+    logout
     
     put :update, :id => user, :user => {:login => 'login2'}
     assert_redirected_to register_path
