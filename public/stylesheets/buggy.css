@@ -41,13 +41,20 @@ div#signin_options, div#signup_options { border:1px solid #ECECED;}
 
 div.taskMetadata { float: right; padding-top: 5px;}
 
-div#rtColumn div.taskTop img { width:expression(if(this.clientWidth>180)this.width=180); }
-div#ltColumn div.taskTop img { width:expression(if(this.clientWidth>540)this.width=540); }
+div#rtColumn div.taskTop img { width: expression( ( this.clientWidth < 130) ? "auto" : 130);}
+div#ltColumn div.taskTop img { width: expression( ( this.clientWidth < 540) ? "auto" : 540); }
 
 body.home div#rtColumn { width: 306px;}
 div#rtColumn { width: 275px;}
 body.home div#ltColumn { width: 540px;}
 div#ltColumn { width: 600px; }
 
+div#rtContent ul li{ float: left;}
+ul#taskList li { float: left;}
+
 form#new_user_session input#user_session_submit { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/btn_login.png", sizingMethod="crop"); text-indent: -9999em; display: block;}
 div#signin_options button.openidBtn { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/btn_openid2.png", sizingMethod="crop");}
+
+
+form#new_user_session input#user_session_submit, form#new_user input#user_submit, input#startTask, input#anotherTask { font-size: 0; color: #fff;}'
+
