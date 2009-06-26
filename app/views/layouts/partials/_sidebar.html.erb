@@ -15,7 +15,9 @@
               </div>
               <div class="clear"></div>
             </div>
-            <p><%= campaign.description %></p>
+            <p>
+              <%= simple_format campaign.description %>
+            </p>
           </div>
           <div class="taskDetail">
             <% percent = campaign.percent_complete %>
@@ -23,8 +25,8 @@
               <span class="tagValue" style="width: <%= percent %>%"><%= percent %>%</span>
             </div>
             <span class="tagNumber"><%= 100 - percent %>% To Go</span>
-          	<div class="clear"></div>
-		  </div>
+            <div class="clear"></div>
+          </div>
         </li>
       <% end %>
     </ul>
