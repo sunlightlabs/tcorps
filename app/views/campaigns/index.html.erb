@@ -33,9 +33,14 @@
         <%= simple_format campaign.description %>
       </p>
       
-      <span class="startBtn">
-        <a href="#">Start Task</a>
-      </span>
+      <% form_tag tasks_path, :method => :post, :target => (logged_in? ? '_blank' : '') do %>
+        <% if !logged_in? %>
+          <%= hidden_field_tag :goto, campaign_path(campaign) %>
+        <% end %>
+        
+        <%= hidden_field_tag :campaign_id, campaign.id %>
+        <%= submit_tag 'Start This Task', :id => 'startTask' %>
+      <% end %>
       
       
     </li>
