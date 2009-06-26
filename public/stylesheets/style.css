@@ -58,6 +58,7 @@ div#featureText{
     //padding-top: 55px;
     padding-top: 65px;
 }
+
 div#featureText p { 
     //width: 370px; 
     width: 600px; 
@@ -95,7 +96,9 @@ h2{
 }
 
 /*div#ltColumn h2{ background: url(/images/bar_ltColumn.png) bottom left no-repeat; width: 492px; height: 29px; display: block; font-size: 235%; padding-bottom: 10px; margin-bottom: 10px;}*/
-div.mainTaskHeader{ background: url(/images/bar_ltColumn.png) bottom left no-repeat; width: 572px; height: 29px; display: block; padding-bottom: 10px; margin-bottom: 20px;}
+div.mainTaskHeader{ background: url(/images/bar_ltColumn.png) bottom left no-repeat; width: 572px; display: block; padding-bottom: 15px; margin-bottom: 20px; }
+div.mainTaskHeader h2{ width: 420px; line-height: 32px; margin-top: -5px; float: left;}
+
 body.home div.mainTaskHeader{ background: url(/images/bar_ltColumn_home.png) bottom left no-repeat; width: 492px;}
 
 div#rtColumn{ float: left; background: url(/images/rtBorder.jpg) 3px top repeat-y; margin-left: 43px;}
