@@ -22,24 +22,26 @@ module AuthlogicOpenid
       #
       # * <tt>Default:</tt> []
       # * <tt>Accepts:</tt> Array of symbols
-      def required_fields(value = nil)
-        config(:required_fields, value, [])
+      def openid_required_fields(value = nil)
+        rw_config(:openid_required_fields, value, [])
       end
-      alias_method :required_fields=, :required_fields
+      alias_method :openid_required_fields=, :openid_required_fields
       
       # Same as required_fields, but optional instead.
       #
       # * <tt>Default:</tt> []
       # * <tt>Accepts:</tt> Array of symbols
-      def optional_fields(value = nil)
-        config(:optional_fields, value, [])
+      def openid_optional_fields(value = nil)
+        rw_config(:openid_optional_fields, value, [])
       end
-      alias_method :optional_fields=, :optional_fields
+      alias_method :openid_optional_fields=, :openid_optional_fields
     end
     
     module Methods
       # Set up some simple validations
       def self.included(klass)
+        return if !klass.column_names.include?("openid_identifier")
+        
         klass.class_eval do
           validates_uniqueness_of :openid_identifier, :scope => validations_scope, :if => :using_openid?
           validate :validate_openid
@@ -68,13 +70,12 @@ module AuthlogicOpenid
       # Another advantage of taking this approach is that we can set fields from their OpenID profile before we save the record,
       # if their OpenID provider supports it.
       def save(perform_validation = true, &block)
-        if !perform_validation || !authenticate_with_openid? || (authenticate_with_openid? && authenticate_with_openid)
-          result = super
-          yield(result) if block_given?
-          result
-        else
-          false
-        end
+        return false if perform_validation && block_given? && authenticate_with_openid? && !authenticate_with_openid
+        
+        return false if new_record? && !openid_complete?
+        result = super
+        yield(result) if block_given?
+        result
       end
       
       private
@@ -89,9 +90,9 @@ module AuthlogicOpenid
           end
           
           options = {}
-          options[:required] = self.class.required_fields
-          options[:optional] = self.class.optional_fields
-          options[:return_to] = session_class.controller.url_for(:for_model => "1")
+          options[:required] = self.class.openid_required_fields
+          options[:optional] = self.class.openid_optional_fields
+          options[:return_to] = session_class.controller.url_for(:for_model => "1",:controller=>"users",:action=>"create")
           
           session_class.controller.send(:authenticate_with_open_id, openid_identifier, options) do |result, openid_identifier, registration|
             if result.unsuccessful?
@@ -103,7 +104,6 @@ module AuthlogicOpenid
             
             return true
           end
-          
           return false
         end
         
@@ -113,9 +113,13 @@ module AuthlogicOpenid
         # Basically you will get a hash of values passed as a single argument. Then just map them as you see fit. Check out
         # the source of this method for an example.
         def map_openid_registration(registration) # :doc:
-          self.name ||= registration[:fullname] if respond_to?(:name) && !registration[:fullname].blank?
-          self.first_name ||= registration[:fullname].split(" ").first if respond_to?(:first_name) && !registration[:fullname].blank?
-          self.last_name ||= registration[:fullname].split(" ").last if respond_to?(:last_name) && !registration[:last_name].blank?
+          registration.symbolize_keys!
+          [self.class.openid_required_fields+self.class.openid_optional_fields].flatten.each do |field|
+            setter="#{field.to_s}=".to_sym
+            if respond_to?(setter)
+              send setter,registration[field]
+            end
+          end
         end
         
         # This method works in conjunction with map_saved_attributes.
@@ -127,7 +131,7 @@ module AuthlogicOpenid
         # more just override this method and do whatever you want.
         def attributes_to_save # :doc:
           attrs_to_save = attributes.clone.delete_if do |k, v|
-            [:password, crypted_password_field, password_salt_field, :persistence_token, :perishable_token, :single_access_token, :login_count, 
+            [:id, :password, crypted_password_field, password_salt_field, :persistence_token, :perishable_token, :single_access_token, :login_count, 
               :failed_login_count, :last_request_at, :current_login_at, :last_login_at, :current_login_ip, :last_login_ip, :created_at,
               :updated_at, :lock_version].include?(k.to_sym)
           end
@@ -151,7 +155,7 @@ module AuthlogicOpenid
         end
         
         def using_openid?
-          !openid_identifier.blank?
+          respond_to?(:openid_identifier) && !openid_identifier.blank?
         end
         
         def openid_complete?
