@@ -19,6 +19,8 @@ body{
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+div#ltColumn p { font-size: 108%; line-height: 21px;}
+
 .clear{ clear: both;}
 .fieldWithErrors {padding: 0; margin: 0; display: inline;}
 
