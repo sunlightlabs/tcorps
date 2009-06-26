@@ -112,9 +112,11 @@ body.home div#rtColumn h4{ width: auto !important; max-width: 180px;}
 
 body.home div.taskTop{ padding: 20px 20px 0;}
 div.taskTop{ padding: 15px 15px 0; }
-div#rtColumn div.taskTop img { max-width: 180px; width:expression(if(this.clientWidth>180)this.width=180);}
-div#ltColumn div.taskTop img { max-width: 540px; width:expression(if(this.clientWidth>540)this.width=540);}
-div#rtColumn ul li{ background: #f9f9f9; border: 1px solid #e6e7e7; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
+div#rtColumn div.taskTop img { max-width: 180px; }
+div#ltColumn img { max-width: 540px; }
+p img { display: block; margin-top: 10px; margin-bottom: 10px;}
+
+div#rtContent ul li{ background: #f9f9f9; border: 1px solid #e6e7e7; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
 
 div.taskMetadata span.taskValue, body.home div#rtColumn div.taskMetadata span.taskValue{ background: url(/images/task_pointCircle.png) top left no-repeat; color: #fff; width: 27px; height: 27px; text-align: center; padding-top: 3px; margin-right: 5px; margin-top: -4px;}
 
@@ -149,11 +151,11 @@ span.tagValue{
     float: left;
     overflow: hidden;
 }
-div#rtColumn span.tagValue{ background: url(/images/highlightBar.jpg) left top repeat-x;}
+div#rtContent span.tagValue{ background: url(/images/highlightBar.jpg) left top repeat-x;}
 
 div.taskBar{ background-color: #fff; width: 403px; border: 1px solid #bfbfbe; position: relative; line-height: 1.3em; height: 10px; float: left; margin: 6px 13px 0 0;}
-div#rtColumn div.taskBar{ width: 180px; height: 5px;}
-body.home div#rtColumn div.taskBar{ width: 185px;}
+div#rtContent div.taskBar{ width: 180px; height: 5px;}
+body.home div#rtContent div.taskBar{ width: 185px;}
 
 ul#taskList div.taskBar{ height: 5px;}
 div#ltColumn ul#taskList div.taskMetadata span{ margin-right: 10px;}

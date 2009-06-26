@@ -1,1 +1,10 @@
-div#rtContent {  padding-left: 30px;}
+div#rtContent { width:215px; }
+div#rtContent ul li{ float: left;}
+ul#taskList li { float: left;}
+
+div#signin_nav, div#signup_nav { border: 1px solid #fff;}
+div#signin_options, div#signup_options { border:1px solid #ECECED;}
+
+form#new_user_session input#user_session_submit, form#new_user input#user_submit, input#startTask, input#anotherTask { font-size: 0; color: #fff;}
+
+h2 { padding-bottom: 10px;}
