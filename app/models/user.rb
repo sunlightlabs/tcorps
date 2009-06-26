@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   }
   
   acts_as_authentic do |c|
-    c.session_ids = [] # this disables authlogic's autologin when a user is created
+    c.maintain_sessions = false # this disables authlogic's autologin when a user is created
   end
   
   def total_points
