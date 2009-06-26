@@ -277,5 +277,17 @@ div.contact_form_validation, div.error { margin-bottom: 15px; font-size: 120%; f
 div.error{ margin-bottom: 0px;}
 div.errors{ margin-bottom: 15px;}
 
-div.success{ width: 520px; background: #f7f2cc; -moz-border-radius: 3px; -webkit-border-radius: 3px; border: 1px solid #fae19c; padding: 10px; margin-left: 30px; color: #da7c02;}
-body.home div.success{ width: 472px;}
+
+div.flash {
+  width: 520px; background: #f7f2cc; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+  padding: 10px; margin-left: 30px; 
+}
+div.flash.failure {
+  border: 1px solid #fae19c; color: #da7c02;
+}
+div.flash.success {
+   border: 1px solid #fae19c; color: #da7c02;
+}
+body.home div.flash {
+  width: 472px;
+}
