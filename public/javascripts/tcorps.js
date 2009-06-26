@@ -28,7 +28,7 @@ function setToNow(object, field) {
   
   $("#" + base + "_1i").val(now.getYear() + 1900);
   $("#" + base + "_2i").val(now.getMonth() + 1);
-  $("#" + base + "_3i").val(now.getDay());
+  $("#" + base + "_3i").val(now.getDate());
   $("#" + base + "_4i").val(now.getHours());
   $("#" + base + "_5i").val(minutes);
 }
