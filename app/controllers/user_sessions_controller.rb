@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
         flash[:success] = 'You have been logged in.'
         redirect_to goto_path! || campaigns_path
       else
-        @error_msg = 'Invalid credentials.'
+        @error_message = 'Invalid credentials.'
         render :action => :new
       end
       return # needed on the return trip from the OpenID server, if the OpenID is valid but not attached to any current user
@@ -27,8 +27,10 @@ class UserSessionsController < ApplicationController
   end
   
   def destroy
-    current_session.destroy
-    flash[:success] = 'You have been logged out.'
+    if logged_in?
+      current_session.destroy
+      flash[:success] = 'You have been logged out.'
+    end
     redirect_to root_path
   end
   

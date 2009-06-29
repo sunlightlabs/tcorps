@@ -25,7 +25,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     post :create, :user_session => {:login => user.login, :password => 'test'.succ}
     assert_response :success
     assert_template 'new'
-    assert_not_nil flash[:failure]
+    assert_not_nil assigns(:error_message)
     
     assert_nil UserSession.find
   end
@@ -48,6 +48,16 @@ class UserSessionsControllerTest < ActionController::TestCase
     delete :destroy
     assert_redirected_to root_path
     assert_not_nil flash[:success]
+    
+    assert_nil UserSession.find
+  end
+  
+  test '#destroy when no user is logged in still works' do
+    logout
+    
+    delete :destroy
+    assert_redirected_to root_path
+    assert_nil flash[:success]
     
     assert_nil UserSession.find
   end
