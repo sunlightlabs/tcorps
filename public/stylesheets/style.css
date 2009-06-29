@@ -208,8 +208,12 @@ div#footerBrand a{ background: url(/images/foundationLogo.png) top left no-repea
 
 body.task div.header {height: 50px; padding: 10px;}
 body.task div.header span.title {font-size: 200%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; color: #231f20; margin-bottom: 10px; float: left; padding-top: 5px;}
-body.task div.header span.instructions {float: left; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; margin-bottom: 15px;}
+body.task div.header span.instructions {
+  float: left; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; margin-bottom: 15px;
+  width: 900px;
+}
 body.task div.header input {float: right;}
+body.task div.header span.instructions p {padding: 0; margin: 5px;}
 
 iframe#task_frame {width: 100%; height: 800px; margin: 0; padding: 0; clear: both;}
 
