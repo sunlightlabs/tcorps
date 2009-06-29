@@ -184,7 +184,6 @@ div#taskScoreboard dt, div#taskScoreboard dd{ color: #fff; font-size: 150%; font
 div#taskScoreboard dl { padding: 50px 0 0 60px;}
 div#taskScoreboard dt{ float: left; font-weight: bold; margin-right: 5px;}
 
-input#anotherTask{ background: url(/images/btn_anotherTask.png) top left no-repeat; width: 148px; height: 37px; display: block; text-indent: -9999em; border: none; float: right;}
 
 form#contactForm label, form#new_user label, form#new_user_session label, form.edit_user label{ font-weight: bold; width: 100px; display: block; float: left; padding-top:5px;}
 form#new_user label, form.edit_user label{ width: 160px;}
@@ -206,16 +205,25 @@ div#footerBrand a{ background: url(/images/foundationLogo.png) top left no-repea
 
 /* Styling for popup task page - needs attention */
 
-body.task div.header {height: 50px; padding: 10px;}
-body.task div.header span.title {font-size: 200%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; color: #231f20; margin-bottom: 10px; float: left; padding-top: 5px;}
-body.task div.header span.instructions {
-  float: left; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; margin-bottom: 15px;
-  width: 900px;
+body.task div.header {height: 50px; padding: 10px; margin-bottom: 10px;}
+
+body.task div.campaign {float: left; width: 78%;}
+body.task div.nav {float: right; width: 18%;}
+
+body.task div.header span.title {
+  font-size: 200%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; color: #231f20; margin-bottom: 10px; padding-top: 5px;
 }
-body.task div.header input {float: right;}
+body.task div.header span.instructions {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; margin-bottom: 15px;
+}
 body.task div.header span.instructions p {padding: 0; margin: 5px;}
 
-iframe#task_frame {width: 100%; height: 800px; margin: 0; padding: 0; clear: both;}
+body.task div.header div.nav a.back {}
+input#anotherTask {
+  background: url(/images/btn_anotherTask.png) top left no-repeat; width: 148px; height: 37px; display: block; text-indent: -9999em; border: none; 
+}
+
+iframe#task_frame {width: 100%; height: 800px; margin: 0; padding: 0; clear: both; margin-top: 10px;}
 
 form#new_user input#user_submit, form#new_user_session input#user_session_submit, form.edit_user input#update_button, button.openidBtn {  border: none; display: block; width: 137px; height: 44px; text-indent: -9999em; margin-top: 20px;}
 div#signin_options button.openidBtn{ margin-left: 0px;}

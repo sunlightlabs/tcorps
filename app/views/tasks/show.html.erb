@@ -1,17 +1,24 @@
 <div class="header">
-  <span class="title"><%= h @task.campaign.name %></span>
-  
-  <% form_tag tasks_path, :method => :post do %>
-    <%= hidden_field_tag :campaign_id, @task.campaign.id %>
-    <%= submit_tag "I'd Like Another Task", :id => 'anotherTask' %>
-  <% end %>
-  
-  <div class="clear"></div>
-  
-  <span class="instructions">
-    <%= simple_format @task.campaign.instructions %>
-  </span>
 
+  <div class="campaign">
+    <span class="title">
+      <%= h @task.campaign.name %>
+    </span>
+    
+    <span class="instructions">
+      <%= simple_format @task.campaign.instructions %>
+    </span>
+  </div>
+
+  <div class="nav">
+    <% form_tag tasks_path, :method => :post do %>
+      <%= hidden_field_tag :campaign_id, @task.campaign.id %>
+      <%= submit_tag "I'd Like Another Task", :id => 'anotherTask' %>
+    <% end %>
+    <br/>
+    <a href="<%= root_path %>" class="back">Back to TransparencyCorps</a>
+  </div>
+  <div class="clear"></div>
 </div>
 
 <iframe id="task_frame" name="task_frame" src="<%= task_url @task, current_user %>"></iframe>
