@@ -21,6 +21,13 @@
   <div class="clear"></div>  
 </div>
 <div id="signin_options">
+
+  <% if @error_msg %>
+    <div class="error">
+      <%= @error_msg %>
+    </div>
+  <% end %>
+
   <div id="signin_standard" class="signin_option">
     <% form_for @user_session, :url => user_session_path do |f| %>
       <ul>

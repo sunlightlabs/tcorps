@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
         flash[:success] = 'You have been logged in.'
         redirect_to goto_path! || campaigns_path
       else
-        flash.now[:failure] = 'Invalid credentials.'
+        @error_msg = 'Invalid credentials.'
         render :action => :new
       end
       return # needed on the return trip from the OpenID server, if the OpenID is valid but not attached to any current user
