@@ -88,3 +88,14 @@ a#clock{ background: url(/images/clockIcon.png) top left no-repeat; text-indent:
 input#date, input#time, a#calendarToday, a#timeNow{ float: left; margin-right: 10px;}
 
 ul#startDetails{ margin-bottom: 20px;}
+
+div.flash {
+  width: 520px; background: #f7f2cc; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+  padding: 10px; margin-bottom: 20px; margin-top: -20px;
+}
+div.flash.failure {
+  border: 1px solid #fae19c; color: #da7c02;
+}
+div.flash.success {
+   border: 1px solid #fae19c; color: #da7c02;
+}
