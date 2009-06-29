@@ -5,7 +5,9 @@
     <%= hidden_field_tag :campaign_id, @task.campaign.id %>
     <%= submit_tag "I'd Like Another Task", :id => 'anotherTask' %>
   <% end %>
+  
   <div class="clear"></div>
+  
   <span class="instructions">
     <%= simple_format @task.campaign.instructions %>
   </span>
