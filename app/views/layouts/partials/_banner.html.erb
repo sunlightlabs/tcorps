@@ -9,5 +9,5 @@
       In 5 minutes or less, your small action can have a BIG impact on government.
     </p>
   </div>
-  <%= link_to 'Get Started', register_path %>
+  <%= link_to 'Get Started', logged_in? ? campaigns_path : register_path %>
 </div>
