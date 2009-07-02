@@ -3,6 +3,12 @@ require 'test_helper'
 class PagesControllerTest < ActionController::TestCase
   setup :activate_authlogic
   
+  test '#index loads the most recent 5 users' do
+    user = Factory :user
+    User.expects(:all).with(:order => 'created_at DESC', :limit => 5).returns [Factory(:user)]
+    get :index
+  end
+  
   # every page should have these campaigns for the sidebar, but we'll just test it here
   test '#about loads the most recent 5 active campaigns for the sidebar' do
     Campaign.expects(:active).returns Campaign

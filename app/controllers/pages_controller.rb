@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def index
-    
+    @users = User.all :order => 'created_at DESC', :limit => 5
   end
 
   def contact

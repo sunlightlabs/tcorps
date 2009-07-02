@@ -1,0 +1,9 @@
+<h3 class="space">New Members</h3>
+<ul id="newMembers">
+  <% @users.each do |user| %>
+    <li>
+        <%= image_tag user.avatar.url(:normal) %>
+        <span class="leaderName"><%= h user.login %></span>
+    </li>
+  <% end %>
+</ul>

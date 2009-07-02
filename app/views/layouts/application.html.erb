@@ -63,6 +63,7 @@
             </ul>
           </div>
         </div>
+        
         <% if yield :header %>
           <%= render :partial => "layouts/partials/#{yield :header}" %>
         <% end %>
@@ -76,7 +77,7 @@
           
           <% unless yield(:hide_sidebar) %>
             <div id="rtColumn">
-              <%= render :partial => 'layouts/partials/sidebar', :locals => {:campaigns => @sidebar_campaigns} %>
+              <%= render :partial => "layouts/partials/#{yield(:sidebar) || 'sidebar'}", :locals => {:campaigns => @sidebar_campaigns} %>
             </div>
           <% end %>
           
