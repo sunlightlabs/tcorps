@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   skip_before_filter :load_sidebar, :only => :index
 
   def index
-    @users = User.all :order => 'created_at DESC', :limit => 5
+    @users = User.by_points.all :limit => 5
     @campaigns = (logged_in? ? Campaign.active_for(current_user) : Campaign.active).all :order => 'created_at DESC'
   end
 

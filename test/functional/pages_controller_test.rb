@@ -5,7 +5,8 @@ class PagesControllerTest < ActionController::TestCase
   
   test '#index loads the most recent 5 users' do
     user = Factory :user
-    User.expects(:all).with(:order => 'created_at DESC', :limit => 5).returns [Factory(:user)]
+    User.expects(:by_points).returns User
+    User.expects(:all).with(:limit => 5).returns [Factory(:user)]
     get :index
   end
   
