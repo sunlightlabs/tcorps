@@ -18,6 +18,13 @@ class CampaignsControllerTest < ActionController::TestCase
     
     get :index
   end
+  
+  test '#index.xml loads all active campaigns' do
+    Campaign.expects(:active).times(2).returns Campaign
+    get :index, :format => 'xml'
+    assert_response :success
+    assert_template 'index.xml'
+  end
 
   test '#show loads a campaign' do
     campaign = Factory :campaign

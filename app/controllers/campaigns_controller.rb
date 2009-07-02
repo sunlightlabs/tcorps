@@ -6,7 +6,14 @@ class CampaignsController < ApplicationController
   end
   
   def index
-    @campaigns = (logged_in? ? Campaign.active_for(current_user) : Campaign.active).all :order => 'created_at DESC'
+    respond_to do |format|
+      format.html {
+        @campaigns = (logged_in? ? Campaign.active_for(current_user) : Campaign.active).all :order => 'created_at DESC'
+      }
+      format.xml {
+        @campaigns = Campaign.active.all :order => 'created_at DESC'
+      }
+    end
   end
   
   private
