@@ -11,6 +11,7 @@ class CampaignsController < ApplicationController
         @campaigns = (logged_in? ? Campaign.active_for(current_user) : Campaign.active).all :order => 'created_at DESC'
       }
       format.xml {
+        #headers['Content-Type'] = 'application/rss+xml'
         @campaigns = Campaign.active.all :order => 'created_at DESC'
       }
     end
