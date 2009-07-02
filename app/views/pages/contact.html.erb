@@ -6,7 +6,14 @@
 </div>
 
 <p>
-  Have an idea for how to make Transparency Corps better?  Have a task related to government transparency that the Transparency Corps community could solve? Want to learn more about Transparency Corps or have a brilliant thought to share? Send us a note.  We love new people and ideas!
+  Have an idea for how to make Transparency Corps better?  Have a task related to government transparency that the Transparency Corps community could solve? Want to learn more about Transparency Corps or have a brilliant thought to share? 
+  <% if_javascript do %>
+    Send us a note here, or email <% javascript_tag do %>mailtoLink('sunlightfoundation', 'com', 'tcorps')<% end %> directly.
+  <% end %>
+  <% no_javascript do %>
+    Send us a note.
+  <% end %>
+  We love new people and ideas!
 </p>
 
 <% form_tag '', :method => :post, :id => "contactForm" do %>

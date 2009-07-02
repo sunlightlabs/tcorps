@@ -32,3 +32,10 @@ function setToNow(object, field) {
   $("#" + base + "_4i").val(now.getHours());
   $("#" + base + "_5i").val(minutes);
 }
+
+// adapted from http://baxil.livejournal.com/266909.html
+function mailtoLink(rhs, tld, lhs) {
+  document.write("<a href=\"mailto");
+  document.write(":" + lhs + "@" + rhs + "." + tld + "\">");
+  document.write(lhs + "@" + rhs + "." + tld + "<\/a>");
+}
