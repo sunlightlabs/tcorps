@@ -7,42 +7,4 @@
 	<div class="clear"></div>
 </div>	
 
-<ul id="taskList">
-  <% @campaigns.each do |campaign| %>
-    <li>
-      <div class="taskTop">
-        <div class="taskHeader">
-          <h3><%= link_to h(campaign.name), campaign_path(campaign) %></h3>
-          <div class="taskMetadata">
-            <span>points</span>
-            <span class="taskValue"><%= campaign.points %></span>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div class="taskDetail">
-          <% percent = campaign.percent_complete %>
-          <div class="taskBar">
-            <span class="tagValue" style="width: <%= percent %>%"><%= percent %>%</span>
-          </div>
-          <span class="tagNumber"><%= 100 - percent %>% To Go</span>
-          <div class="clear"></div>
-        </div>
-      </div>
-      
-      <p>
-        <%= simple_format campaign.description %>
-      </p>
-      
-      <% form_tag tasks_path, :method => :post, :target => (logged_in? ? '_blank' : '') do %>
-        <% if !logged_in? %>
-          <%= hidden_field_tag :goto, campaign_path(campaign) %>
-        <% end %>
-        
-        <%= hidden_field_tag :campaign_id, campaign.id %>
-        <%= submit_tag 'Start This Task', :id => 'startTask' %>
-      <% end %>
-      
-      
-    </li>
-  <% end %>
-</ul>
+<%= render :partial => 'campaigns/index', :locals => {:campaigns => @campaigns} %>

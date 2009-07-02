@@ -4,7 +4,7 @@ class CampaignsControllerTest < ActionController::TestCase
   setup :activate_authlogic
 
   test '#index loads all active campaigns' do
-    Campaign.expects(:active).times(2).returns Campaign
+    Campaign.expects(:active).returns Campaign
     get :index
     assert_response :success
     assert_template 'index'
@@ -13,14 +13,14 @@ class CampaignsControllerTest < ActionController::TestCase
   test '#index loads all active campaigns relevant to the logged in user, if the user is logged in' do
     user = Factory :user
     
-    Campaign.expects(:active_for).with(user).times(2).returns Campaign
+    Campaign.expects(:active_for).with(user).returns Campaign
     login user
     
     get :index
   end
   
   test '#index.xml loads all active campaigns' do
-    Campaign.expects(:active).times(2).returns Campaign
+    Campaign.expects(:active).returns Campaign
     get :index, :format => 'xml'
     assert_response :success
     assert_template 'index.xml'

@@ -9,6 +9,22 @@ class PagesControllerTest < ActionController::TestCase
     get :index
   end
   
+  test '#index loads all active campaigns' do
+    Campaign.expects(:active).returns Campaign
+    get :index
+    assert_response :success
+    assert_template 'index'
+  end
+  
+  test '#index loads all active campaigns relevant to the logged in user, if the user is logged in' do
+    user = Factory :user
+    
+    Campaign.expects(:active_for).with(user).returns Campaign
+    login user
+    
+    get :index
+  end
+  
   # every page should have these campaigns for the sidebar, but we'll just test it here
   test '#about loads the most recent 5 active campaigns for the sidebar' do
     Campaign.expects(:active).returns Campaign

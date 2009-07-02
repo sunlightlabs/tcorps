@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
   
   before_filter :load_campaign, :only => :show
+  skip_before_filter :load_sidebar, :only => :index
   
   def show
   end
