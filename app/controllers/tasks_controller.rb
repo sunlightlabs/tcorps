@@ -31,7 +31,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to task_path(@task)
     else
-      flash[:failure] = "You can't do any more tasks from this campaign. Please choose another!"
+      flash[:failure] = "You've already done more than enough for this campaign.  Please try your hand at another of the campaigns below."
       redirect_to root_path
     end    
   end
