@@ -6,12 +6,31 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   filter_parameter_logging :password, :password_confirmation
 
-
   before_filter :load_sidebar
 
   def load_sidebar
     @sidebar_campaigns = (logged_in? ? Campaign.active_for(current_user) : Campaign.active).all :limit => 5, :order => 'created_at DESC'
   end
+  
+  def remote_task_url(task, user)
+    options = {
+      :username => user.login,
+      :task_key => task.key,
+      :points => user.campaign_points(task.campaign)
+    }
+    "#{task.campaign.url}?#{query_string_for options}"
+  end
+  helper_method :remote_task_url
+  
+  def query_string_for(options = {})
+    string = ""
+    options.keys.each do |key|
+      string << "&" unless key == options.keys.first
+      string << "#{key}=#{CGI::escape options[key].to_s}"
+    end
+    string
+  end
+  helper_method :query_string_for
   
   def goto_path!
     goto = session[:goto]

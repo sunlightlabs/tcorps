@@ -8,14 +8,18 @@ class TasksController < ApplicationController
   
   def complete
     head :method_not_allowed and return false unless request.post?
-   
     head :not_found and return false unless @task = Task.find_by_key(params[:task_key])
     
     now = Time.now
     elapsed = Time.now - @task.created_at
     @task.update_attributes :completed_at => now, :elapsed_seconds => elapsed
     
-    head :ok
+    if params[:new_task] and params[:new_task].to_i == 1
+      task = @task.campaign.tasks.create! :user => @task.user
+      render :text => remote_task_url(task, @task.user)
+    else
+      head :ok
+    end
   end
   
   def show
