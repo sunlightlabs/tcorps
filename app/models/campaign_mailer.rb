@@ -5,6 +5,5 @@ class CampaignMailer < ActionMailer::Base
     from 'tcorps@sunlightfoundation.com'
     subject "A new campaign has appeared on TransparencyCorps"
     body :campaign => campaign, :user => user, :host => SITE_HOST
-    content_type 'text/html'
   end
 end

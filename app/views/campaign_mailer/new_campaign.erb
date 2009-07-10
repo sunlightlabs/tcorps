@@ -1,23 +1,13 @@
-<p>
-  Hi <%= @user.login %>,
-</p>
+Hi <%= @user.login %>,
 
-<p>
-  A new campaign named "<%= @campaign.name %>" has appeared on TransparencyCorps. Here's the description:
-</p>
+A new campaign named "<%= @campaign.name %>" has appeared on TransparencyCorps. Here's the description:
 
-<%= simple_format @campaign.description %>
+<%= strip_tags @campaign.description %>
 
-<p>
-  Visit this campaign here:<br/>
-  <%= campaign_url @campaign, :host => @host %>
-</p>
+Visit this campaign here:
+<%= campaign_url @campaign, :host => @host %>
 
-<p>
-  -- The TransparencyCorps team
-</p>
+-- The TransparencyCorps team
 
-<p>
-  P.S.  You asked to be notified when a new campaign appears on TransparencyCorps.  But if you want to unsubscribe from these notifications, visit your user profile on TransparencyCorps, uncheck the box that says "Email me when there's a new campaign", and click the Update button.<br/>
-  <%= edit_user_url @user, :host => @host %>
-</p>
+P.S.  You asked to be notified when a new campaign appears on TransparencyCorps.  But if you want to unsubscribe from these notifications, visit your user profile on TransparencyCorps, uncheck the box that says "Email me when there's a new campaign", and click the Update button.
+<%= edit_user_url @user, :host => @host %>
