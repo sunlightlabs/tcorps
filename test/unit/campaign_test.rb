@@ -17,10 +17,6 @@ class CampaignTest < ActiveSupport::TestCase
     assert_equal 60, Campaign.percent_complete
   end
   
-  test 'Campaign.time_spent is the total number of time spent on all completed tasks' do
-  
-  end
-  
   test '#percent_complete measures percent of completed tasks' do  
     campaign = Factory :campaign, :runs => 5
     task1 = Factory :task, :campaign => campaign

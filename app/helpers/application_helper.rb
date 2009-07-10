@@ -29,4 +29,8 @@ module ApplicationHelper
       10 => 'Ten'
     }[number] || number
   end
+  
+  def to_minutes(seconds)
+    "#{seconds / 60}:#{seconds % 60}"
+  end
 end
