@@ -1,13 +1,13 @@
 Hi <%= @user.login %>,
 
-A new campaign named "<%= @campaign.name %>" has appeared on TransparencyCorps. Here's the description:
+A new campaign named "<%= @campaign.name %>" has appeared on Transparency Corps. Here's the description:
 
 <%= strip_tags @campaign.description %>
 
 Visit this campaign here:
 <%= campaign_url @campaign, :host => @host %>
 
--- The TransparencyCorps team
+-- The Transparency Corps team
 
-P.S.  You asked to be notified when a new campaign appears on TransparencyCorps.  But if you want to unsubscribe from these notifications, visit your user profile on TransparencyCorps, uncheck the box that says "Email me when there's a new campaign", and click the Update button.
+P.S.  You asked to be notified when a new campaign appears on Transparency Corps.  But if you want to unsubscribe from these notifications, visit your user profile on Transparency Corps, uncheck the box that says "Email me when there's a new campaign", and click the Update button.
 <%= edit_user_url @user, :host => @host %>
