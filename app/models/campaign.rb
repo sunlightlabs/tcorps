@@ -19,10 +19,15 @@ class Campaign < ActiveRecord::Base
   }
   
   def self.percent_complete
+    tasks_complete = Task.completed.count
+    runs = Campaign.sum :runs
+    return 0 if tasks_complete == 0 or runs == 0
     ((Task.completed.count.to_f / Campaign.sum(:runs).to_f) * 100).to_i
   end
   
   def percent_complete
+    # since runs must be greater than 0 in the validations, 
+    # NaN and divide by zero errors are not an issue
     ((tasks.completed.count.to_f / runs.to_f) * 100).to_i
   end
   
