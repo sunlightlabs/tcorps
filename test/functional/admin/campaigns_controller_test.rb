@@ -66,6 +66,20 @@ class Admin::CampaignsControllerTest < ActionController::TestCase
     assert_equal count + 1, Campaign.count
   end
   
+  test '#create sends out a notification email to users who requested this' do
+    subscribed = Factory :user, :subscribe_campaigns => 1
+    unsubscribed = Factory :user, :subscribe_campaigns => 0
+    user = Factory :manager, :subscribe_campaigns => 1
+    login user
+    
+    # should not notify the creator of the campaign
+    CampaignMailer.expects(:deliver_new_campaign).times(1).with(anything, subscribed)
+    
+    post :create, :campaign => Factory.attributes_for(:campaign, :creator => user)
+    assert_redirected_to admin_campaigns_path
+    assert_not_nil flash[:success]
+  end
+  
   test '#create renders with errors if campaign is invalid' do
     count = Campaign.count
     

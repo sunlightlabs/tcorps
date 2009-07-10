@@ -28,3 +28,5 @@ config.action_mailer.delivery_method = :test
 # config.active_record.schema_format = :sql
 
 CLICKPASS_SITE_KEY = nil # test env should never need one
+
+SITE_HOST = 'test.host'

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   named_scope :leaders, lambda {
     {:conditions => ['sum_points >= ?', LEVELS.keys.sort.first]}
   }
+  named_scope :campaign_subscribers, :conditions => ['subscribe_campaigns = ?', true]
   
   acts_as_authentic
   

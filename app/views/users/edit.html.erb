@@ -26,9 +26,15 @@
       <%= image_tag @user.avatar.url(:normal) %>
     </li>
     <li>
-      <label for='avatar_new'>Upload a new avatar</label>
+      <label for='user_avatar'>Upload a new avatar</label>
       <%= f.file_field :avatar %>
     </li>
+    
+    <li>
+      <label for='user_subscribe_campaigns'>Email me when there's a new campaign:</label>
+      <%= f.check_box :subscribe_campaigns %>
+    </li>
+    
     <input type="submit" value="Update" name="commit" id="update_button" />
   </ul>  
 <% end %>

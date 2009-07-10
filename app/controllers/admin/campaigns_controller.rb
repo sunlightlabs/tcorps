@@ -18,6 +18,7 @@ class Admin::CampaignsController < ApplicationController
   def create
     @campaign = current_user.campaigns.new params[:campaign]
     if @campaign.save
+      deliver_campaign_notifications @campaign
       flash[:success] = 'Campaign created.'
       redirect_to admin_campaigns_path
     else
@@ -38,7 +39,6 @@ class Admin::CampaignsController < ApplicationController
   end
   
   def confirm_destroy
-    
   end
   
   def destroy
@@ -53,6 +53,12 @@ class Admin::CampaignsController < ApplicationController
     unless @campaign = Campaign.find_by_id(params[:id]) and @campaign.creator == current_user
       redirect_to root_path and return false
     end
+  end
+  
+  def deliver_campaign_notifications(campaign)
+    (User.campaign_subscribers.all - [campaign.creator]).each do |user|
+      CampaignMailer.deliver_new_campaign(campaign, user)
+    end 
   end
   
 end
