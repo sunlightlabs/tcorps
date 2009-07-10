@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   named_scope :leaders, lambda {
     {:conditions => ['sum_points >= ?', LEVELS.keys.sort.first]}
   }
+  named_scope :participants, :select => 'users.*, (select count(*) from tasks where completed_at is not null and tasks.user_id = users.id) as num_tasks', :conditions => 'num_tasks > 0'
+  
+  
   named_scope :campaign_subscribers, :conditions => ['subscribe_campaigns = ?', true]
   
   acts_as_authentic

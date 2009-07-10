@@ -17,10 +17,6 @@ class CampaignTest < ActiveSupport::TestCase
     assert_equal 60, Campaign.percent_complete
   end
   
-  test 'Campaign.participants is the number of people with at least one completed task' do
-  
-  end
-  
   test 'Campaign.time_spent is the total number of time spent on all completed tasks' do
   
   end

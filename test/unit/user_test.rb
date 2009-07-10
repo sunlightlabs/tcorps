@@ -22,6 +22,30 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
+  test '#participants only returns people who have at least one completed task' do
+    no_tasks = Factory :user
+    only_uncompleted_tasks = Factory :user
+    only_completed_tasks = Factory :user
+    some_of_both = Factory :user
+    
+    Factory :task, :user => only_uncompleted_tasks
+    Factory :task, :user => only_uncompleted_tasks
+    Factory :task, :user => some_of_both
+    Factory :task, :user => some_of_both
+    
+    Factory :completed_task, :user => only_completed_tasks
+    Factory :completed_task, :user => only_completed_tasks
+    Factory :completed_task, :user => some_of_both
+    Factory :completed_task, :user => some_of_both
+    
+    participants = User.participants.all
+    assert_equal 2, participants.size
+    assert !participants.include?(no_tasks)
+    assert !participants.include?(only_uncompleted_tasks)
+    assert participants.include?(only_completed_tasks)
+    assert participants.include?(some_of_both)
+  end
+  
   test '#leaders only returns people who are at least level 1' do
     minimum = LEVELS.keys.sort.first
     
