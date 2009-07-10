@@ -2,6 +2,29 @@ require 'test_helper'
 
 class CampaignTest < ActiveSupport::TestCase
   
+  test 'Campaign.percent_complete measures percent of all completed tasks' do
+    campaign1 = Factory :campaign, :runs => 5
+    campaign2 = Factory :campaign, :runs => 5
+    3.times {Factory :task, :campaign => campaign1}
+    3.times {Factory :task, :campaign => campaign2}
+    2.times {Factory :completed_task, :campaign => campaign1}
+    2.times {Factory :completed_task, :campaign => campaign2}
+    
+    assert_equal 40, Campaign.percent_complete
+    
+    2.times {Factory :completed_task, :campaign => campaign1}
+    
+    assert_equal 60, Campaign.percent_complete
+  end
+  
+  test 'Campaign.participants is the number of people with at least one completed task' do
+  
+  end
+  
+  test 'Campaign.time_spent is the total number of time spent on all completed tasks' do
+  
+  end
+  
   test '#percent_complete measures percent of completed tasks' do  
     campaign = Factory :campaign, :runs => 5
     task1 = Factory :task, :campaign => campaign
