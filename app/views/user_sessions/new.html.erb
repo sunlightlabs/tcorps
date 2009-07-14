@@ -33,11 +33,11 @@
       <ul>
         <li>
             <label for="username_login">Username</label>
-            <%= f.text_field :login %>
+            <%= f.text_field :login, :class => 'text' %>
         </li>
         <li>
             <%= f.label :password %>
-            <%= f.password_field :password %>
+            <%= f.password_field :password, :class => 'text' %>
         </li>
       </ul>
       <%= f.submit 'Login' %>
@@ -81,7 +81,7 @@
     <p class="tip">Clicking this button will take you to OpenID to sign in to your account. Once your account has been verified you'll be magically sent back to Transparency Corps.</p>
     
     <% form_for @user_session, :url => user_session_path do |f| %>
-      <%= f.text_field :openid_identifier, :value => 'http://' %>
+      <%= f.text_field :openid_identifier, :value => 'http://', :class => 'text' %>
       
       <button class="openidBtn" type="submit">
           <span>Sign In Using OpenID</span>

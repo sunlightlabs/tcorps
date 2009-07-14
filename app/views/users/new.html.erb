@@ -31,19 +31,19 @@
       <ul>
         <li>
           <label for="username_login">Username</label>
-          <%= f.text_field :login %>
+          <%= f.text_field :login, :class => 'text' %>
         </li>
         <li>
           <%= f.label :email %>
-          <%= f.text_field :email %>
+          <%= f.text_field :email, :class => 'text' %>
         </li>
         <li>
           <%= f.label :password %>
-          <%= f.password_field :password %>
+          <%= f.password_field :password, :class => 'text' %>
         </li>
         <li>
           <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation %>
+          <%= f.password_field :password_confirmation, :class => 'text' %>
         </li>
         <li class="checkboxIndent">
           <input type="hidden" value="0" name="user[subscribe_campaigns]"/>
