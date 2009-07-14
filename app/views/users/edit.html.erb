@@ -35,6 +35,11 @@
       <%= f.check_box :subscribe_campaigns %>
     </li>
     
+    <li>
+      <label for='user_subscribe_all'>Email me about other Sunlight services:</label>
+      <%= f.check_box :subscribe_all %>
+    </li>
+    
     <input type="submit" value="Update" name="commit" id="update_button" />
   </ul>  
 <% end %>

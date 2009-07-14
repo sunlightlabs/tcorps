@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 12) do
+ActiveRecord::Schema.define(:version => 13) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -77,11 +77,13 @@ ActiveRecord::Schema.define(:version => 12) do
     t.datetime "avatar_updated_at"
     t.string   "organization_name"
     t.boolean  "subscribe_campaigns", :default => false
+    t.boolean  "subscribe_all",       :default => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login"
   add_index "users", ["openid_identifier"], :name => "index_users_on_openid_identifier"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+  add_index "users", ["subscribe_all"], :name => "index_users_on_subscribe_all"
   add_index "users", ["subscribe_campaigns"], :name => "index_users_on_subscribe_campaigns"
 
 end
