@@ -166,7 +166,7 @@ ul#taskList div.taskBar{ height: 5px;}
 div#ltColumn ul#taskList div.taskMetadata span{ margin-right: 10px;}
 div#ltColumn ul#taskList div.taskTop{ padding: 15px 0 0 0 ;}
 ul#taskList li { border-bottom: solid 1px #ececed; padding-bottom: 15px; margin-bottom: 15px;}
-ul#taskList h3 { font-size: 150%; float: left;}
+ul#taskList h3 { font-size: 150%; float: left; width: 430px;}
 div#ltColumn ul#taskList div.taskDetail { padding: 8px 20px;}
 div#ltColumn ul#taskList span.tagNumber{ font-size: 90%;}
 div#ltColumn ul#taskList span.tagValue { background: url(/images/highlightBar.jpg) repeat-x left top;}
