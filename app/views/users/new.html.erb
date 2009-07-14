@@ -99,15 +99,15 @@
       <ul>
         <li>
           <label for="username_login">Username</label>
-          <%= f.text_field :login %>
+          <%= f.text_field :login, :class => 'text' %>
         </li>
         <li>
           <%= f.label :email %>
-          <%= f.text_field :email %>
+          <%= f.text_field :email, :class => 'text' %>
         </li>
         <li>
           <label for="user_openid_identifier">OpenID</label>
-          <%= f.text_field :openid_identifier, :value => @user.openid_identifier.blank? ? 'http://' : @user.openid_identifier %>
+          <%= f.text_field :openid_identifier, :value => @user.openid_identifier.blank? ? 'http://' : @user.openid_identifier, :class => 'text' %>
         </li>
         <li class="checkboxIndent">
           <input type="hidden" value="0" name="user[subscribe_campaigns]"/>
