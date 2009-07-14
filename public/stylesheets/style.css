@@ -192,6 +192,8 @@ form#contactForm input, form#new_user input, form#new_user_session input, form.e
 form li{ margin-bottom: 10px;}
 input:hidden {display: none}
 
+div#ltColumn label.subscribe_label { float: none; width: 300px; font-weight: normal;}
+
 form.edit_user input#user_avatar{ height: 25px;}
 
 input#openid_username{ margin-bottom: 15px;}
