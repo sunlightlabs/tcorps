@@ -13,7 +13,7 @@
     <p>tasks completed</p>
   </li>
   <li>
-    <span><%= to_minutes Task.sum(:elapsed_seconds) %></span>
-    <p>time spent on tasks<br/>(minutes:seconds)</p>
+    <span><%= to_hours Task.sum(:elapsed_seconds) %></span>
+    <p>hours spent on tasks</p>
   </li>
 </ul>

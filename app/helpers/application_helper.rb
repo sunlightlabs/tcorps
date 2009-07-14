@@ -33,4 +33,8 @@ module ApplicationHelper
   def to_minutes(seconds)
     "#{seconds / 60}:#{seconds % 60}"
   end
+  
+  def to_hours(seconds)
+    "#{(seconds / 3600).to_i}:#{(seconds % 3600) / 60}"
+  end
 end
