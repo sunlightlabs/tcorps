@@ -45,13 +45,16 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation %>
         </li>
-        <li>
-          <label for='user_subscribe_campaigns'>Email me when there's a new campaign:</label>
-          <%= f.check_box :subscribe_campaigns %>
+        <li class="checkboxIndent">
+		  <input id="user_subscribe_campaigns" name="user[subscribe_campaigns]" type="checkbox" value="newCampaign">Email me when there's a new campaign
+          <!--<label for='user_subscribe_campaigns'>Email me when there's a new campaign:</label>
+          <%= f.check_box :subscribe_campaigns %>-->
         </li>
-        <li>
+        <li class="checkboxIndent">
+		  <input id="user_subscribe_all" name="user[subscribe_all]" type="checkbox" value="newCampaign">Email me about other Sunlight services
+		  <!--<input type="checkbox" value="newCampaign">Email me when there's a new campaign
           <label for='user_subscribe_all'>Email me about other Sunlight services:</label>
-          <%= f.check_box :subscribe_all %>
+          <%= f.check_box :subscribe_all %>-->
         </li>
       </ul>
       <%= f.submit 'Register' %>

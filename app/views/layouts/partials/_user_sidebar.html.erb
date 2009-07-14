@@ -4,6 +4,7 @@
     <li>
       <%= image_tag user.avatar.url(:normal) %>
       <span class="leaderName"><%= h user.login %></span>
+	  <span class="leaderPoints"><%= user.sum_points %> pts</span>
     </li>
   <% end %>
 </ul>
