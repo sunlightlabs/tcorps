@@ -31,11 +31,14 @@
     </li>
     
     <li class="checkboxIndent">
-      <%= f.check_box :subscribe_campaigns %> Email me when there's a new campaign
+      <input type="hidden" value="0" name="user[subscribe_campaigns]"/>
+      <input id="user_subscribe_campaigns" type="checkbox" value="1" name="user[subscribe_campaigns]"/>
+      Email me when there's a new campaign 
     </li>
-    
     <li class="checkboxIndent">
-      <%= f.check_box :subscribe_all %>Email me about other Sunlight services
+      <input type="hidden" value="0" name="user[subscribe_all]"/>
+      <input id="user_subscribe_all" type="checkbox" value="1" name="user[subscribe_all]"/>
+      Email me about other Sunlight services
     </li>
     
     <input type="submit" value="Update" name="commit" id="update_button" />

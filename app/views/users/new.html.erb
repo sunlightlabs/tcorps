@@ -46,10 +46,14 @@
           <%= f.password_field :password_confirmation %>
         </li>
         <li class="checkboxIndent">
-          <%= f.check_box :subscribe_campaigns %>Email me when there's a new campaign
+          <input type="hidden" value="0" name="user[subscribe_campaigns]"/>
+          <input id="user_subscribe_campaigns" type="checkbox" value="1" name="user[subscribe_campaigns]"/>
+          Email me when there's a new campaign 
         </li>
         <li class="checkboxIndent">
-          <%= f.check_box :subscribe_all %>Email me about other Sunlight services
+          <input type="hidden" value="0" name="user[subscribe_all]"/>
+          <input id="user_subscribe_all" type="checkbox" value="1" name="user[subscribe_all]"/>
+          Email me about other Sunlight services
         </li>
       </ul>
       <%= f.submit 'Register' %>
@@ -105,13 +109,15 @@
           <label for="user_openid_identifier">OpenID</label>
           <%= f.text_field :openid_identifier, :value => @user.openid_identifier.blank? ? 'http://' : @user.openid_identifier %>
         </li>
-        <li>
-          <label for='user_subscribe_campaigns'>Email me when there's a new campaign:</label>
-          <%= f.check_box :subscribe_campaigns %>
+        <li class="checkboxIndent">
+          <input type="hidden" value="0" name="user[subscribe_campaigns]"/>
+          <input id="user_subscribe_campaigns" type="checkbox" value="1" name="user[subscribe_campaigns]"/>
+          Email me when there's a new campaign 
         </li>
-        <li>
-          <label for='user_subscribe_all'>Email me about other Sunlight services:</label>
-          <%= f.check_box :subscribe_all %>
+        <li class="checkboxIndent">
+          <input type="hidden" value="0" name="user[subscribe_all]"/>
+          <input id="user_subscribe_all" type="checkbox" value="1" name="user[subscribe_all]"/>
+          Email me about other Sunlight services
         </li>
       </ul>
       <button class="openidBtn" type="submit">
