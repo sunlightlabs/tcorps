@@ -31,10 +31,14 @@ module ApplicationHelper
   end
   
   def to_minutes(seconds)
-    "#{seconds / 60}:#{seconds % 60}"
+    "#{zero_prefix(seconds / 60)}:#{zero_prefix(seconds % 60)}"
   end
   
   def to_hours(seconds)
-    "#{(seconds / 3600).to_i}:#{(seconds % 3600) / 60}"
+    "#{zero_prefix((seconds / 3600).to_i)}:#{zero_prefix((seconds % 3600) / 60)}"
+  end
+  
+  def zero_prefix(n)
+    "#{0 if n < 10}#{n}"
   end
 end
