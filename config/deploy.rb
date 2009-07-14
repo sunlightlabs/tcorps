@@ -34,6 +34,7 @@ namespace :deploy do
   desc "Migrate the database"
   task :migrate, :roles => [:web, :app] do
     run "cd #{deploy_to}/current && rake db:migrate RAILS_ENV=#{environment}"
+    deploy.restart
   end
   
   desc "Get shared files into position"
