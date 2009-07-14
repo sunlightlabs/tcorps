@@ -190,6 +190,7 @@ form#new_user label, form.edit_user label{ width: 160px;}
 form#contactForm input, form#contactForm textarea, form#new_user input, form#new_user textarea, form#new_user_session input, form#new_user_session textarea, form.edit_user input, input#openid_username{ border: dotted 1px #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 300px; padding: 5px;}
 form#contactForm input, form#new_user input, form#new_user_session input, form.edit_user input{ height: 15px;}
 form li{ margin-bottom: 10px;}
+input:hidden {display: none}
 
 form.edit_user input#user_avatar{ height: 25px;}
 
