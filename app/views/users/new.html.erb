@@ -47,13 +47,13 @@
         </li>
         <li class="checkboxIndent">
           <input type="hidden" value="0" name="user[subscribe_campaigns]"/>
-          <input id="user_subscribe_campaigns" type="checkbox" value="1" name="user[subscribe_campaigns]"/>
-          Email me when there's a new campaign 
+          <label class="subscribe_label" for="user_subscribe_campaigns"><input id="user_subscribe_campaigns" type="checkbox" value="1" name="user[subscribe_campaigns]"/>
+          Email me when there's a new campaign</label>
         </li>
         <li class="checkboxIndent">
           <input type="hidden" value="0" name="user[subscribe_all]"/>
-          <input id="user_subscribe_all" type="checkbox" value="1" name="user[subscribe_all]"/>
-          Email me about other Sunlight services
+          <label class="subscribe_label" for="user_subscribe_all"><input id="user_subscribe_all" type="checkbox" value="1" name="user[subscribe_all]"/>
+          Email me about other Sunlight services</label>
         </li>
       </ul>
       <%= f.submit 'Register' %>
@@ -111,13 +111,13 @@
         </li>
         <li class="checkboxIndent">
           <input type="hidden" value="0" name="user[subscribe_campaigns]"/>
-          <input id="user_subscribe_campaigns" type="checkbox" value="1" name="user[subscribe_campaigns]"/>
-          Email me when there's a new campaign 
+		  <label class="subscribe_label" for="user_subscribe_campaigns2"><input id="user_subscribe_campaigns2" type="checkbox" value="1" name="user[subscribe_campaigns]"/>
+          Email me when there's a new campaign</label>
         </li>
         <li class="checkboxIndent">
           <input type="hidden" value="0" name="user[subscribe_all]"/>
-          <input id="user_subscribe_all" type="checkbox" value="1" name="user[subscribe_all]"/>
-          Email me about other Sunlight services
+          <label class="subscribe_label" for="user_subscribe_all2"><input id="user_subscribe_all2" type="checkbox" value="1" name="user[subscribe_all]"/>
+          Email me about other Sunlight services</label>
         </li>
       </ul>
       <button class="openidBtn" type="submit">
