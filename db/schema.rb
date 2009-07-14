@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 13) do
+ActiveRecord::Schema.define(:version => 14) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(:version => 13) do
     t.string   "url"
     t.text     "instructions"
     t.text     "description"
-    t.text     "private_description"
+    t.text     "short_description"
     t.text     "template"
     t.integer  "points"
-    t.integer  "runs",                :default => 0
+    t.integer  "runs",              :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_runs"
