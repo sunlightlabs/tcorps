@@ -187,7 +187,7 @@ div#taskScoreboard dt{ float: left; font-weight: bold; margin-right: 5px;}
 
 form#contactForm label, form#new_user label, form#new_user_session label, form.edit_user label{ font-weight: bold; width: 100px; display: block; float: left; padding-top:5px;}
 form#new_user label, form.edit_user label{ width: 160px;}
-form#contactForm input, form#contactForm textarea, form#new_user input, form#new_user textarea, form#new_user_session input, form#new_user_session textarea, form.edit_user input, input#openid_username{ border: dotted 1px #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 300px; padding: 5px;}
+form#contactForm input.text, form#contactForm textarea, form#new_user input.text, form#new_user textarea, form#new_user_session input.text, form#new_user_session textarea, form.edit_user input.text, input#openid_username.text{ border: dotted 1px #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 300px; padding: 5px;}
 form#contactForm input, form#new_user input, form#new_user_session input, form.edit_user input{ height: 15px;}
 form li{ margin-bottom: 10px;}
 input:hidden {display: none}
