@@ -20,7 +20,7 @@ Factory.define :campaign do |c|
   c.points 5
   c.runs 100
   c.user_runs 100
-  c.start_at {Time.now}
+  c.start_at {2.days.ago}
 end
 Factory.sequence(:campaign_keyword) {|i| "campaign#{i}"}
 Factory.sequence(:campaign_name) {|i| "Campaign #{i}"}

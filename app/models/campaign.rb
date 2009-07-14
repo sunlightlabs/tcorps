@@ -7,14 +7,14 @@ class Campaign < ActiveRecord::Base
   
   named_scope :active, 
     :select => "campaigns.*", 
-    :conditions => "(select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) < campaigns.runs"
+    :conditions => ["start_at < ? and (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) < campaigns.runs", Time.now]
   
   named_scope :active_for, lambda {|user|
     # ActiveRecord does not offer ?-style interpolation for the select parameter,
     # and the id attribute is not subject to user manipulation, so this is safe
     {
       :select => "campaigns.*", 
-      :conditions => "(select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) < campaigns.runs and (campaigns.user_runs IS NULL OR campaigns.user_runs = 0 OR (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL and tasks.user_id = #{user.id}) < campaigns.user_runs)"
+      :conditions => ["start_at < ? and (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL) < campaigns.runs and (campaigns.user_runs IS NULL OR campaigns.user_runs = 0 OR (select count(*) from tasks where tasks.campaign_id = campaigns.id and tasks.completed_at IS NOT NULL and tasks.user_id = ?) < campaigns.user_runs)", Time.now, user.id]
     }
   }
   

@@ -38,6 +38,14 @@ class CampaignTest < ActiveSupport::TestCase
     assert_equal 100, campaign.percent_complete
   end
   
+  test '#active named scope limits search to campaigns who are past their start time' do
+    started = Factory :campaign, :start_at => 3.days.ago
+    not_started = Factory :campaign, :start_at => 3.days.from_now
+    
+    assert Campaign.active.include?(started)
+    assert !Campaign.active.include?(not_started)
+  end
+  
   test '#active named scope limits search to campaigns who have fewer completed tasks than the # of specified runs' do
     campaign1 = Factory :campaign, :runs => 2
     campaign2 = Factory :campaign, :runs => 2
@@ -54,7 +62,7 @@ class CampaignTest < ActiveSupport::TestCase
     assert !Campaign.active.include?(campaign3)
   end
   
-  test '#active named scope limits search to campaigns where the user has not reached their individual run limit' do
+  test '#active_for named scope limits search to campaigns where the user has not reached their individual run limit' do
     user = Factory :user
     
     campaign1 = Factory :campaign, :runs => 20, :user_runs => 2
@@ -77,6 +85,15 @@ class CampaignTest < ActiveSupport::TestCase
     assert Campaign.active_for(user).include?(campaign2)
     assert !Campaign.active_for(user).include?(campaign3)
     assert Campaign.active_for(user).include?(campaign4)
+  end
+  
+  test '#active_for named scope limits search to campaigns who are past their start time' do
+    started = Factory :campaign, :user_runs => 2, :start_at => 3.days.ago
+    not_started = Factory :campaign, :user_runs => 2, :start_at => 3.days.from_now
+    user = Factory :user
+    
+    assert Campaign.active_for(user).include?(started)
+    assert !Campaign.active_for(user).include?(not_started)
   end
   
   test '#complete? indicates whether the maximum runs have been met' do
