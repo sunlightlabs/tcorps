@@ -20,4 +20,7 @@ CLICKPASS_SITE_KEY = 'uvdTy5rmBP'
 SITE_HOST = 'localhost:3000'
 
 
-config.middleware.use "Rack::Bug"
+require 'rack/bug'
+ActionController::Dispatcher.middleware.use ::Rack::Bug,
+  :ip_masks   => [IPAddr.new("127.0.0.1")],
+  :secret_key => "secretkeeeeeeeeeyyyyyyyyyyyyyy"
