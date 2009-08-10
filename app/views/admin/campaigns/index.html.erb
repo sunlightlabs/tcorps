@@ -1,6 +1,12 @@
 <div id="editTask_header">
-  <h2>My Campaign</h2>
+  <h2>My Campaigns</h2>
 </div>
+
+<% if @campaigns.empty? %>
+  <div class="task">
+    You don't have any campaigns yet. Click "Add Campaign" above to get started.
+  </div>
+<% end %>
 
 <% @campaigns.each do |campaign| %>
   <div class="task">
