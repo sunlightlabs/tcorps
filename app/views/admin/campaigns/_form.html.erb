@@ -17,7 +17,7 @@
   </li>
   <li>
     <label for="campaign[points]">Points Per Task</label>
-    <%= f.select :points, 1..9, :class => 'pointsDropdown' %>
+    <%= f.select :points, 1..9, {}, {:class => 'pointsDropdown'} %>
     
     <% if_javascript do %>
       <span>
