@@ -1,7 +1,27 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  
+
+  test '#campaigns_completed_tasks_count returns number of completed tasks for the campaigns belonging to this user' do
+    admin1 = Factory :user
+    admin2 = Factory :user
+    campaign_one = Factory :campaign, :creator => admin1
+    campaign_two = Factory :campaign, :creator => admin1
+    campaign_three = Factory :campaign, :creator => admin2
+    campaign_four = Factory :campaign, :creator => admin2
+    user1 = Factory :user
+    user2 = Factory :user
+    
+    Factory :completed_task, :campaign => campaign_one, :user => user1
+    Factory :completed_task, :campaign => campaign_two, :user => user1
+    Factory :completed_task, :campaign => campaign_three, :user => user1
+    Factory :completed_task, :campaign => campaign_three, :user => user2
+    Factory :completed_task, :campaign => campaign_four, :user => user2
+    
+    assert_equal 2, admin1.campaigns_completed_tasks_count
+    assert_equal 3, admin2.campaigns_completed_tasks_count
+  end
+
   test '#campaigns_participants_count returns number of participating users in the campaigns belonging to this user' do
     admin1 = Factory :user
     admin2 = Factory :user

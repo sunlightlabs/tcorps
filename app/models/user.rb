@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
     tasks.sum :points, :conditions => ['completed_at is not null and campaign_id = ?', campaign.id]
   end
   
+  def campaigns_completed_tasks_count
+    campaigns.all.map {|c| c.tasks.completed.count}.sum
+  end
+  
   def campaigns_percent_complete
     completed = campaigns.all.map {|c| c.tasks.completed.count}.sum
     runs = campaigns.sum(:runs).to_f
