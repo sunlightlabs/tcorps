@@ -16,7 +16,7 @@ Factory.define :campaign do |c|
   c.url {|a| "http://example.com/#{a.keyword}"}
   c.instructions 'Instructions'
   c.description 'Public description'
-  c.private_description 'Private description'
+  c.short_description 'Private description'
   c.points 5
   c.runs 100
   c.user_runs 100
