@@ -2,6 +2,26 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
+  test '#campaigns_elapsed_seconds returns total elapsed seconds of completed tasks for the campaigns belonging to this user' do
+    admin1 = Factory :user
+    admin2 = Factory :user
+    campaign_one = Factory :campaign, :creator => admin1
+    campaign_two = Factory :campaign, :creator => admin1
+    campaign_three = Factory :campaign, :creator => admin2
+    campaign_four = Factory :campaign, :creator => admin2
+    user1 = Factory :user
+    user2 = Factory :user
+    
+    Factory :completed_task, :campaign => campaign_one, :user => user1, :elapsed_seconds => 2
+    Factory :completed_task, :campaign => campaign_two, :user => user1, :elapsed_seconds => 2
+    Factory :completed_task, :campaign => campaign_three, :user => user1, :elapsed_seconds => 2
+    Factory :completed_task, :campaign => campaign_three, :user => user2, :elapsed_seconds => 2
+    Factory :completed_task, :campaign => campaign_four, :user => user2, :elapsed_seconds => 2
+    
+    assert_equal 4, admin1.campaigns_elapsed_seconds
+    assert_equal 6, admin2.campaigns_elapsed_seconds
+  end
+
   test '#campaigns_completed_tasks_count returns number of completed tasks for the campaigns belonging to this user' do
     admin1 = Factory :user
     admin2 = Factory :user

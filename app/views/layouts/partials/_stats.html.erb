@@ -13,7 +13,7 @@
     <p>tasks completed</p>
   </li>
   <li>
-    <span><%= to_hours Task.sum(:elapsed_seconds) %></span>
+    <span><%= to_hours current_user.campaigns_elapsed_seconds %></span>
     <p>hours spent on tasks</p>
   </li>
 </ul>

@@ -32,17 +32,21 @@ class User < ActiveRecord::Base
   end
   
   def campaigns_completed_tasks_count
-    campaigns.all.map {|c| c.tasks.completed.count}.sum
+    campaigns.all.map {|campaign| campaign.tasks.completed.count}.sum
   end
   
   def campaigns_percent_complete
-    completed = campaigns.all.map {|c| c.tasks.completed.count}.sum
+    completed = campaigns.all.map {|campaign| campaign.tasks.completed.count}.sum
     runs = campaigns.sum(:runs).to_f
     runs <= 0 ? 0 : ((completed / runs) * 100).to_i
   end
   
   def campaigns_participants_count
-    campaigns.all.map {|c| User.participants_in(c)}.flatten.uniq.size
+    campaigns.all.map {|campaign| User.participants_in campaign}.flatten.uniq.size
+  end
+  
+  def campaigns_elapsed_seconds
+    campaigns.all.map {|campaign| campaign.tasks.sum :elapsed_seconds}.sum
   end
   
   def manager?
