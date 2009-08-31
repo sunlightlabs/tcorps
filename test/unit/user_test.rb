@@ -2,6 +2,25 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   
+  test '#campaigns_percent_complete calculates percent complete of all campaigns together' do
+    user = Factory :user
+    campaign_one = Factory :campaign, :creator => user, :runs => 4
+    campaign_two = Factory :campaign, :creator => user, :runs => 4
+    campaign_three = Factory :campaign, :creator => user, :runs => 2
+    
+    Factory :completed_task, :campaign => campaign_two
+    Factory :completed_task, :campaign => campaign_two
+    Factory :completed_task, :campaign => campaign_two
+    Factory :completed_task, :campaign => campaign_three
+    Factory :completed_task, :campaign => campaign_three
+    
+    assert_equal 0, campaign_one.percent_complete
+    assert_equal 75, campaign_two.percent_complete
+    assert_equal 100, campaign_three.percent_complete
+    
+    assert_equal 50, user.campaigns_percent_complete
+  end
+  
   test '#by_points includes points as an attribute on user and sorts on this attribute' do
     user1 = Factory :user
     user2 = Factory :user
