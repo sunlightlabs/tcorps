@@ -10,12 +10,11 @@ class User < ActiveRecord::Base
   
   named_scope :by_points, :select => 'users.*, (select sum(tasks.points) as sum_points from tasks where completed_at is not null and tasks.user_id = users.id) as sum_points', :order => 'sum_points desc'
   named_scope :leaders, lambda {
-    {:conditions => ['sum_points >= ?', LEVELS.keys.sort.first]}
+    {:conditions => ['(select sum(tasks.points) as sum_points from tasks where completed_at is not null and tasks.user_id = users.id) >= ?', LEVELS.keys.sort.first]}
   }
-  named_scope :participants, :select => 'users.*, (select count(*) from tasks where completed_at is not null and tasks.user_id = users.id) as num_tasks', :conditions => 'num_tasks > 0'
+  named_scope :participants, :conditions => '(select count(*) from tasks where completed_at is not null and tasks.user_id = users.id) > 0'
   named_scope :participants_in, lambda {|campaign| {
-    :select => "users.*, (select count(*) from tasks where completed_at is not null and campaign_id = #{campaign.id} and tasks.user_id = users.id) as num_tasks", 
-    :conditions => 'num_tasks > 0'
+    :conditions => "(select count(*) from tasks where completed_at is not null and campaign_id = #{campaign.id} and tasks.user_id = users.id) > 0"
   }}
   
   
