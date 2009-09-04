@@ -57,7 +57,7 @@ class Admin::CampaignsController < ApplicationController
   
   def deliver_campaign_notifications(campaign)
     (User.campaign_subscribers.all - [campaign.creator]).each do |user|
-      CampaignMailer.deliver_new_campaign(campaign, user)
+      CampaignMailer.deliver_new_campaign campaign, user
     end 
   end
   
