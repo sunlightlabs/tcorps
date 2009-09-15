@@ -2,9 +2,11 @@
 <% content_for :header, :banner %>
 <% content_for :sidebar, :user_sidebar %>
 
-<div class="mainTaskHeader">
-  <h2>Welcome</h2>
+<div class="mainTaskHeader withRSS">
+  <h2>Latest Tasks</h2>
+  <a class="rssIcon" href="http://transparencycorps.org/campaigns.xml">Keep up to Date</a>
   <div class="clear"></div>
 </div>
+
 
 <%= render :partial => 'campaigns/index', :locals => {:campaigns => @campaigns} %>

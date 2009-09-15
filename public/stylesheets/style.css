@@ -12,14 +12,12 @@ a:hover{outline: none; color: #00788a}
 a:active{outline: none; color: #00788a}
 
 body{
-  color:#6c6d6e;
+  color:#7b7373;
   background: url(/images/mainBg.jpg) top left repeat;
   font-size: 76%;
     line-height: 20px;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-
-div#ltColumn p { font-size: 108%; line-height: 21px;}
 
 .clear{ clear: both;}
 .fieldWithErrors {padding: 0; margin: 0; display: inline;}
@@ -65,7 +63,7 @@ div#featureText p {
     //width: 370px; 
     width: 600px; 
     font-size: 113%; 
-    color: #848383;
+    color: #9b9b9b;
 }
 
 div#nav ul{ margin-left:350px;}
@@ -87,7 +85,7 @@ li#nav_contact a.active{ background: url(/images/nav_contact.png) left bottom no
 div#mainContent{ background: #fff; margin: 0 20px 20px; border-left: 1px solid #e2e2e2; border-right: 1px solid #e2e2e2; border-bottom: 1px solid #e2e2e2; padding-top: 20px; -moz-border-radius-bottomright: 3px; -webkit-border-radius-bottomleft: 3px;}
 div#featureSection { background: url(/images/featureBox2.jpg) top left no-repeat; width: 960px; height: 249px; margin: 0px; padding: 0px;}
 
-body.home div#ltColumn{ width: 492px;}
+/*body.home div#ltColumn{ width: 492px;}*/
 div#ltColumn{ padding: 20px 30px 40px; width: 540px; float: left;}
 
 h2{ 
@@ -101,14 +99,15 @@ h2{
 div.mainTaskHeader{ background: url(/images/bar_ltColumn.png) bottom left no-repeat; width: 572px; display: block; padding-bottom: 15px; margin-bottom: 20px; }
 div.mainTaskHeader h2{ width: 420px; line-height: 32px; margin-top: -5px; float: left;}
 
-body.home div.mainTaskHeader{ background: url(/images/bar_ltColumn_home.png) bottom left no-repeat; width: 492px;}
+
+/*body.home div.mainTaskHeader{ background: url(/images/bar_ltColumn_home.png) bottom left no-repeat; width: 492px;}*/
 
 div#rtColumn{ float: left; background: url(/images/rtBorder.jpg) 3px top repeat-y; margin-left: 43px;}
 div#rtContent{ width: 215px; padding: 10px 30px 30px 30px;}
-body.home div#rtContent{ width: 306px; }
+/*body.home div#rtContent{ width: 306px; }*/
 div#rtBorder{ background: url(/images/rtBorder_top.jpg) left top no-repeat; }
 
-body.home div#rtColumn{ margin-left: 0;}
+/*body.home div#rtColumn{ margin-left: 0;}*/
 
 h3{ color: #4f4e4d; font-size: 140%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; margin-bottom: 5px;}
 div#rtColumn h3{ background: url(/images/bar_rtColumn.png) bottom left no-repeat; margin-bottom: 20px; font-size: 160%; line-height: 21px; padding-bottom: 5px;}
@@ -203,7 +202,7 @@ button.submitBtn span{ background: url(/images/btn_submit.png) top left no-repea
 button.submitBtn{ border: 0; background: none; margin-left: 100px; margin-top: 20px;}
 
 div#footer{ width: 960; margin: 0 auto; font-size: 90%; padding: 0 20px;}
-div#footerBrand{ float: left; border-right: 1px solid #6c6b6b; margin-right: 15px; padding-right: 15px;}
+div#footerBrand{ float: left; border-right: 1px solid #c0dee2; margin-right: 15px; padding-right: 15px;}
 div#footerBrand a{ background: url(/images/foundationLogo.png) top left no-repeat; display: block; text-indent: -9999em; width: 132px; height: 61px;}
 
 
@@ -316,7 +315,10 @@ body.home div.flash {
 }
 
 div#rtColumn ul#newMembers li { background: none; border: none; height: 64px; margin-bottom: 15px;}
-div#rtColumn ul#newMembers img { float: left; height: 64px; margin: 0 15px 15px 0;}
+div#rtColumn ul#newMembers img { float: left; height: 64px; margin: 0 15px 15px 0; border: 2px solid #ececed;}
 
 li.checkboxIndent { margin-left: 160px; font-style: oblique; font-size: 95%; margin-bottom: 5px;}
 li.checkboxIndent input { display: block; float: left; margin-right: 10px; margin-top: 2px;}
+
+div.withRSS h2 { width: 400px;}
+a.rssIcon { background: url(/images/rssIcon.png) top right no-repeat; text-indent: -9999em; display: block; width: 118px; height: 16px; float: left; margin-top: 10px;}
