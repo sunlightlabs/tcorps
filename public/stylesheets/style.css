@@ -212,6 +212,7 @@ body.task div.header {height: 50px; padding: 10px; margin-bottom: 10px;}
 
 body.task div.campaign {float: left; width: 78%;}
 body.task div.nav {float: right; width: 18%;}
+body.task div.nav div.links {margin-top: 5px;}
 
 body.task div.header span.title {
   font-size: 200%; font-family: Baskerville, Georgia, Times New Roman, Times, serif; color: #231f20; margin-bottom: 10px; padding-top: 5px;

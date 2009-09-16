@@ -15,8 +15,11 @@
       <%= hidden_field_tag :campaign_id, @task.campaign.id %>
       <%= submit_tag "I'd Like Another Task", :id => 'anotherTask' %>
     <% end %>
-    <br/>
-    <a href="<%= root_path %>" class="back">Back to TransparencyCorps</a>
+    <div class="links">
+      <a href="<%= root_path %>" class="back">Back to TransparencyCorps</a>
+      <br/>
+      <a href="<%= contact_path %>" class="back">Give Feedback</a>
+    </div>
   </div>
   <div class="clear"></div>
 </div>
