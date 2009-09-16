@@ -315,7 +315,7 @@ body.home div.flash {
 }
 
 div#rtColumn ul#newMembers li { background: none; border: none; height: 64px; margin-bottom: 15px;}
-div#rtColumn ul#newMembers img { float: left; height: 64px; margin: 0 15px 15px 0; border: 2px solid #ececed;}
+div#rtColumn ul#newMembers img { float: left; height: 64px; margin: 0 15px 0 0; border: 2px solid #ececed;}
 
 li.checkboxIndent { margin-left: 160px; font-style: oblique; font-size: 95%; margin-bottom: 5px;}
 li.checkboxIndent input { display: block; float: left; margin-right: 10px; margin-top: 2px;}
