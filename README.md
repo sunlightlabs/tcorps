@@ -18,6 +18,7 @@ The campaign management area for TransparencyCorps is at transparencycorps.org/a
 
 Inside the campaign management area, a campaign manager can create, update, and delete campaigns (but only their own, obviously).  Campaign ownership is given to a particular user; they cannot be jointly owned by more than one user account.  Some basic statistics regarding that user's campaigns will be shown in a sidebar inside this area.
 
+
 ## API
 
 The API has two parts - creating a new task, and completing a task.
@@ -45,3 +46,12 @@ When a user completes a task on a campaign, that campaign should perform a POST 
 http://transparencycorps.org/tasks/complete
 
 The only parameter to send is "task_key", with the value being the task_key that was originally given as a parameter when the user first created their task.
+
+## Developing Locally
+
+To set up this app to run locally:
+
+* copy config/initializers/mailer.rb.example to config/initializers/mailer.rb and fill in your mailer settings
+* copy config/database.yml.example to config/database.yml and fill in your database settings
+* run "rake db:schema:load" to initialize the database
+* run "rake db:fixtures:load" to get a starting admin user account, with username/password: user1/test
