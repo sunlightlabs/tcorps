@@ -40,6 +40,7 @@ namespace :deploy do
   desc "Get shared files into position"
   task :after_update_code, :roles => [:web, :app] do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/mailer.rb #{release_path}/config/initializers/mailer.rb"
     run "ln -nfs #{shared_path}/#{environment}.sqlite3 #{release_path}/db/#{environment}.sqlite3"
   end
   
