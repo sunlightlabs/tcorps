@@ -1,6 +1,7 @@
 tmp/*
 log/*
 config/database.yml
+config/initializers/mailer.rb
 db/*.sqlite3
 db/*.sql
 public/system/*
