@@ -1,4 +1,4 @@
-set :environment, (ENV['target'] || 'staging')
+set :environment, (ENV['target'] || 'production')
 
 # Change repo and domain for your setup
 #if environment == 'production'
@@ -24,8 +24,10 @@ set :sock, "#{user}.sock"
 
 set :runner, user
 set :admin_runner, runner
+set :use_sudo, false
  
 after "deploy", "deploy:cleanup"
+after "deploy:update_code", "deploy:shared_links"
  
 namespace :deploy do    
   desc "Migrate the database"
@@ -48,9 +50,10 @@ namespace :deploy do
   end
   
   desc "Get shared files into position"
-  task :after_update_code, :roles => [:web, :app] do
+  task :shared_links, :roles => [:web, :app] do
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/mailer.rb #{release_path}/config/initializers/mailer.rb"
+    run "ln -nfs #{shared_path}/system #{release_path}/public/system"
   end
   
   desc "Initial deploy"
